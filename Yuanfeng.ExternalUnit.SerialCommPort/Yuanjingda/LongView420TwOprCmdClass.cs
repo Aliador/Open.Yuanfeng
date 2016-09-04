@@ -21,6 +21,8 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
         Timer threeSecondsOnce;
         bool received = false;
         bool scanHand = false;
+        private bool isOpen = false;
+        public bool IsOpen { get { return this.isOpen; } }
         private StringBuilder tempStrBuilder = new StringBuilder();
         public void Init(SerialPortReceivedDataDelegate serialPortReceivedDataDelegate)
         {
@@ -49,6 +51,8 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
             {
                 if (!received && scanHand) { Open(); }
             }), null, 0, 3000);
+
+            this.isOpen = true;
             //throw new NotImplementedException();
         }
 
@@ -123,6 +127,8 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
             Thread.Sleep(100);
 
             this.serialPort.Close();
+
+            this.isOpen = false;
             //throw new NotImplementedException();
         }
 

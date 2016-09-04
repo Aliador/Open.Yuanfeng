@@ -7,6 +7,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
 {
     public interface ILongView420R
     {
+        bool IsOpen { get; }
         /// <summary>
         /// init com port and if open with be close oper.
         /// </summary>

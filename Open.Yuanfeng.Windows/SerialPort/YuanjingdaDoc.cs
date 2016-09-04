@@ -32,6 +32,8 @@ namespace Open.Yuanfeng.Windows.SerialPort
         int count = 0;
         private void btnInit_Click(object sender, EventArgs e)
         {
+            if (longView420R.IsOpen) return;
+
             int index = this.cmbSerialPortName.SelectedIndex;
 
             string serialPort = "COM" + (index + 1);
@@ -46,22 +48,27 @@ namespace Open.Yuanfeng.Windows.SerialPort
 
         private void btnRealase_Click(object sender, EventArgs e)
         {
-            longView420R.Realase();
+           if(longView420R.IsOpen) longView420R.Realase();
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            longView420R.Open();
+           if(longView420R.IsOpen) longView420R.Open();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            longView420R.Close();
+            if (longView420R.IsOpen) longView420R.Close();
         }
 
         private void btnOpenOnline_Click(object sender, EventArgs e)
         {
-            longView420R.OpenOnLine();
+            if (longView420R.IsOpen) longView420R.OpenOnLine();
+        }
+
+        private void YuanjingdaDoc_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (longView420R.IsOpen) longView420R.Realase();
         }
     }
 }
