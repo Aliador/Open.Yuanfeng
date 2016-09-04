@@ -123,6 +123,10 @@
       <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
       <Name>Yuanfeng.ExternalUnit.SerialCommPort</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
+      <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
+      <Name>Yuanfeng.Smarty</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

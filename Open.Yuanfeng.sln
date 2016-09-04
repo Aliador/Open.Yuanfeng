@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Computer.Network",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ExternalUnit.SerialCommPort", "Yuanfeng.ExternalUnit.SerialCommPort\Yuanfeng.ExternalUnit.SerialCommPort.csproj", "{CCE59962-3B56-4D8B-949C-1A6699DD945D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Smarty", "Yuanfeng.Smarty\Yuanfeng.Smarty.csproj", "{476D2977-9746-4264-8A7C-003FB02EF0C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CCE59962-3B56-4D8B-949C-1A6699DD945D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCE59962-3B56-4D8B-949C-1A6699DD945D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCE59962-3B56-4D8B-949C-1A6699DD945D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476D2977-9746-4264-8A7C-003FB02EF0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476D2977-9746-4264-8A7C-003FB02EF0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476D2977-9746-4264-8A7C-003FB02EF0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476D2977-9746-4264-8A7C-003FB02EF0C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

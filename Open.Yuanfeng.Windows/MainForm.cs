@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows
 {
@@ -107,6 +108,8 @@ namespace Open.Yuanfeng.Windows
             this.YuanjingdaToolStripMenuItem.Checked = true;
             this.yuanjingdaDummy.Show(MainDockPanel, DockState.Document);
             this.yuanjingdaDummy.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("this yuanjingda is loaded.");
         }
     }
 }
