@@ -35,11 +35,13 @@
             this.NwListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwSwithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consoleCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.YuanjingdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.HelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +51,8 @@
             this.fileFToolStripMenuItem,
             this.NetworkToolStripMenuItem,
             this.WindowsToolStripMenuItem,
-            this.HelperToolStripMenuItem});
+            this.HelperToolStripMenuItem,
+            this.SerialPortToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Size = new System.Drawing.Size(875, 24);
@@ -85,16 +88,38 @@
             // WindowsToolStripMenuItem
             // 
             this.WindowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consoleCToolStripMenuItem});
+            this.ConsoleToolStripMenuItem});
             this.WindowsToolStripMenuItem.Name = "WindowsToolStripMenuItem";
             this.WindowsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.WindowsToolStripMenuItem.Text = "Window(&W)";
             // 
-            // consoleCToolStripMenuItem
+            // ConsoleToolStripMenuItem
             // 
-            this.consoleCToolStripMenuItem.Name = "consoleCToolStripMenuItem";
-            this.consoleCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.consoleCToolStripMenuItem.Text = "Console(&C)";
+            this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.ConsoleToolStripMenuItem.Text = "Console(&C)";
+            this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
+            // 
+            // HelperToolStripMenuItem
+            // 
+            this.HelperToolStripMenuItem.Name = "HelperToolStripMenuItem";
+            this.HelperToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.HelperToolStripMenuItem.Text = "Helper(&H)";
+            // 
+            // SerialPortToolStripMenuItem
+            // 
+            this.SerialPortToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.YuanjingdaToolStripMenuItem});
+            this.SerialPortToolStripMenuItem.Name = "SerialPortToolStripMenuItem";
+            this.SerialPortToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.SerialPortToolStripMenuItem.Text = "SerialPort(&P)";
+            // 
+            // YuanjingdaToolStripMenuItem
+            // 
+            this.YuanjingdaToolStripMenuItem.Name = "YuanjingdaToolStripMenuItem";
+            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.YuanjingdaToolStripMenuItem.Text = "Yuanjingda(&Y)";
+            this.YuanjingdaToolStripMenuItem.Click += new System.EventHandler(this.YuanjingdaToolStripMenuItem_Click);
             // 
             // MainStatusStrip
             // 
@@ -105,18 +130,13 @@
             // 
             // MainDockPanel
             // 
+            this.MainDockPanel.AllowDrop = true;
             this.MainDockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainDockPanel.Location = new System.Drawing.Point(0, 24);
             this.MainDockPanel.Name = "MainDockPanel";
+            this.MainDockPanel.ShowDocumentIcon = true;
             this.MainDockPanel.Size = new System.Drawing.Size(875, 411);
             this.MainDockPanel.TabIndex = 2;
-            this.MainDockPanel.Theme = this.vS2012LightTheme;
-            // 
-            // HelperToolStripMenuItem
-            // 
-            this.HelperToolStripMenuItem.Name = "HelperToolStripMenuItem";
-            this.HelperToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.HelperToolStripMenuItem.Text = "Helper(&H)";
             // 
             // MainForm
             // 
@@ -127,7 +147,7 @@
             this.Controls.Add(this.MainStatusStrip);
             this.Controls.Add(this.MainMenuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.MainMenuStrip;
+            this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Text = "Yuanfeng Open Source Lib Test v1.0";
             this.MainMenuStrip.ResumeLayout(false);
@@ -145,11 +165,13 @@
         private System.Windows.Forms.ToolStripMenuItem NwListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NwSwithToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem WindowsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consoleCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ConsoleToolStripMenuItem;
         private System.Windows.Forms.StatusStrip MainStatusStrip;
         private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme vS2012LightTheme;
         private WeifenLuo.WinFormsUI.Docking.DockPanel MainDockPanel;
         private System.Windows.Forms.ToolStripMenuItem HelperToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SerialPortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem YuanjingdaToolStripMenuItem;
     }
 }
 

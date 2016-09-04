@@ -18,11 +18,11 @@ namespace Open.Yuanfeng.Windows
         [STAThread]
         static void Main()
         {
-            AllocConsole();
+            //AllocConsole();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            FreeConsole();
+            //FreeConsole();
         }
     }
 }

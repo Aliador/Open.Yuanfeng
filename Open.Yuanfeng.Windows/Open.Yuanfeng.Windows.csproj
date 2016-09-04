@@ -42,7 +42,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.11.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
       <HintPath>..\packages\DockPanelSuite.2.10.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -52,6 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DummyDoc.Designer.cs">
+      <DependentUpon>DummyDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="DummyOutputWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialPort\YuanjingdaDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialPort\YuanjingdaDoc.Designer.cs">
+      <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DummyDoc.resx">
+      <DependentUpon>DummyDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DummyOutputWindow.resx">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +97,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SerialPort\YuanjingdaDoc.resx">
+      <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -98,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\OutputWindow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yuanfeng.ExternalUnit.SerialCommPort\Yuanfeng.ExternalUnit.SerialCommPort.csproj">
+      <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
+      <Name>Yuanfeng.ExternalUnit.SerialCommPort</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
