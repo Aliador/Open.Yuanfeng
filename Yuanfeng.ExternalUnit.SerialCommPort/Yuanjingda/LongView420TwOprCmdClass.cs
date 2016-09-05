@@ -45,7 +45,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
                 this.serialPort.PortName = serialPort;
                 this.serialPort.Open();
                 this.serialPort.DataReceived += SerialPort_DataReceived;
-
+                this.serialPort.WriteTimeout = 200;
                 this.serialPortReceivedData = new SerialPortReceivedData();
 
                 threeSecondsOnce = new Timer(new TimerCallback((object obj) =>
@@ -113,13 +113,17 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
         {
             if(isOpen)
             {
-                if (this.serialPort == null || !this.serialPort.IsOpen) throw new Exception("This serial port is not open.");
+                try
+                {
+                    if (this.serialPort == null || !this.serialPort.IsOpen) throw new Exception("This serial port is not open.");
 
-                byte[] operBytes = HexStringToBytes(openOperCmdStr);
-                this.serialPort.Write(operBytes, 0, operBytes.Length);
+                    byte[] operBytes = HexStringToBytes(openOperCmdStr);
+                    this.serialPort.Write(operBytes, 0, operBytes.Length);
 
-                Thread.Sleep(100);
-                //throw new NotImplementedException();
+                    Thread.Sleep(100);
+                    //throw new NotImplementedException();
+                }
+                catch (Exception exception) { SimpleConsole.WriteLine("This serial port write exception."); }
             }
 
         }

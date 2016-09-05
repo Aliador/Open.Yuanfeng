@@ -62,7 +62,7 @@ namespace Open.Yuanfeng.Windows
             string configFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "DockPanel.config");
 
             if (File.Exists(configFile)) ;
-                //MainDockPanel.LoadFromXml(configFile, deserializeDockContent);
+            //MainDockPanel.LoadFromXml(configFile, deserializeDockContent);
         }
 
 
@@ -94,6 +94,10 @@ namespace Open.Yuanfeng.Windows
 
             if (sender == this.yuanjingdaDummy) this.YuanjingdaToolStripMenuItem.Checked = false;
 
+            if (sender == this.cameraDummy) this.CameraToolStripMenuItem.Checked = false;
+
+            if (sender == this.simpleCamera) this.SimpleCameraToolStripMenuItem.Checked = false;
+
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
@@ -112,6 +116,36 @@ namespace Open.Yuanfeng.Windows
             this.yuanjingdaDummy.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("This yuanjingda is loaded.");
+        }
+        private SerialPort.CameraControlToolDoc cameraDummy;
+        void InitCameraDummy()
+        {
+            if (cameraDummy == null || cameraDummy.IsDisposed) cameraDummy = new SerialPort.CameraControlToolDoc();
+        }
+        private void CameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitCameraDummy();
+            this.CameraToolStripMenuItem.Checked = true;
+            this.cameraDummy.Show(MainDockPanel, DockState.Document);
+            this.cameraDummy.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("This camera is loaded.");
+        }
+
+        private SerialPort.SimpleCameraDoc simpleCamera;
+        void InitSimpleCameraDummy()
+        {
+            if (simpleCamera == null || simpleCamera.IsDisposed) simpleCamera = new SerialPort.SimpleCameraDoc();
+        }
+
+        private void SimpleCameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSimpleCameraDummy();
+            this.SimpleCameraToolStripMenuItem.Checked = true;
+            this.simpleCamera.Show(MainDockPanel, DockState.Document);
+            this.simpleCamera.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("This simple camera is loaded.");
         }
     }
 }

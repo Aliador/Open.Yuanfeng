@@ -39,9 +39,11 @@
             this.HelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.YuanjingdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.SimpleCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +98,7 @@
             // ConsoleToolStripMenuItem
             // 
             this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
-            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ConsoleToolStripMenuItem.Text = "Console(&C)";
             this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
             // 
@@ -109,7 +111,9 @@
             // SerialPortToolStripMenuItem
             // 
             this.SerialPortToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.YuanjingdaToolStripMenuItem});
+            this.YuanjingdaToolStripMenuItem,
+            this.CameraToolStripMenuItem,
+            this.SimpleCameraToolStripMenuItem});
             this.SerialPortToolStripMenuItem.Name = "SerialPortToolStripMenuItem";
             this.SerialPortToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.SerialPortToolStripMenuItem.Text = "SerialPort(&P)";
@@ -117,9 +121,16 @@
             // YuanjingdaToolStripMenuItem
             // 
             this.YuanjingdaToolStripMenuItem.Name = "YuanjingdaToolStripMenuItem";
-            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.YuanjingdaToolStripMenuItem.Text = "Yuanjingda(&Y)";
             this.YuanjingdaToolStripMenuItem.Click += new System.EventHandler(this.YuanjingdaToolStripMenuItem_Click);
+            // 
+            // CameraToolStripMenuItem
+            // 
+            this.CameraToolStripMenuItem.Name = "CameraToolStripMenuItem";
+            this.CameraToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.CameraToolStripMenuItem.Text = "Camera(&C)";
+            this.CameraToolStripMenuItem.Click += new System.EventHandler(this.CameraToolStripMenuItem_Click);
             // 
             // MainStatusStrip
             // 
@@ -137,6 +148,13 @@
             this.MainDockPanel.ShowDocumentIcon = true;
             this.MainDockPanel.Size = new System.Drawing.Size(957, 497);
             this.MainDockPanel.TabIndex = 2;
+            // 
+            // SimpleCameraToolStripMenuItem
+            // 
+            this.SimpleCameraToolStripMenuItem.Name = "SimpleCameraToolStripMenuItem";
+            this.SimpleCameraToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.SimpleCameraToolStripMenuItem.Text = "SimpleCamera(&D)";
+            this.SimpleCameraToolStripMenuItem.Click += new System.EventHandler(this.SimpleCameraToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -172,6 +190,8 @@
         private System.Windows.Forms.ToolStripMenuItem HelperToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SerialPortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem YuanjingdaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CameraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SimpleCameraToolStripMenuItem;
     }
 }
 

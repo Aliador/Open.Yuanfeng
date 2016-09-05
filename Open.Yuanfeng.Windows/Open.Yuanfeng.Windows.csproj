@@ -46,14 +46,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.2.10.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2012Light, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
-      <HintPath>..\packages\DockPanelSuite.ThemeVS2012Light.2.10.0\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2012Light.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DummyDoc.cs">
@@ -81,6 +73,12 @@
     </Compile>
     <Compile Include="SerialPort\CameraControlToolDoc.Designer.cs">
       <DependentUpon>CameraControlToolDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerialPort\SimpleCameraDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialPort\SimpleCameraDoc.Designer.cs">
+      <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="SerialPort\YuanjingdaDoc.cs">
       <SubType>Form</SubType>
@@ -110,11 +108,13 @@
     <EmbeddedResource Include="SerialPort\CameraControlToolDoc.resx">
       <DependentUpon>CameraControlToolDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SerialPort\SimpleCameraDoc.resx">
+      <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\YuanjingdaDoc.resx">
       <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +132,14 @@
     <None Include="Resources\OutputWindow.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DockPanel.WinFormsUI\DockPanel.ThemeVS2012.csproj">
+      <Project>{4ed4fdb5-9fd0-49e6-876d-1635f727c755}</Project>
+      <Name>DockPanel.ThemeVS2012</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DockPanel.WinFormsUI\DockPanel.WinFormsUI.csproj">
+      <Project>{c75532c4-765b-418e-b09b-46d36b2abdb1}</Project>
+      <Name>DockPanel.WinFormsUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Free5lot.Camera_Net\Free5lot.Camera_NET.csproj">
       <Project>{E6052609-A070-41D5-85B9-ACABA91170C5}</Project>
       <Name>Free5lot.Camera_NET</Name>

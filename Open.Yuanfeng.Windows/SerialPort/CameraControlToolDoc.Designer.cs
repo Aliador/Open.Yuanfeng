@@ -1,4 +1,4 @@
-﻿namespace CameraControlTool
+﻿namespace Open.Yuanfeng.Windows.SerialPort
 {
     partial class CameraControlToolDoc
     {

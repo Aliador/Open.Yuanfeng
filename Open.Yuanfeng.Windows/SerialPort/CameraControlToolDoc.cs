@@ -1,41 +1,21 @@
-﻿#region License of Sample
+﻿using System;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+using System.Runtime.InteropServices.ComTypes;
 
-/*
-CameraControlTool - is a complicated sample of CameraControl usage
-Copyright (C) 2013
-https://github.com/free5lot/Camera_Net
+using Camera_NET;
 
-While the Camera_Net library is covered by LGPL, 
-this sample is released as PUBLIC DOMAIN.
-So, you can use code from this sample in your 
-free or proprietary project without any limitations.
+using DirectShowLib;
+using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.Smarty;
 
-It is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-*/
-
-#endregion
-
-namespace CameraControlTool
+namespace Open.Yuanfeng.Windows.SerialPort
 {
-    #region Using directives
 
-    using System;
-    using System.Windows.Forms;
-    using System.Drawing;
-    using System.Drawing.Imaging;
-    using System.Drawing.Drawing2D;
-    using System.Drawing.Text;
-    using System.Runtime.InteropServices.ComTypes;
-
-    using Camera_NET;
-
-    using DirectShowLib;
-    using WeifenLuo.WinFormsUI.Docking;
-    #endregion
-
-    public partial class CameraControlToolDoc : Form//DockContent
+    public partial class CameraControlToolDoc : DockContent
     {
         #region Vars
 
@@ -108,10 +88,12 @@ namespace CameraControlTool
 
                 // Makes all magic with camera and DirectShow graph
                 cameraControl.SetCamera(camera_moniker, resolution);
+
+                SimpleConsole.WriteLine(camera_moniker);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, @"Error while running camera");
+                SimpleConsole.WriteLine(e.Message);
             }
 
             if (!cameraControl.CameraCreated)
@@ -702,9 +684,5 @@ namespace CameraControlTool
                 cameraControl.DisplayPropertyPage_SourcePinOutput(this.Handle);
             }
         }
-
-
-
-
     }
 }
