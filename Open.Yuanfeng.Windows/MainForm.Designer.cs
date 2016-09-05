@@ -55,7 +55,7 @@
             this.SerialPortToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(875, 24);
+            this.MainMenuStrip.Size = new System.Drawing.Size(957, 24);
             this.MainMenuStrip.TabIndex = 0;
             // 
             // fileFToolStripMenuItem
@@ -96,7 +96,7 @@
             // ConsoleToolStripMenuItem
             // 
             this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
-            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ConsoleToolStripMenuItem.Text = "Console(&C)";
             this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
             // 
@@ -123,9 +123,9 @@
             // 
             // MainStatusStrip
             // 
-            this.MainStatusStrip.Location = new System.Drawing.Point(0, 435);
+            this.MainStatusStrip.Location = new System.Drawing.Point(0, 521);
             this.MainStatusStrip.Name = "MainStatusStrip";
-            this.MainStatusStrip.Size = new System.Drawing.Size(875, 22);
+            this.MainStatusStrip.Size = new System.Drawing.Size(957, 22);
             this.MainStatusStrip.TabIndex = 1;
             // 
             // MainDockPanel
@@ -135,14 +135,14 @@
             this.MainDockPanel.Location = new System.Drawing.Point(0, 24);
             this.MainDockPanel.Name = "MainDockPanel";
             this.MainDockPanel.ShowDocumentIcon = true;
-            this.MainDockPanel.Size = new System.Drawing.Size(875, 411);
+            this.MainDockPanel.Size = new System.Drawing.Size(957, 497);
             this.MainDockPanel.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 457);
+            this.ClientSize = new System.Drawing.Size(957, 543);
             this.Controls.Add(this.MainDockPanel);
             this.Controls.Add(this.MainStatusStrip);
             this.Controls.Add(this.MainMenuStrip);

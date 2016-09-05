@@ -9,43 +9,42 @@ namespace Yuanfeng.Smarty
 {
     public static class SimpleConsole
     {
+        private static object[] inter = new object[] { };
         private const string path = "log";
+        private const string consolefilename = "log/console.log";
         public static void Write(object value)
         {
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-
-            string name = "console.log";
-
-            string filename = Path.Combine(path, name);
-
-            TextWriter writer = Console.Out;
-
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            lock (consolefilename)
             {
-                using (StreamWriter streamWriter = new StreamWriter(fs))
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
+                using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                 {
-                    streamWriter.Write(value);
-                    //Console.SetOut(streamWriter);
+                    using (StreamWriter writer = new StreamWriter(fs))
+                    {
+                        writer.AutoFlush = true; writer.Write(value);
+                    }
                 }
             }
         }
 
-        public static void WriteLine(object line)
+        public static void WriteLine(object value)
         {
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-
-            string name = "console.log";
-
-            string filename = Path.Combine(path, name);
-
-            TextWriter writer = Console.Out;
-
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            lock (consolefilename)
             {
-                using (StreamWriter streamWriter = new StreamWriter(fs))
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
+                using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                 {
-                    streamWriter.WriteLine(line);
-                    //Console.SetOut(streamWriter);
+                    using (StreamWriter writer = new StreamWriter(fs))
+                    {
+                        StringBuilder sbline = new StringBuilder();
+                        sbline.Append("[");
+                        sbline.Append(DateTime.Now);
+                        sbline.Append("]");
+                        sbline.Append(value);
+                        writer.AutoFlush = true; writer.WriteLine(sbline);
+                    }
                 }
             }
         }

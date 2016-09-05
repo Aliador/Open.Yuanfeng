@@ -45,6 +45,15 @@
     <Compile Include="Yuanjingda\LongView420TwOprCmdClass.cs" />
     <Compile Include="Yuanjingda\ReceivedData.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
+      <Project>{476D2977-9746-4264-8A7C-003FB02EF0C4}</Project>
+      <Name>Yuanfeng.Smarty</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Camera\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

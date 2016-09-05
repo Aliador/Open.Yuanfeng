@@ -16,7 +16,7 @@ namespace Open.Yuanfeng.Windows
     public partial class MainForm : Form
     {
         private DummyOutputWindow outputWindow;
-        private DeserializeDockContent deserializeDockContent;
+        //private DeserializeDockContent deserializeDockContent;
         [DllImport("Kernel32.dll")]
         private static extern bool AllocConsole();
         [DllImport("kernel32.dll",
@@ -61,8 +61,8 @@ namespace Open.Yuanfeng.Windows
             // Persist settings when rebuilding UI
             string configFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "DockPanel.config");
 
-            if (File.Exists(configFile))
-                MainDockPanel.LoadFromXml(configFile, deserializeDockContent);
+            if (File.Exists(configFile)) ;
+                //MainDockPanel.LoadFromXml(configFile, deserializeDockContent);
         }
 
 
@@ -81,7 +81,7 @@ namespace Open.Yuanfeng.Windows
             }
             else
             {
-                outputWindow.Show(MainDockPanel, DockState.DockBottomAutoHide);
+                outputWindow.Show(MainDockPanel, DockState.DockBottom);
                 outputWindow.FormClosing += DummyClosing;
                 ConsoleToolStripMenuItem.Checked = true;
             }
@@ -93,6 +93,8 @@ namespace Open.Yuanfeng.Windows
             if (sender == this.outputWindow) this.ConsoleToolStripMenuItem.Checked = false;
 
             if (sender == this.yuanjingdaDummy) this.YuanjingdaToolStripMenuItem.Checked = false;
+
+            SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
 
@@ -109,7 +111,7 @@ namespace Open.Yuanfeng.Windows
             this.yuanjingdaDummy.Show(MainDockPanel, DockState.Document);
             this.yuanjingdaDummy.FormClosing += DummyClosing;
 
-            SimpleConsole.WriteLine("this yuanjingda is loaded.");
+            SimpleConsole.WriteLine("This yuanjingda is loaded.");
         }
     }
 }

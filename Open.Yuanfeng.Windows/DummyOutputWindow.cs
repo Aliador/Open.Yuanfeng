@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 using System.IO;
+using Yuanfeng.Smarty;
+
 namespace Open.Yuanfeng.Windows
 {
     public partial class DummyOutputWindow : DockContent
@@ -16,7 +18,9 @@ namespace Open.Yuanfeng.Windows
         {
             InitializeComponent();
         }
-        
+
+
+        private long startReaderIndex = 0;
         private void DummyOutputWindow_Load(object sender, EventArgs e)
         {
             string filename = "log/console.log";
@@ -24,6 +28,8 @@ namespace Open.Yuanfeng.Windows
             {
                 FileInfo info = new FileInfo(filename);
                 FileSystemWatcher watcher = new FileSystemWatcher("log");
+
+                startReaderIndex = info.Length;
 
                 //初始化监听
                 watcher.BeginInit();
@@ -52,26 +58,40 @@ namespace Open.Yuanfeng.Windows
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
-            string changeStrings = string.Empty;
-
-            string filename = e.FullPath;
-
-            long len = new FileInfo(filename).Length;
-            
-            if(len == 0)
-            { return; }
-
-            char[] changeBuffer = new char[len];
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            try
             {
-                StreamReader streamReader = new StreamReader(fs);
-                streamReader.Read(changeBuffer, 0, (int)len);
-                streamReader.Close();
+                string changeStrings = string.Empty;
 
-                changeStrings = new string(changeBuffer);
+                string filename = e.FullPath;
+
+                long len = new FileInfo(filename).Length;
+
+                long nextStartIndex = len;
+
+                if (len <= 0) { return; }
+
+                len = len - startReaderIndex;
+
+                if (len <= 0) { return; }
+
+                char[] changeBuffer = new char[len];
+                using (FileStream fs = new FileStream(filename, FileMode.Open))
+                {
+                    fs.Position = startReaderIndex;
+                    StreamReader streamReader = new StreamReader(fs);
+                    streamReader.Read(changeBuffer, 0, (int)len);
+                    streamReader.Close();
+                    changeStrings = new string(changeBuffer);
+                    fs.Close();
+                }
+                startReaderIndex = nextStartIndex;
+                if (this == null || this.IsDisposed) return;
+                else
+                {
+                    this.Invoke(new MethodInvoker(() => { this.tbConsole.AppendText(changeStrings); this.tbConsole.SelectionStart = (int)nextStartIndex; this.tbConsole.ScrollToCaret(); }));
+                }
             }
-
-            this.Invoke(new MethodInvoker(() => { this.tbConsole.AppendText(changeStrings); }));
+            catch (Exception exception) { SimpleConsole.WriteLine(exception.Message); }                 
         }
     }
 }

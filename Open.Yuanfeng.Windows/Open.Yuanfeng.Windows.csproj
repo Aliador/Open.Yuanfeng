@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialPort\DummyCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialPort\DummyCamera.Designer.cs">
+      <DependentUpon>DummyCamera.cs</DependentUpon>
+    </Compile>
     <Compile Include="SerialPort\YuanjingdaDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SerialPort\DummyCamera.resx">
+      <DependentUpon>DummyCamera.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\YuanjingdaDoc.resx">
       <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
     </EmbeddedResource>
