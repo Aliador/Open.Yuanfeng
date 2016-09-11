@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 using Yuanfeng.ExternalUnit.SerialCommPort.Camera;
 using Yuanfeng.Smarty;
+using Yuanfeng.Smarty.Encrypt;
 
 namespace Open.Yuanfeng.Windows.SerialPort
 {
@@ -54,11 +55,19 @@ namespace Open.Yuanfeng.Windows.SerialPort
         {
             try
             {
+                var start = DateTime.Now;
                 byte[] snapshotImageBuffer = null;
                 bool snapshot = simpleCamera.Snapshot(out snapshotImageBuffer);
                 if (snapshot) this.SnapshotImage.Image = new Bitmap(new MemoryStream(snapshotImageBuffer));
 
                 SimpleConsole.WriteLine("Snapshot.");
+
+                byte[] encryptBuffer = AES.AESEncrypt(snapshotImageBuffer, "yuanfeng");
+                encryptBuffer.Writer(FileNameGenerator.Generator());
+
+                var end = DateTime.Now;
+
+                SimpleConsole.WriteLine("Use Time:"+(end - start).TotalSeconds);
             }
             catch (Exception exception)
             {
@@ -91,7 +100,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
                             this.Invoke(new Action(() =>
                             {
                                 Snapshot();
-                                this.SnapshotCount.Text = "" + (++count);                               
+                                this.SnapshotCount.Text = "" + (++count);
                             }));
                             System.Threading.Thread.Sleep((int)this.SnapshotInterval.Value);
                             Application.DoEvents();
@@ -118,6 +127,29 @@ namespace Open.Yuanfeng.Windows.SerialPort
                 isStarted = false;
 
                 this.btnSnapshotSwitch.Text = "Begin";
+            }
+        }
+
+        private void btnEncrypt_Click(object sender, EventArgs e)
+        {
+            //this.SnapshotImage.Image.ToBuffer().Writer(@"d:\encrypt.bin");
+            byte[] buffer = this.SnapshotImage.Image.ToBuffer();
+
+            byte[] encryptBuffer = AES.AESEncrypt(buffer, "yuanfeng");
+
+            encryptBuffer.Writer(@"d:\encrypt.bin");
+        }
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] buffer = AES.AESDecrypt(@"d:\encrypt.bin".Reader(),"yuanfeng");
+                this.SnapshotImage.Image = new Bitmap(new MemoryStream(buffer));
+            }
+            catch (Exception exception)
+            {
+                SimpleConsole.WriteLine("this encrypt data parse is fialed.");
             }
         }
     }
