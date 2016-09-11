@@ -60,6 +60,12 @@
     <Compile Include="DummyOutputWindow.Designer.cs">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageUtil\SimpleQrCodeDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\SimpleQrCodeDoc.Designer.cs">
+      <DependentUpon>SimpleQrCodeDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DummyOutputWindow.resx">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\SimpleQrCodeDoc.resx">
+      <DependentUpon>SimpleQrCodeDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -148,11 +157,16 @@
       <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
       <Name>Yuanfeng.ExternalUnit.SerialCommPort</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.ImageUtil.QrCode\Yuanfeng.ImageUtil.QrCode.csproj">
+      <Project>{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}</Project>
+      <Name>Yuanfeng.ImageUtil.QrCode</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
       <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
       <Name>Yuanfeng.Smarty</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

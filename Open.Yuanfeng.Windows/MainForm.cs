@@ -98,6 +98,8 @@ namespace Open.Yuanfeng.Windows
 
             if (sender == this.simpleCamera) this.SimpleCameraToolStripMenuItem.Checked = false;
 
+            if (sender == this.simpleQrCodeDoc) this.SimpleQrCodeToolStripMenuItem.Checked = false;
+
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
@@ -146,6 +148,20 @@ namespace Open.Yuanfeng.Windows
             this.simpleCamera.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("This simple camera is loaded.");
+        }
+        private ImageUtil.SimpleQrCodeDoc simpleQrCodeDoc;
+        void InitSimpleQrCodeDummy()
+        {
+            if (simpleQrCodeDoc == null || simpleQrCodeDoc.IsDisposed) simpleQrCodeDoc = new ImageUtil.SimpleQrCodeDoc();
+        }
+        private void SimpleQrCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSimpleQrCodeDummy();
+            this.SimpleQrCodeToolStripMenuItem.Checked = true;
+            this.simpleQrCodeDoc.Show(MainDockPanel, DockState.Document);
+            this.simpleQrCodeDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The simple qrcode dummy loaded.");
         }
     }
 }
