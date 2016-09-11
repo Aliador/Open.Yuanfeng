@@ -24,5 +24,28 @@ namespace Open.Yuanfeng.Windows.ImageUtil
             BaseQrCode simpleQrCode = new BaseQrCode(QrCodeString.Text, (int)QrCodeSize.Value);
             this.QrCodeImage.Image = simpleQrCode.Generator().ToBitmap();
         }
+
+        private void btnSaveToFile_Click(object sender, EventArgs e)
+        {
+            if (this.QrCodeImage.Image != null) this.QrCodeImage.Image.Save(@"d:\qrcode.bmp");
+        }
+
+        private void btnLoadLogo_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = false;
+            openFileDialog.Filter = "bmp|*.bmp|jpg|*.jpg|png|*.png";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filename = openFileDialog.FileName;
+                this.LogoImage.Image = Image.FromFile(filename);
+            }
+        }
+
+        private void btnMargeLogo_Click(object sender, EventArgs e)
+        {
+            ImageExternalClass util = new ImageExternalClass();
+            this.QrCodeImage.Image = util.MergeQrImg((Bitmap)this.QrCodeImage.Image, (Bitmap)this.LogoImage.Image);
+        }
     }
 }

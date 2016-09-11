@@ -35,8 +35,13 @@
             this.btnGenerator = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.QrCodeSize = new System.Windows.Forms.NumericUpDown();
+            this.btnSaveToFile = new System.Windows.Forms.Button();
+            this.LogoImage = new System.Windows.Forms.PictureBox();
+            this.btnMargeLogo = new System.Windows.Forms.Button();
+            this.btnLoadLogo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.QrCodeImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QrCodeSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -101,12 +106,55 @@
             0,
             0});
             // 
+            // btnSaveToFile
+            // 
+            this.btnSaveToFile.Location = new System.Drawing.Point(337, 363);
+            this.btnSaveToFile.Name = "btnSaveToFile";
+            this.btnSaveToFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveToFile.TabIndex = 3;
+            this.btnSaveToFile.Text = "SaveToFile";
+            this.btnSaveToFile.UseVisualStyleBackColor = true;
+            this.btnSaveToFile.Click += new System.EventHandler(this.btnSaveToFile_Click);
+            // 
+            // LogoImage
+            // 
+            this.LogoImage.Location = new System.Drawing.Point(354, 156);
+            this.LogoImage.Name = "LogoImage";
+            this.LogoImage.Size = new System.Drawing.Size(100, 100);
+            this.LogoImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LogoImage.TabIndex = 5;
+            this.LogoImage.TabStop = false;
+            // 
+            // btnMargeLogo
+            // 
+            this.btnMargeLogo.Location = new System.Drawing.Point(460, 233);
+            this.btnMargeLogo.Name = "btnMargeLogo";
+            this.btnMargeLogo.Size = new System.Drawing.Size(75, 23);
+            this.btnMargeLogo.TabIndex = 3;
+            this.btnMargeLogo.Text = "MargeLogo";
+            this.btnMargeLogo.UseVisualStyleBackColor = true;
+            this.btnMargeLogo.Click += new System.EventHandler(this.btnMargeLogo_Click);
+            // 
+            // btnLoadLogo
+            // 
+            this.btnLoadLogo.Location = new System.Drawing.Point(460, 204);
+            this.btnLoadLogo.Name = "btnLoadLogo";
+            this.btnLoadLogo.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadLogo.TabIndex = 3;
+            this.btnLoadLogo.Text = "Load Logo";
+            this.btnLoadLogo.UseVisualStyleBackColor = true;
+            this.btnLoadLogo.Click += new System.EventHandler(this.btnLoadLogo_Click);
+            // 
             // SimpleQrCodeDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 398);
+            this.Controls.Add(this.LogoImage);
             this.Controls.Add(this.QrCodeSize);
+            this.Controls.Add(this.btnLoadLogo);
+            this.Controls.Add(this.btnMargeLogo);
+            this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.btnGenerator);
             this.Controls.Add(this.QrCodeImage);
             this.Controls.Add(this.QrCodeString);
@@ -117,6 +165,7 @@
             this.Text = "SimpleQrCode";
             ((System.ComponentModel.ISupportInitialize)(this.QrCodeImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QrCodeSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +179,9 @@
         private System.Windows.Forms.Button btnGenerator;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown QrCodeSize;
+        private System.Windows.Forms.Button btnSaveToFile;
+        private System.Windows.Forms.PictureBox LogoImage;
+        private System.Windows.Forms.Button btnMargeLogo;
+        private System.Windows.Forms.Button btnLoadLogo;
     }
 }
