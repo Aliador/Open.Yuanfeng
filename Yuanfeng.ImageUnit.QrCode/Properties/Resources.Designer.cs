@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yuanfeng.ImageUtil.QrCode.Properties {
+namespace Yuanfeng.ImageUnit.QrCode.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Yuanfeng.ImageUtil.QrCode.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yuanfeng.ImageUtil.QrCode.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yuanfeng.ImageUnit.QrCode.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

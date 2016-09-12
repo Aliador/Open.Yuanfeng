@@ -39,6 +39,7 @@
             this.LogoImage = new System.Windows.Forms.PictureBox();
             this.btnMargeLogo = new System.Windows.Forms.Button();
             this.btnLoadLogo = new System.Windows.Forms.Button();
+            this.btnTrafficGen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.QrCodeImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QrCodeSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
@@ -83,11 +84,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 127);
+            this.label2.Location = new System.Drawing.Point(24, 127);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 12);
+            this.label2.Size = new System.Drawing.Size(71, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "QrCodeString:";
+            this.label2.Text = "QrCodeSize:";
             // 
             // QrCodeSize
             // 
@@ -145,6 +146,16 @@
             this.btnLoadLogo.UseVisualStyleBackColor = true;
             this.btnLoadLogo.Click += new System.EventHandler(this.btnLoadLogo_Click);
             // 
+            // btnTrafficGen
+            // 
+            this.btnTrafficGen.Location = new System.Drawing.Point(528, 156);
+            this.btnTrafficGen.Name = "btnTrafficGen";
+            this.btnTrafficGen.Size = new System.Drawing.Size(75, 23);
+            this.btnTrafficGen.TabIndex = 3;
+            this.btnTrafficGen.Text = "TrafficGen";
+            this.btnTrafficGen.UseVisualStyleBackColor = true;
+            this.btnTrafficGen.Click += new System.EventHandler(this.btnTrafficGen_Click);
+            // 
             // SimpleQrCodeDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -155,6 +166,7 @@
             this.Controls.Add(this.btnLoadLogo);
             this.Controls.Add(this.btnMargeLogo);
             this.Controls.Add(this.btnSaveToFile);
+            this.Controls.Add(this.btnTrafficGen);
             this.Controls.Add(this.btnGenerator);
             this.Controls.Add(this.QrCodeImage);
             this.Controls.Add(this.QrCodeString);
@@ -183,5 +195,6 @@
         private System.Windows.Forms.PictureBox LogoImage;
         private System.Windows.Forms.Button btnMargeLogo;
         private System.Windows.Forms.Button btnLoadLogo;
+        private System.Windows.Forms.Button btnTrafficGen;
     }
 }

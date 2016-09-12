@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Yuanfeng.Smarty;
 
-namespace Yuanfeng.ImageUtil.QrCode
+namespace Yuanfeng.ImageUnit.QrCode
 {
     public class TrafficPoliceQrCode
     {

@@ -9,7 +9,7 @@ using Yuanfeng.Smarty;
 using System.Drawing.Imaging;
 using System.Drawing;
 
-namespace Yuanfeng.ImageUtil.QrCode
+namespace Yuanfeng.ImageUnit.QrCode
 {
     public class BaseQrCode
     {

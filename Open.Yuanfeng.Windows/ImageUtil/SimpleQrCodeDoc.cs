@@ -47,5 +47,10 @@ namespace Open.Yuanfeng.Windows.ImageUtil
             ImageExternalClass util = new ImageExternalClass();
             this.QrCodeImage.Image = util.MergeQrImg((Bitmap)this.QrCodeImage.Image, (Bitmap)this.LogoImage.Image);
         }
+
+        private void btnTrafficGen_Click(object sender, EventArgs e)
+        {
+            this.QrCodeImage.Image = TrafficPoliceQrCode.NewQrCode(QrCodeString.Text);
+        }
     }
 }

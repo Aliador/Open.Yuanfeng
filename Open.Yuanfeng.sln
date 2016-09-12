@@ -21,7 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockPanel.ThemeVS2012", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ExternalUnit.Print", "Yuanfeng.ExternalUnit.Print\Yuanfeng.ExternalUnit.Print.csproj", "{82198B81-2D73-4578-B765-9D60515852A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUtil.QrCode", "Yuanfeng.ImageUtil.QrCode\Yuanfeng.ImageUtil.QrCode.csproj", "{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.QrCode", "Yuanfeng.ImageUnit.QrCode\Yuanfeng.ImageUnit.QrCode.csproj", "{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Net.SocketX", "Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj", "{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
