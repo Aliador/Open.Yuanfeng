@@ -100,6 +100,8 @@ namespace Open.Yuanfeng.Windows
 
             if (sender == this.simpleQrCodeDoc) this.SimpleQrCodeToolStripMenuItem.Checked = false;
 
+            if (sender == this.findGrayImageDoc) this.FindGrayImageToolStripMenuItem.Checked = false;
+
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
@@ -162,6 +164,21 @@ namespace Open.Yuanfeng.Windows
             this.simpleQrCodeDoc.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("The simple qrcode dummy loaded.");
+        }
+
+        private ImageUtil.FindGrayImageDoc findGrayImageDoc;
+        void InitFindGrayImageDoc()
+        {
+            if (findGrayImageDoc == null || findGrayImageDoc.IsDisposed) findGrayImageDoc = new ImageUtil.FindGrayImageDoc();
+        }
+        private void FindGrayImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitFindGrayImageDoc();
+            this.FindGrayImageToolStripMenuItem.Checked = true;
+            this.findGrayImageDoc.Show(MainDockPanel, DockState.Document);
+            this.findGrayImageDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The sfind gray image dummy loaded.");
         }
     }
 }

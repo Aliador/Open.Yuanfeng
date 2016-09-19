@@ -60,6 +60,12 @@
     <Compile Include="DummyOutputWindow.Designer.cs">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageUtil\FindGrayImageDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\FindGrayImageDoc.Designer.cs">
+      <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageUtil\SimpleQrCodeDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DummyOutputWindow.resx">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\FindGrayImageDoc.resx">
+      <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\SimpleQrCodeDoc.resx">
       <DependentUpon>SimpleQrCodeDoc.cs</DependentUpon>
@@ -156,6 +165,10 @@
     <ProjectReference Include="..\Yuanfeng.ExternalUnit.SerialCommPort\Yuanfeng.ExternalUnit.SerialCommPort.csproj">
       <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
       <Name>Yuanfeng.ExternalUnit.SerialCommPort</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.ImageUnit.Gray\Yuanfeng.ImageUnit.Gray.csproj">
+      <Project>{04007866-4422-4E69-8BC2-9062EB74CB88}</Project>
+      <Name>Yuanfeng.ImageUnit.Gray</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.ImageUnit.QrCode\Yuanfeng.ImageUnit.QrCode.csproj">
       <Project>{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}</Project>

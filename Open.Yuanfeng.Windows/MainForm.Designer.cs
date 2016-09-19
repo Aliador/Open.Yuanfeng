@@ -41,11 +41,12 @@
             this.YuanjingdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImageUtilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SimpleQrCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.ImageUtilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SimpleQrCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FindGrayImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,6 +143,22 @@
             this.SimpleCameraToolStripMenuItem.Text = "SimpleCamera(&D)";
             this.SimpleCameraToolStripMenuItem.Click += new System.EventHandler(this.SimpleCameraToolStripMenuItem_Click);
             // 
+            // ImageUtilToolStripMenuItem
+            // 
+            this.ImageUtilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SimpleQrCodeToolStripMenuItem,
+            this.FindGrayImageToolStripMenuItem});
+            this.ImageUtilToolStripMenuItem.Name = "ImageUtilToolStripMenuItem";
+            this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
+            this.ImageUtilToolStripMenuItem.Text = "ImageUtil(&I)";
+            // 
+            // SimpleQrCodeToolStripMenuItem
+            // 
+            this.SimpleQrCodeToolStripMenuItem.Name = "SimpleQrCodeToolStripMenuItem";
+            this.SimpleQrCodeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.SimpleQrCodeToolStripMenuItem.Text = "SimpleQrCode(&Q)";
+            this.SimpleQrCodeToolStripMenuItem.Click += new System.EventHandler(this.SimpleQrCodeToolStripMenuItem_Click);
+            // 
             // MainStatusStrip
             // 
             this.MainStatusStrip.Location = new System.Drawing.Point(0, 479);
@@ -159,20 +176,12 @@
             this.MainDockPanel.Size = new System.Drawing.Size(957, 454);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // ImageUtilToolStripMenuItem
+            // FindGrayImageToolStripMenuItem
             // 
-            this.ImageUtilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SimpleQrCodeToolStripMenuItem});
-            this.ImageUtilToolStripMenuItem.Name = "ImageUtilToolStripMenuItem";
-            this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
-            this.ImageUtilToolStripMenuItem.Text = "ImageUtil(&I)";
-            // 
-            // SimpleQrCodeToolStripMenuItem
-            // 
-            this.SimpleQrCodeToolStripMenuItem.Name = "SimpleQrCodeToolStripMenuItem";
-            this.SimpleQrCodeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.SimpleQrCodeToolStripMenuItem.Text = "SimpleQrCode(&Q)";
-            this.SimpleQrCodeToolStripMenuItem.Click += new System.EventHandler(this.SimpleQrCodeToolStripMenuItem_Click);
+            this.FindGrayImageToolStripMenuItem.Name = "FindGrayImageToolStripMenuItem";
+            this.FindGrayImageToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.FindGrayImageToolStripMenuItem.Text = "FindGrayImage(&F)";
+            this.FindGrayImageToolStripMenuItem.Click += new System.EventHandler(this.FindGrayImageToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -212,6 +221,7 @@
         private System.Windows.Forms.ToolStripMenuItem SimpleCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImageUtilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SimpleQrCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FindGrayImageToolStripMenuItem;
     }
 }
 
