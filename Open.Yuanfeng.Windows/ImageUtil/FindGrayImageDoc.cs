@@ -52,11 +52,16 @@ namespace Open.Yuanfeng.Windows.ImageUtil
                         }
                     }
 
-                    this.Invoke(new Action(() => { this.btnOpenFolder.Enabled = true; }));
+                    this.Invoke(new Action(() => { this.btnOpenFolder.Enabled = true; SimpleConsole.WriteLine("Find over."); }));
                 }));
 
                 thradFindGrayImg.Start(filenames);
             }
+        }
+
+        private void GrayImgList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.ImgDisplayer.Image = this.GrayImgList.SelectedItem.ToString().Reader().ToBitmap();
         }
     }
 }

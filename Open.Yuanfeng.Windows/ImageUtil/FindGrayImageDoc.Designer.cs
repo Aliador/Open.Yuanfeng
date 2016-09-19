@@ -34,6 +34,9 @@
             this.GrayImgList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.ImgDisplayer = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.ImgDisplayer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenFolder
@@ -70,6 +73,7 @@
             this.GrayImgList.Name = "GrayImgList";
             this.GrayImgList.Size = new System.Drawing.Size(459, 292);
             this.GrayImgList.TabIndex = 3;
+            this.GrayImgList.SelectedValueChanged += new System.EventHandler(this.GrayImgList_SelectedValueChanged);
             // 
             // label2
             // 
@@ -80,18 +84,39 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Gray Img List";
             // 
+            // ImgDisplayer
+            // 
+            this.ImgDisplayer.Location = new System.Drawing.Point(596, 109);
+            this.ImgDisplayer.Name = "ImgDisplayer";
+            this.ImgDisplayer.Size = new System.Drawing.Size(114, 139);
+            this.ImgDisplayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgDisplayer.TabIndex = 4;
+            this.ImgDisplayer.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(594, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Match Image Display";
+            // 
             // FindGrayImageDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 430);
+            this.ClientSize = new System.Drawing.Size(844, 430);
+            this.Controls.Add(this.ImgDisplayer);
             this.Controls.Add(this.GrayImgList);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SourceImgFolder);
             this.Controls.Add(this.btnOpenFolder);
             this.Name = "FindGrayImageDoc";
             this.Text = "FindGrayImageDoc";
+            ((System.ComponentModel.ISupportInitialize)(this.ImgDisplayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,5 +130,7 @@
         private System.Windows.Forms.ListBox GrayImgList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.PictureBox ImgDisplayer;
+        private System.Windows.Forms.Label label3;
     }
 }
