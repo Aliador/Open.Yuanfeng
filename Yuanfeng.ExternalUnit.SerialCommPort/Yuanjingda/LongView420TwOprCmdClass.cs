@@ -42,9 +42,11 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
                 if (this.serialPort != null && this.serialPort.IsOpen) throw new Exception("This serial port was using.");
 
                 this.serialPort = new SerialPort();
+                this.serialPort.BaudRate = 9600;
+                this.serialPort.Encoding = Encoding.Unicode;
                 this.serialPort.PortName = serialPort;
                 this.serialPort.Open();
-                this.serialPort.DataReceived += SerialPort_DataReceived;
+                this.serialPort.DataReceived += new SerialDataReceivedEventHandler(OnSerialPortDataReceived);
                 this.serialPort.WriteTimeout = 200;
                 this.serialPortReceivedData = new SerialPortReceivedData();
 
@@ -64,7 +66,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
             //throw new NotImplementedException();
         }
 
-        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void OnSerialPortDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (sender == null || !((SerialPort)sender).IsOpen) return;
 
@@ -123,7 +125,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
                     Thread.Sleep(100);
                     //throw new NotImplementedException();
                 }
-                catch (Exception exception) { SimpleConsole.WriteLine("This serial port write exception."); }
+                catch (Exception exception) { SimpleConsole.WriteLine("This serial port write exception."); SimpleConsole.WriteLine(exception); }
             }
 
         }
@@ -164,7 +166,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
 
                 this.serialPort.Write(operBytes, 0, operBytes.Length);
 
-                Thread.Sleep(100);
+                Thread.Sleep(100);this.isOpen = false;
             }
            
         }
@@ -202,6 +204,11 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
         {
             scanHand = true; received = false;
             threeSecondsOnce.Change(0, 3000);
+            //throw new NotImplementedException();
+        }
+
+        public void LiveScan()
+        {
             //throw new NotImplementedException();
         }
     }

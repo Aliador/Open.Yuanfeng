@@ -16,15 +16,19 @@ namespace Yuanfeng.Smarty
         {
             lock (consolefilename)
             {
-                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
-                using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+                try
                 {
-                    using (StreamWriter writer = new StreamWriter(fs))
+                    if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                    if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
+                    using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                     {
-                        writer.AutoFlush = true; writer.Write(value);
+                        using (StreamWriter writer = new StreamWriter(fs))
+                        {
+                            writer.AutoFlush = true; writer.Write(value);
+                        }
                     }
                 }
+                catch (Exception exception) { Console.WriteLine(exception); }
             }
         }
 
@@ -32,20 +36,24 @@ namespace Yuanfeng.Smarty
         {
             lock (consolefilename)
             {
-                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
-                using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+                try
                 {
-                    using (StreamWriter writer = new StreamWriter(fs))
+                    if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                    if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
+                    using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                     {
-                        StringBuilder sbline = new StringBuilder();
-                        sbline.Append("[");
-                        sbline.Append(DateTime.Now);
-                        sbline.Append("]");
-                        sbline.Append(value);
-                        writer.AutoFlush = true; writer.WriteLine(sbline);
+                        using (StreamWriter writer = new StreamWriter(fs))
+                        {
+                            StringBuilder sbline = new StringBuilder();
+                            sbline.Append("[");
+                            sbline.Append(DateTime.Now);
+                            sbline.Append("]");
+                            sbline.Append(value);
+                            writer.AutoFlush = true; writer.WriteLine(sbline);
+                        }
                     }
                 }
+                catch (Exception exception) { Console.WriteLine(exception); }                
             }
         }
     }

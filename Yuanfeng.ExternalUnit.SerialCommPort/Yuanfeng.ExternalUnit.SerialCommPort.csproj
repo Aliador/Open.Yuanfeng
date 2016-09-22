@@ -44,8 +44,19 @@
     <Compile Include="Camera\CameraDirectShowClass.cs" />
     <Compile Include="Camera\ICamera.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="IDR\EthnicityCollection.cs" />
+    <Compile Include="IDR\ProtoIDRController.cs" />
+    <Compile Include="IDR\RicFingerInfo.cs" />
+    <Compile Include="IDR\RicTextInfo.cs" />
+    <Compile Include="IDR\FingerDetail.cs" />
+    <Compile Include="IDR\FingerPositionItem.cs" />
+    <Compile Include="IDR\IDReadCompletedHandler.cs" />
+    <Compile Include="IDR\IProtoIDRController.cs" />
+    <Compile Include="IDR\ProtoController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Yuanjingda\ILongView.cs" />
     <Compile Include="Yuanjingda\ILongView420R.cs" />
+    <Compile Include="Yuanjingda\LongView100TwOprCmdClass.cs" />
     <Compile Include="Yuanjingda\LongView420TwOprCmdClass.cs" />
     <Compile Include="Yuanjingda\ReceivedData.cs" />
   </ItemGroup>

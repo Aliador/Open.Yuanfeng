@@ -49,6 +49,7 @@
     <Compile Include="ImageUtil.cs" />
     <Compile Include="SimpleConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeHelper.cs" />
     <Compile Include="UtilClass.cs" />
   </ItemGroup>
   <ItemGroup />

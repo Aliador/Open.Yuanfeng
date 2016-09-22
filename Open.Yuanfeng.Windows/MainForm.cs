@@ -102,6 +102,8 @@ namespace Open.Yuanfeng.Windows
 
             if (sender == this.findGrayImageDoc) this.FindGrayImageToolStripMenuItem.Checked = false;
 
+            if (sender == this.simpleIDRDoc) this.SimpleIDRToolStripMenuItem.Checked = false;
+
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
@@ -179,6 +181,21 @@ namespace Open.Yuanfeng.Windows
             this.findGrayImageDoc.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("The sfind gray image dummy loaded.");
+        }
+
+        private SerialPort.SimpleIDRDoc simpleIDRDoc;
+        void InitSimpleIDRDoc()
+        {
+            if (simpleIDRDoc == null || simpleIDRDoc.IsDisposed) simpleIDRDoc = new SerialPort.SimpleIDRDoc();
+        }
+        private void SimpleIDRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSimpleIDRDoc();
+            this.SimpleIDRToolStripMenuItem.Checked = true;
+            this.simpleIDRDoc.Show(MainDockPanel, DockState.Document);
+            this.simpleIDRDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The simpleIDR dummy loaded.");
         }
     }
 }

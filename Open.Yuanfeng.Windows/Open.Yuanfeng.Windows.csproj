@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -92,6 +92,12 @@
     <Compile Include="SerialPort\SimpleCameraDoc.Designer.cs">
       <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="SerialPort\SimpleIDRDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialPort\SimpleIDRDoc.Designer.cs">
+      <DependentUpon>SimpleIDRDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="SerialPort\YuanjingdaDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\SimpleCameraDoc.resx">
       <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SerialPort\SimpleIDRDoc.resx">
+      <DependentUpon>SimpleIDRDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\YuanjingdaDoc.resx">
       <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
