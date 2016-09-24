@@ -100,30 +100,7 @@ namespace Yuanfeng.ExternalUnit.Print
         internal static int GetPrinterStatusInt(string PrinterName)
         {
             int intRet = 0;
-            IntPtr hPrinter;
-            structPrinterDefaults defaults = new structPrinterDefaults();
-
-            if (OpenPrinter(PrinterName, out hPrinter, ref defaults))
-            {
-                int cbNeeded = 0;
-                bool bolRet = GetPrinter(hPrinter, 2, IntPtr.Zero, 0, out cbNeeded);
-                if (cbNeeded > 0)
-                {
-                    IntPtr pAddr = Marshal.AllocHGlobal((int)cbNeeded);
-                    bolRet = GetPrinter(hPrinter, 2, pAddr, cbNeeded, out cbNeeded);
-                    if (bolRet)
-                    {
-                        PRINTER_INFO_2 Info2 = new PRINTER_INFO_2();
-
-                        Info2 = (PRINTER_INFO_2)Marshal.PtrToStructure(pAddr, typeof(PRINTER_INFO_2));
-
-                        intRet = System.Convert.ToInt32(Info2.Status);
-                    }
-                    Marshal.FreeHGlobal(pAddr);
-                }
-                ClosePrinter(hPrinter);
-            }
-
+            
             return intRet;
         }
 

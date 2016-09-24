@@ -41,13 +41,15 @@
             this.YuanjingdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SimpleIDRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SimpleFprCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageUtilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleQrCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindGrayImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.SimpleIDRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SimpleOcrDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +121,8 @@
             this.YuanjingdaToolStripMenuItem,
             this.CameraToolStripMenuItem,
             this.SimpleCameraToolStripMenuItem,
-            this.SimpleIDRToolStripMenuItem});
+            this.SimpleIDRToolStripMenuItem,
+            this.SimpleFprCaptureToolStripMenuItem});
             this.SerialPortToolStripMenuItem.Name = "SerialPortToolStripMenuItem";
             this.SerialPortToolStripMenuItem.Size = new System.Drawing.Size(91, 21);
             this.SerialPortToolStripMenuItem.Text = "SerialPort(&P)";
@@ -127,29 +130,44 @@
             // YuanjingdaToolStripMenuItem
             // 
             this.YuanjingdaToolStripMenuItem.Name = "YuanjingdaToolStripMenuItem";
-            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.YuanjingdaToolStripMenuItem.Text = "Yuanjingda(&Y)";
             this.YuanjingdaToolStripMenuItem.Click += new System.EventHandler(this.YuanjingdaToolStripMenuItem_Click);
             // 
             // CameraToolStripMenuItem
             // 
             this.CameraToolStripMenuItem.Name = "CameraToolStripMenuItem";
-            this.CameraToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.CameraToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.CameraToolStripMenuItem.Text = "Camera(&C)";
             this.CameraToolStripMenuItem.Click += new System.EventHandler(this.CameraToolStripMenuItem_Click);
             // 
             // SimpleCameraToolStripMenuItem
             // 
             this.SimpleCameraToolStripMenuItem.Name = "SimpleCameraToolStripMenuItem";
-            this.SimpleCameraToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.SimpleCameraToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.SimpleCameraToolStripMenuItem.Text = "SimpleCamera(&D)";
             this.SimpleCameraToolStripMenuItem.Click += new System.EventHandler(this.SimpleCameraToolStripMenuItem_Click);
+            // 
+            // SimpleIDRToolStripMenuItem
+            // 
+            this.SimpleIDRToolStripMenuItem.Name = "SimpleIDRToolStripMenuItem";
+            this.SimpleIDRToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.SimpleIDRToolStripMenuItem.Text = "SimpleIDR(&E)";
+            this.SimpleIDRToolStripMenuItem.Click += new System.EventHandler(this.SimpleIDRToolStripMenuItem_Click);
+            // 
+            // SimpleFprCaptureToolStripMenuItem
+            // 
+            this.SimpleFprCaptureToolStripMenuItem.Name = "SimpleFprCaptureToolStripMenuItem";
+            this.SimpleFprCaptureToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.SimpleFprCaptureToolStripMenuItem.Text = "SimpleFprCapture(&F)";
+            this.SimpleFprCaptureToolStripMenuItem.Click += new System.EventHandler(this.SimpleFprCaptureToolStripMenuItem_Click);
             // 
             // ImageUtilToolStripMenuItem
             // 
             this.ImageUtilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SimpleQrCodeToolStripMenuItem,
-            this.FindGrayImageToolStripMenuItem});
+            this.FindGrayImageToolStripMenuItem,
+            this.SimpleOcrDocToolStripMenuItem});
             this.ImageUtilToolStripMenuItem.Name = "ImageUtilToolStripMenuItem";
             this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
             this.ImageUtilToolStripMenuItem.Text = "ImageUtil(&I)";
@@ -185,12 +203,12 @@
             this.MainDockPanel.Size = new System.Drawing.Size(957, 454);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // SimpleIDRToolStripMenuItem
+            // SimpleOcrDocToolStripMenuItem
             // 
-            this.SimpleIDRToolStripMenuItem.Name = "SimpleIDRToolStripMenuItem";
-            this.SimpleIDRToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.SimpleIDRToolStripMenuItem.Text = "SimpleIDR(&E)";
-            this.SimpleIDRToolStripMenuItem.Click += new System.EventHandler(this.SimpleIDRToolStripMenuItem_Click);
+            this.SimpleOcrDocToolStripMenuItem.Name = "SimpleOcrDocToolStripMenuItem";
+            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.SimpleOcrDocToolStripMenuItem.Text = "SimpleOcrDoc(&O)";
+            this.SimpleOcrDocToolStripMenuItem.Click += new System.EventHandler(this.SimpleOcrDocToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -232,6 +250,8 @@
         private System.Windows.Forms.ToolStripMenuItem SimpleQrCodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FindGrayImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SimpleIDRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SimpleFprCaptureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SimpleOcrDocToolStripMenuItem;
     }
 }
 

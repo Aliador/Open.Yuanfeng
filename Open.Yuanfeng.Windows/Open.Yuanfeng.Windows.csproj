@@ -11,9 +11,11 @@
     <AssemblyName>Open.Yuanfeng.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -66,6 +68,12 @@
     <Compile Include="ImageUtil\FindGrayImageDoc.Designer.cs">
       <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageUtil\SimpleOcrDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\SimpleOcrDoc.Designer.cs">
+      <DependentUpon>SimpleOcrDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageUtil\SimpleQrCodeDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +88,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BugReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BugReportForm.Designer.cs">
+      <DependentUpon>BugReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SerialPort\CameraControlToolDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +105,12 @@
     </Compile>
     <Compile Include="SerialPort\SimpleCameraDoc.Designer.cs">
       <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerialPort\SimpleFprDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialPort\SimpleFprDoc.Designer.cs">
+      <DependentUpon>SimpleFprDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="SerialPort\SimpleIDRDoc.cs">
       <SubType>Form</SubType>
@@ -113,6 +133,9 @@
     <EmbeddedResource Include="ImageUtil\FindGrayImageDoc.resx">
       <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\SimpleOcrDoc.resx">
+      <DependentUpon>SimpleOcrDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\SimpleQrCodeDoc.resx">
       <DependentUpon>SimpleQrCodeDoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,11 +152,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="BugReportForm.resx">
+      <DependentUpon>BugReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\CameraControlToolDoc.resx">
       <DependentUpon>CameraControlToolDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\SimpleCameraDoc.resx">
       <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SerialPort\SimpleFprDoc.resx">
+      <DependentUpon>SimpleFprDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\SimpleIDRDoc.resx">
       <DependentUpon>SimpleIDRDoc.cs</DependentUpon>
@@ -179,9 +208,17 @@
       <Project>{04007866-4422-4E69-8BC2-9062EB74CB88}</Project>
       <Name>Yuanfeng.ImageUnit.Gray</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.ImageUnit.OCR\Yuanfeng.ImageUnit.OCR.csproj">
+      <Project>{8DC928DA-3AE2-483C-B00D-C435B40069AA}</Project>
+      <Name>Yuanfeng.ImageUnit.OCR</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.ImageUnit.QrCode\Yuanfeng.ImageUnit.QrCode.csproj">
       <Project>{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}</Project>
       <Name>Yuanfeng.ImageUnit.QrCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Log4netx\Yuanfeng.Log4netx.csproj">
+      <Project>{8732E9B4-1206-4C7B-A287-82E1C331036F}</Project>
+      <Name>Yuanfeng.Log4netx</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
       <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>

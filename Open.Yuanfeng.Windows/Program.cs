@@ -21,8 +21,20 @@ namespace Open.Yuanfeng.Windows
             //AllocConsole();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += GlobalThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainUnhandledException;
             Application.Run(new MainForm());
             //FreeConsole();
+        }
+
+        private static void CurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            new BugReportForm().ShowDialog((Exception)e.ExceptionObject);
+        }
+
+        private static void GlobalThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            new BugReportForm().ShowDialog(e.Exception);
         }
     }
 }

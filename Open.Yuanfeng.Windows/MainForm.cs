@@ -104,6 +104,8 @@ namespace Open.Yuanfeng.Windows
 
             if (sender == this.simpleIDRDoc) this.SimpleIDRToolStripMenuItem.Checked = false;
 
+            if (sender == this.simpleFprCaptureDoc) this.SimpleFprCaptureToolStripMenuItem.Checked = false;
+
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
@@ -196,6 +198,36 @@ namespace Open.Yuanfeng.Windows
             this.simpleIDRDoc.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("The simpleIDR dummy loaded.");
+        }
+
+        private SerialPort.SimpleFprDoc simpleFprCaptureDoc;
+        void InitSimpleFprCaptureDoc()
+        {
+            if (simpleFprCaptureDoc == null || simpleFprCaptureDoc.IsDisposed) simpleFprCaptureDoc = new SerialPort.SimpleFprDoc();
+        }
+        private void SimpleFprCaptureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSimpleFprCaptureDoc();
+            this.SimpleFprCaptureToolStripMenuItem.Checked = false;
+            this.simpleFprCaptureDoc.Show(MainDockPanel, DockState.Document);
+            this.simpleFprCaptureDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The SimpleFprCapture dummy loaded.");
+        }
+
+        private ImageUtil.SimpleOcrDoc SimpleOcrDoc;
+        void InitSimpleOcrDoc()
+        {
+            if (SimpleOcrDoc == null || SimpleOcrDoc.IsDisposed) SimpleOcrDoc = new ImageUtil.SimpleOcrDoc();
+        }
+        private void SimpleOcrDocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSimpleOcrDoc();
+            this.SimpleOcrDocToolStripMenuItem.Checked = true;
+            SimpleOcrDoc.Show(MainDockPanel, DockState.Document);
+            SimpleOcrDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The SimpleOcrDoc dummy loaded.");
         }
     }
 }
