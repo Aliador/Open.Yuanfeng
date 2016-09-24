@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Yuanfeng.Log4netX
 {
-    public interface IUDPLog
+    public interface IUdpLog
     {
         void Release();
         void Error(object message);

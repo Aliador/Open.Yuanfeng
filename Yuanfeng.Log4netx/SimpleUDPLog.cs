@@ -6,15 +6,15 @@ using Yuanfeng.Net.SocketX;
 
 namespace Yuanfeng.Log4netX
 {
-    public class SimpleUDPLog : IUDPLog
+    public class SimpleUdpLog : IUdpLog
     {
-        private static SimpleUDPLog instance;
+        private static SimpleUdpLog instance;
         private IUdpClientX client;
         private string ipaddr;
         private UdpMsg message = new UdpMsg();
         private Type logger;
 
-        private SimpleUDPLog(string ipaddr)
+        private SimpleUdpLog(string ipaddr)
         {
             this.ipaddr = ipaddr;
             this.message.Logger = logger;
@@ -22,7 +22,7 @@ namespace Yuanfeng.Log4netX
             client.Create(ipaddr, 8000);
         }
 
-        private SimpleUDPLog(string ipaddr, Type logger)
+        private SimpleUdpLog(string ipaddr, Type logger)
         {
             this.logger = logger;
             this.ipaddr = ipaddr;
@@ -31,28 +31,28 @@ namespace Yuanfeng.Log4netX
             client.Create(ipaddr, 8000);
         }
 
-        public static SimpleUDPLog NewInstance()
+        public static SimpleUdpLog NewInstance()
         {
-            if (instance == null) instance = new SimpleUDPLog("127.0.0.1");
+            if (instance == null) instance = new SimpleUdpLog("127.0.0.1");
             return instance;
         }
 
-        public static SimpleUDPLog NewInstance(string ipaddr)
+        public static SimpleUdpLog NewInstance(string ipaddr)
         {
-            if (instance == null) instance = new SimpleUDPLog(ipaddr);
+            if (instance == null) instance = new SimpleUdpLog(ipaddr);
             return instance;
         }
 
 
-        public static SimpleUDPLog NewInstance(string ipaddr, Type logger)
+        public static SimpleUdpLog NewInstance(string ipaddr, Type logger)
         {
-            if (instance == null) instance = new SimpleUDPLog(ipaddr, logger);
+            if (instance == null) instance = new SimpleUdpLog(ipaddr, logger);
             return instance;
         }
 
         private void SendMsg()
         {
-            if (logger == null) logger = typeof(SimpleUDPLog);
+            if (logger == null) logger = typeof(SimpleUdpLog);
             message.IpAddr = ipaddr;
             client.Send(message);
         }
