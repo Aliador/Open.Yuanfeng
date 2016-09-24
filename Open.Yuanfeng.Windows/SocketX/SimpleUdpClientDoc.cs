@@ -71,5 +71,10 @@ namespace Open.Yuanfeng.Windows.SocketX
         {
             log.Fatal("UDP-Fatal方式发送异常", new Exception("UDP-Fatal发送异常"));
         }
+
+        private void btnRelease_Click(object sender, EventArgs e)
+        {
+            log.Release();
+        }
     }
 }

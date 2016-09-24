@@ -42,6 +42,7 @@
             this.btnError = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnFatal = new System.Windows.Forms.Button();
+            this.btnRelease = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSend
@@ -127,7 +128,7 @@
             // 
             // btnBug
             // 
-            this.btnBug.Location = new System.Drawing.Point(182, 215);
+            this.btnBug.Location = new System.Drawing.Point(176, 215);
             this.btnBug.Name = "btnBug";
             this.btnBug.Size = new System.Drawing.Size(75, 23);
             this.btnBug.TabIndex = 0;
@@ -137,7 +138,7 @@
             // 
             // btnError
             // 
-            this.btnError.Location = new System.Drawing.Point(263, 215);
+            this.btnError.Location = new System.Drawing.Point(251, 215);
             this.btnError.Name = "btnError";
             this.btnError.Size = new System.Drawing.Size(75, 23);
             this.btnError.TabIndex = 0;
@@ -147,7 +148,7 @@
             // 
             // btnInfo
             // 
-            this.btnInfo.Location = new System.Drawing.Point(344, 215);
+            this.btnInfo.Location = new System.Drawing.Point(326, 215);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(75, 23);
             this.btnInfo.TabIndex = 0;
@@ -157,13 +158,23 @@
             // 
             // btnFatal
             // 
-            this.btnFatal.Location = new System.Drawing.Point(425, 215);
+            this.btnFatal.Location = new System.Drawing.Point(401, 215);
             this.btnFatal.Name = "btnFatal";
             this.btnFatal.Size = new System.Drawing.Size(75, 23);
             this.btnFatal.TabIndex = 0;
             this.btnFatal.Text = "Fatal";
             this.btnFatal.UseVisualStyleBackColor = true;
             this.btnFatal.Click += new System.EventHandler(this.btnFatal_Click);
+            // 
+            // btnRelease
+            // 
+            this.btnRelease.Location = new System.Drawing.Point(476, 215);
+            this.btnRelease.Name = "btnRelease";
+            this.btnRelease.Size = new System.Drawing.Size(75, 23);
+            this.btnRelease.TabIndex = 0;
+            this.btnRelease.Text = "Close";
+            this.btnRelease.UseVisualStyleBackColor = true;
+            this.btnRelease.Click += new System.EventHandler(this.btnRelease_Click);
             // 
             // SimpleUdpClientDoc
             // 
@@ -178,6 +189,7 @@
             this.Controls.Add(this.tbSvrIpAddr);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnRelease);
             this.Controls.Add(this.btnFatal);
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.btnError);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.Button btnError;
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.Button btnFatal;
+        private System.Windows.Forms.Button btnRelease;
     }
 }
