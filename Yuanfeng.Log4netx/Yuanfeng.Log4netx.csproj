@@ -7,8 +7,8 @@
     <ProjectGuid>{8732E9B4-1206-4C7B-A287-82E1C331036F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yuanfeng.Log4netx</RootNamespace>
-    <AssemblyName>Yuanfeng.Log4netx</AssemblyName>
+    <RootNamespace>Yuanfeng.Log4netX</RootNamespace>
+    <AssemblyName>Yuanfeng.Log4netX</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,11 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogx.cs" />
+    <Compile Include="ILogX.cs" />
     <Compile Include="IUDPLog.cs" />
-    <Compile Include="Logx.cs" />
+    <Compile Include="LogX.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleUDPLog.cs" />
+    <Compile Include="UdpMsg.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">
@@ -64,6 +66,10 @@
     <ProjectReference Include="..\Yuanfeng.Computer.Network\Yuanfeng.Computer.Network.csproj">
       <Project>{3e4cf85b-0207-4bad-af54-4523434a42f0}</Project>
       <Name>Yuanfeng.Computer.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj">
+      <Project>{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}</Project>
+      <Name>Yuanfeng.Net.SocketX</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

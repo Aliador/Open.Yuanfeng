@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Yuanfeng.Log4netx
+namespace Yuanfeng.Log4netX
 {
    
     static class Program
@@ -22,7 +22,7 @@ namespace Yuanfeng.Log4netx
             
              */
 
-            ILogx log = Logx.NewLogger();
+            ILogX log = LogX.NewLogger();
             //log.IpAddr = "127.0.0.1";
             log.Error("这里扩展方法", new Exception("特殊异常"));
             Console.ReadKey();

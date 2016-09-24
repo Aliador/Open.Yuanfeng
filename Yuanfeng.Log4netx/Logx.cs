@@ -5,24 +5,24 @@ using System.Linq;
 using System.Text;
 using Yuanfeng.Computer.Network;
 
-namespace Yuanfeng.Log4netx
+namespace Yuanfeng.Log4netX
 {
-    public class Logx : ILogx
+    public class LogX : ILogX
     {
         private string ipaddr = string.Empty;
         private ILog log;
-        private static Logx instance;
+        private static LogX instance;
         private object message;
         private Exception exception;
 
-        public static ILogx NewLogger()
+        public static ILogX NewLogger()
         {
-           if (instance == null) instance = new Logx(); return instance;
+           if (instance == null) instance = new LogX(); return instance;
         }
 
-        public static ILogx NewLogger(Type logger)
+        public static ILogX NewLogger(Type logger)
         {
-            if (instance == null) instance = new Logx(logger); return instance;
+            if (instance == null) instance = new LogX(logger); return instance;
         }
 
         public string IpAddr
@@ -38,12 +38,12 @@ namespace Yuanfeng.Log4netx
             }
         }
 
-        private Logx() {
+        private LogX() {
             ipaddr = NetworkInfoClass.GetLocalIpAddr();
             log = LogManager.GetLogger("Yuanfeng log4net extern");
         }
 
-        private Logx(Type logger)
+        private LogX(Type logger)
         {
             ipaddr = NetworkInfoClass.GetLocalIpAddr();
             log = LogManager.GetLogger(logger);

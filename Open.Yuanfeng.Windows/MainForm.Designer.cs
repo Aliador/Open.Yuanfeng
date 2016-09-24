@@ -46,10 +46,13 @@
             this.ImageUtilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleQrCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindGrayImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SimpleOcrDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.SimpleOcrDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleSocketXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleUdpClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleUdpServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +80,8 @@
             // 
             this.NetworkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NwListToolStripMenuItem,
-            this.NwSwithToolStripMenuItem});
+            this.NwSwithToolStripMenuItem,
+            this.simpleSocketXToolStripMenuItem});
             this.NetworkToolStripMenuItem.Name = "NetworkToolStripMenuItem";
             this.NetworkToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
             this.NetworkToolStripMenuItem.Text = "Network(&N)";
@@ -186,6 +190,13 @@
             this.FindGrayImageToolStripMenuItem.Text = "FindGrayImage(&F)";
             this.FindGrayImageToolStripMenuItem.Click += new System.EventHandler(this.FindGrayImageToolStripMenuItem_Click);
             // 
+            // SimpleOcrDocToolStripMenuItem
+            // 
+            this.SimpleOcrDocToolStripMenuItem.Name = "SimpleOcrDocToolStripMenuItem";
+            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.SimpleOcrDocToolStripMenuItem.Text = "SimpleOcrDoc(&O)";
+            this.SimpleOcrDocToolStripMenuItem.Click += new System.EventHandler(this.SimpleOcrDocToolStripMenuItem_Click);
+            // 
             // MainStatusStrip
             // 
             this.MainStatusStrip.Location = new System.Drawing.Point(0, 479);
@@ -203,12 +214,28 @@
             this.MainDockPanel.Size = new System.Drawing.Size(957, 454);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // SimpleOcrDocToolStripMenuItem
+            // simpleSocketXToolStripMenuItem
             // 
-            this.SimpleOcrDocToolStripMenuItem.Name = "SimpleOcrDocToolStripMenuItem";
-            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.SimpleOcrDocToolStripMenuItem.Text = "SimpleOcrDoc(&O)";
-            this.SimpleOcrDocToolStripMenuItem.Click += new System.EventHandler(this.SimpleOcrDocToolStripMenuItem_Click);
+            this.simpleSocketXToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.simpleUdpClientToolStripMenuItem,
+            this.simpleUdpServerToolStripMenuItem});
+            this.simpleSocketXToolStripMenuItem.Name = "simpleSocketXToolStripMenuItem";
+            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.simpleSocketXToolStripMenuItem.Text = "SimpleSocketX";
+            // 
+            // simpleUdpClientToolStripMenuItem
+            // 
+            this.simpleUdpClientToolStripMenuItem.Name = "simpleUdpClientToolStripMenuItem";
+            this.simpleUdpClientToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.simpleUdpClientToolStripMenuItem.Text = "SimpleUdpClient";
+            this.simpleUdpClientToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpClientToolStripMenuItem_Click);
+            // 
+            // simpleUdpServerToolStripMenuItem
+            // 
+            this.simpleUdpServerToolStripMenuItem.Name = "simpleUdpServerToolStripMenuItem";
+            this.simpleUdpServerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.simpleUdpServerToolStripMenuItem.Text = "SimpleUdpServer";
+            this.simpleUdpServerToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpServerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -252,6 +279,9 @@
         private System.Windows.Forms.ToolStripMenuItem SimpleIDRToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SimpleFprCaptureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SimpleOcrDocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleSocketXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleUdpClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleUdpServerToolStripMenuItem;
     }
 }
 

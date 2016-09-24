@@ -106,6 +106,10 @@ namespace Open.Yuanfeng.Windows
 
             if (sender == this.simpleFprCaptureDoc) this.SimpleFprCaptureToolStripMenuItem.Checked = false;
 
+            if (sender == this.simpleUdpClientDoc) this.simpleUdpClientToolStripMenuItem.Checked = false;
+
+            if (sender == this.simpleUdpServerDoc) this.simpleUdpServerToolStripMenuItem.Checked = false;
+
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
 
@@ -228,6 +232,34 @@ namespace Open.Yuanfeng.Windows
             SimpleOcrDoc.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("The SimpleOcrDoc dummy loaded.");
+        }
+        private SocketX.SimpleUdpServerDoc simpleUdpServerDoc;
+        void InitSsimpleUdpServerDoc()
+        {
+            if (simpleUdpServerDoc == null || simpleUdpServerDoc.IsDisposed) simpleUdpServerDoc = new SocketX.SimpleUdpServerDoc();
+        }
+        private void simpleUdpServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSsimpleUdpServerDoc();
+            this.simpleUdpServerToolStripMenuItem.Checked = true;
+            simpleUdpServerDoc.Show(MainDockPanel, DockState.Document);
+            simpleUdpServerDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The simpleUdpServerDoc dummy loaded.");
+        }
+        private SocketX.SimpleUdpClientDoc simpleUdpClientDoc;
+        void InitSimpleUdpClientDoc()
+        {
+            if (simpleUdpClientDoc == null || simpleUdpClientDoc.IsDisposed) simpleUdpClientDoc = new SocketX.SimpleUdpClientDoc();
+        }
+        private void simpleUdpClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitSimpleUdpClientDoc();
+            this.simpleUdpClientToolStripMenuItem.Checked = true;
+            simpleUdpClientDoc.Show(MainDockPanel, DockState.Document);
+            simpleUdpClientDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The simpleUdpClientDoc dummy loaded.");
         }
     }
 }

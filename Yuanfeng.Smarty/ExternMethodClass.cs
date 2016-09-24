@@ -6,13 +6,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Yuanfeng.Smarty
 {
     public static class ExternMethodClass
     {
-        #region image access
+        #region 图片处理静态扩展方法
 
         /// <summary>
         /// 根据RGB，计算灰度值
@@ -460,13 +461,13 @@ namespace Yuanfeng.Smarty
         }
         #endregion
 
-        #region binary file access
+        #region 二进制文件操作的静态扩展方法
         /// <summary>
-        /// writer data to file use binarywriter.
+        /// 将二进制数据写入文件
         /// </summary>
-        /// <param name="buffer">target data</param>
-        /// <param name="filename">target filename</param>
-        /// <returns>if file created return true</returns>
+        /// <param name="buffer">缓冲区数据</param>
+        /// <param name="filename">目标文件地址（全路径）</param>
+        /// <returns>如果成功写入则返回True，否则返回False</returns>
         public static bool Writer(this byte[] buffer, string filename)
         {
             if (buffer == null || buffer.Length == 0) return false;
@@ -523,7 +524,6 @@ namespace Yuanfeng.Smarty
             }
             return buffer;
         }
-
         /// <summary>
         /// read buffer from binary file.
         /// </summary>
@@ -545,6 +545,34 @@ namespace Yuanfeng.Smarty
                 }
             }
             return true;
+        }
+        ///<summary> 
+        /// 序列化 
+        /// </summary> 
+        /// <param name="obj">要序列化的对象</param> 
+        /// <returns>返回存放序列化后的数据缓冲区</returns> 
+        public static byte[] Serialize(this object obj)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (MemoryStream stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, obj);
+                return stream.GetBuffer();
+            }
+        }
+        /// <summary> 
+        /// 反序列化 
+        /// </summary> 
+        /// <param name="obj">数据缓冲区</param> 
+        /// <returns>对象</returns> 
+        public static object Deserialize(this byte[] obj)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (MemoryStream stream = new MemoryStream(obj))
+            {
+                obj = null;
+                return formatter.Deserialize(stream);
+            }
         }
         #endregion
 

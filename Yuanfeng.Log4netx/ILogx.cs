@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Yuanfeng.Log4netx
+namespace Yuanfeng.Log4netX
 {
-    public interface ILogx
+    public interface ILogX
     {
         /// <summary>
         /// 客户端IP（默认使用本机IP）

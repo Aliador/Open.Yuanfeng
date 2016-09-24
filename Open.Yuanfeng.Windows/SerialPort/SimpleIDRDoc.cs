@@ -1,7 +1,7 @@
 ﻿using System;
 using WeifenLuo.WinFormsUI.Docking;
 using Yuanfeng.ExternalUnit.SerialCommPort.IDR;
-using Yuanfeng.Log4netx;
+using Yuanfeng.Log4netX;
 using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows.SerialPort
@@ -12,7 +12,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
         {
             InitializeComponent();
         }
-        private ILogx log = Logx.NewLogger(typeof(SimpleIDRDoc));
+        private ILogX log = LogX.NewLogger(typeof(SimpleIDRDoc));
         private IProtoIDRController controller = new ProtoIDRController();
         private void btnOpen_Click(object sender, EventArgs e)
         {

@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.Gray", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.OCR", "Yuanfeng.ImageUnit.OCR\Yuanfeng.ImageUnit.OCR.csproj", "{8DC928DA-3AE2-483C-B00D-C435B40069AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Log4netx", "Yuanfeng.Log4netx\Yuanfeng.Log4netx.csproj", "{8732E9B4-1206-4C7B-A287-82E1C331036F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Log4netX", "Yuanfeng.Log4netx\Yuanfeng.Log4netX.csproj", "{8732E9B4-1206-4C7B-A287-82E1C331036F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Log4netx.UdpServer", "Yuanfeng.Log4netx.UdpServer\Yuanfeng.Log4netx.UdpServer.csproj", "{62970893-8493-4C23-B6D5-8780C9B3BAF6}"
 EndProject

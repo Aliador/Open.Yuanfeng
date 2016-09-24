@@ -44,6 +44,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yuanfeng.Log4netx\Yuanfeng.Log4netX.csproj">
+      <Project>{8732E9B4-1206-4C7B-A287-82E1C331036F}</Project>
+      <Name>Yuanfeng.Log4netX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj">
+      <Project>{69c13851-4aa9-4f92-9cf5-6aa9d4bf4824}</Project>
+      <Name>Yuanfeng.Net.SocketX</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

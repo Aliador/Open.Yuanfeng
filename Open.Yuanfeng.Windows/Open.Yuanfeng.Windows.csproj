@@ -124,6 +124,18 @@
     <Compile Include="SerialPort\YuanjingdaDoc.Designer.cs">
       <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="SocketX\SimpleUdpClientDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SocketX\SimpleUdpClientDoc.Designer.cs">
+      <DependentUpon>SimpleUdpClientDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SocketX\SimpleUdpServerDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SocketX\SimpleUdpServerDoc.Designer.cs">
+      <DependentUpon>SimpleUdpServerDoc.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DummyDoc.resx">
       <DependentUpon>DummyDoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\YuanjingdaDoc.resx">
       <DependentUpon>YuanjingdaDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SocketX\SimpleUdpClientDoc.resx">
+      <DependentUpon>SimpleUdpClientDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SocketX\SimpleUdpServerDoc.resx">
+      <DependentUpon>SimpleUdpServerDoc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -216,9 +234,13 @@
       <Project>{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}</Project>
       <Name>Yuanfeng.ImageUnit.QrCode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.Log4netx\Yuanfeng.Log4netx.csproj">
+    <ProjectReference Include="..\Yuanfeng.Log4netx\Yuanfeng.Log4netX.csproj">
       <Project>{8732E9B4-1206-4C7B-A287-82E1C331036F}</Project>
-      <Name>Yuanfeng.Log4netx</Name>
+      <Name>Yuanfeng.Log4netX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj">
+      <Project>{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}</Project>
+      <Name>Yuanfeng.Net.SocketX</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
       <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
