@@ -12,6 +12,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
         {
             InitializeComponent();
         }
+        private ILogx log = Logx.NewLogger(typeof(SimpleIDRDoc));
         private IProtoIDRController controller = new ProtoIDRController();
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -33,7 +34,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
             }
             catch (Exception exception)
             {
-                Logx.Instance().Error("打开身份证阅读器异常", exception);
+                log.Debug("192.168.1.199","SimpleIdrDoc find exception.", exception);
             }
         }
 

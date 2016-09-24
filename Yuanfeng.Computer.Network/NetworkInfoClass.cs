@@ -62,5 +62,17 @@ namespace Yuanfeng.Computer.Network
                 #endregion
             }
         }
+
+        /// <summary>
+        /// 获取本机IP地址
+        /// </summary>
+        /// <returns></returns>
+        public static string GetLocalIpAddr()
+        {
+            string hostname = Dns.GetHostName();
+            IPHostEntry localhost = Dns.GetHostEntry(hostname);
+            IPAddress localaddr = localhost.AddressList.ToList().Find(new Predicate<IPAddress>((IPAddress ipaddr)=> { return ipaddr.AddressFamily == AddressFamily.InterNetwork; }));
+            return localaddr.ToString();
+        }
     }
 }
