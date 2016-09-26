@@ -261,5 +261,20 @@ namespace Open.Yuanfeng.Windows
 
             SimpleConsole.WriteLine("The simpleUdpClientDoc dummy loaded.");
         }
+
+        private FileSection.PluginsConfigDoc PluginsConfigDoc;
+        void InitPluginsConfigDoc()
+        {
+            if (PluginsConfigDoc == null || PluginsConfigDoc.IsDisposed) PluginsConfigDoc = new FileSection.PluginsConfigDoc();
+        }
+        private void pluginsConfigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitPluginsConfigDoc();
+            this.pluginsConfigToolStripMenuItem.Checked = true;
+            PluginsConfigDoc.Show(MainDockPanel, DockState.Document);
+            PluginsConfigDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The PluginsConfigDoc dummy loaded.");
+        }
     }
 }

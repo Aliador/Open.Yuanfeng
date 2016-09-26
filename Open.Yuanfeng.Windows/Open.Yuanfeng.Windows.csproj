@@ -39,6 +39,7 @@
       <HintPath>..\Free5lot.DirectShowLib\bin\Debug\DirectShowLib-2010.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +62,12 @@
     </Compile>
     <Compile Include="DummyOutputWindow.Designer.cs">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileSection\PluginsConfigDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileSection\PluginsConfigDoc.Designer.cs">
+      <DependentUpon>PluginsConfigDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageUtil\FindGrayImageDoc.cs">
       <SubType>Form</SubType>
@@ -141,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DummyOutputWindow.resx">
       <DependentUpon>DummyOutputWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileSection\PluginsConfigDoc.resx">
+      <DependentUpon>PluginsConfigDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\FindGrayImageDoc.resx">
       <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
@@ -241,6 +251,10 @@
     <ProjectReference Include="..\Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj">
       <Project>{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}</Project>
       <Name>Yuanfeng.Net.SocketX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.PluginEngine\Yuanfeng.PluginEngine.csproj">
+      <Project>{7aee6989-7ae4-4fa9-a5da-bd5f16b224cf}</Project>
+      <Name>Yuanfeng.PluginEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
       <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>

@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Log4netX", "Yuanfe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Log4netx.UdpServer", "Yuanfeng.Log4netx.UdpServer\Yuanfeng.Log4netx.UdpServer.csproj", "{62970893-8493-4C23-B6D5-8780C9B3BAF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.PluginEngine", "Yuanfeng.PluginEngine\Yuanfeng.PluginEngine.csproj", "{7AEE6989-7AE4-4FA9-A5DA-BD5F16B224CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{62970893-8493-4C23-B6D5-8780C9B3BAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62970893-8493-4C23-B6D5-8780C9B3BAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62970893-8493-4C23-B6D5-8780C9B3BAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEE6989-7AE4-4FA9-A5DA-BD5F16B224CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEE6989-7AE4-4FA9-A5DA-BD5F16B224CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEE6989-7AE4-4FA9-A5DA-BD5F16B224CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEE6989-7AE4-4FA9-A5DA-BD5F16B224CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

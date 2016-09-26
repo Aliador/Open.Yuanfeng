@@ -34,6 +34,9 @@
             this.NetworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwSwithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleSocketXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleUdpClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleUdpServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,9 +53,7 @@
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
             this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.simpleSocketXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.simpleUdpClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.simpleUdpServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pluginsConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +73,8 @@
             // 
             // fileFToolStripMenuItem
             // 
+            this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pluginsConfigToolStripMenuItem});
             this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
             this.fileFToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
             this.fileFToolStripMenuItem.Text = "File(&F)";
@@ -98,6 +101,29 @@
             this.NwSwithToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.NwSwithToolStripMenuItem.Text = "Enable All(&E)";
             // 
+            // simpleSocketXToolStripMenuItem
+            // 
+            this.simpleSocketXToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.simpleUdpClientToolStripMenuItem,
+            this.simpleUdpServerToolStripMenuItem});
+            this.simpleSocketXToolStripMenuItem.Name = "simpleSocketXToolStripMenuItem";
+            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.simpleSocketXToolStripMenuItem.Text = "SimpleSocketX";
+            // 
+            // simpleUdpClientToolStripMenuItem
+            // 
+            this.simpleUdpClientToolStripMenuItem.Name = "simpleUdpClientToolStripMenuItem";
+            this.simpleUdpClientToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.simpleUdpClientToolStripMenuItem.Text = "SimpleUdpClient";
+            this.simpleUdpClientToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpClientToolStripMenuItem_Click);
+            // 
+            // simpleUdpServerToolStripMenuItem
+            // 
+            this.simpleUdpServerToolStripMenuItem.Name = "simpleUdpServerToolStripMenuItem";
+            this.simpleUdpServerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.simpleUdpServerToolStripMenuItem.Text = "SimpleUdpServer";
+            this.simpleUdpServerToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpServerToolStripMenuItem_Click);
+            // 
             // WindowsToolStripMenuItem
             // 
             this.WindowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -109,7 +135,7 @@
             // ConsoleToolStripMenuItem
             // 
             this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
-            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ConsoleToolStripMenuItem.Text = "Console(&C)";
             this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
             // 
@@ -214,28 +240,12 @@
             this.MainDockPanel.Size = new System.Drawing.Size(957, 454);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // simpleSocketXToolStripMenuItem
+            // pluginsConfigToolStripMenuItem
             // 
-            this.simpleSocketXToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.simpleUdpClientToolStripMenuItem,
-            this.simpleUdpServerToolStripMenuItem});
-            this.simpleSocketXToolStripMenuItem.Name = "simpleSocketXToolStripMenuItem";
-            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.simpleSocketXToolStripMenuItem.Text = "SimpleSocketX";
-            // 
-            // simpleUdpClientToolStripMenuItem
-            // 
-            this.simpleUdpClientToolStripMenuItem.Name = "simpleUdpClientToolStripMenuItem";
-            this.simpleUdpClientToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.simpleUdpClientToolStripMenuItem.Text = "SimpleUdpClient";
-            this.simpleUdpClientToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpClientToolStripMenuItem_Click);
-            // 
-            // simpleUdpServerToolStripMenuItem
-            // 
-            this.simpleUdpServerToolStripMenuItem.Name = "simpleUdpServerToolStripMenuItem";
-            this.simpleUdpServerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.simpleUdpServerToolStripMenuItem.Text = "SimpleUdpServer";
-            this.simpleUdpServerToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpServerToolStripMenuItem_Click);
+            this.pluginsConfigToolStripMenuItem.Name = "pluginsConfigToolStripMenuItem";
+            this.pluginsConfigToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.pluginsConfigToolStripMenuItem.Text = "PluginsConfig";
+            this.pluginsConfigToolStripMenuItem.Click += new System.EventHandler(this.pluginsConfigToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -282,6 +292,7 @@
         private System.Windows.Forms.ToolStripMenuItem simpleSocketXToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simpleUdpClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simpleUdpServerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pluginsConfigToolStripMenuItem;
     }
 }
 
