@@ -23,9 +23,9 @@ namespace Yuanfeng.Log4netX
         void Debug(object message, Exception exception);
         void Fatal(object message, Exception exception);
 
-        void Error(string ipaddr,object message, Exception exception);
-        void Info(string ipaddr, object message, Exception exception);
-        void Debug(string ipaddr, object message, Exception exception);
-        void Fatal(string ipaddr, object message, Exception exception);
+        void Error(string logger,object message, Exception exception);
+        void Info(string logger, object message, Exception exception);
+        void Debug(string logger, object message, Exception exception);
+        void Fatal(string logger, object message, Exception exception);
     }
 }

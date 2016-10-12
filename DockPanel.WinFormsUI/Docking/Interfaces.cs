@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public interface IDockContent
     {

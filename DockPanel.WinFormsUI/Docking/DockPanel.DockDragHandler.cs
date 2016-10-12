@@ -2,8 +2,9 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using Yuanfeng.WinFormsUI.Docking;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     partial class DockPanel
     {

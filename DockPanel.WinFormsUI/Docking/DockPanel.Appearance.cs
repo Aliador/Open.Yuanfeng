@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     using System.ComponentModel;
 

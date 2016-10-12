@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public sealed class NestedPaneCollection : ReadOnlyCollection<DockPane>
     {

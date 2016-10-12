@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public class DockPaneCollection : ReadOnlyCollection<DockPane>
     {

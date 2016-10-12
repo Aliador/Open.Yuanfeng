@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public interface IPaintingService
     {

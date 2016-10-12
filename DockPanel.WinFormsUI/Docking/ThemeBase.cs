@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public abstract class ThemeBase : Component, ITheme
     {

@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.ExternalUnit.SerialCommPort.Camera;
 using Yuanfeng.Smarty;
 using Yuanfeng.Smarty.Encrypt;
@@ -38,7 +38,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
         {
             try
             {
-                simpleCamera.Realase();
+                simpleCamera.Release();
             }
             catch (Exception exception)
             {
@@ -80,7 +80,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
             this.isStoped = true; System.Threading.Thread.Sleep(20);
             if (threadSnapshot != null && isStarted) threadSnapshot.Abort();//force exit child thread.
             else if (threadSnapshot != null) { threadSnapshot.Resume(); threadSnapshot.Abort(); }
-            this.simpleCamera.Realase();
+            this.simpleCamera.Release();
         }
         private bool isStoped = false;
         private bool isStarted = false;

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI.Docking;
 
-namespace WeifenLuo.WinFormsUI.ThemeVS2012
+namespace Yuanfeng.WinFormsUI.ThemeVS2012
 {
     public class PaintingService : IPaintingService
     {

@@ -36,11 +36,11 @@ namespace Yuanfeng.Net.SocketX
             {
                 byte[] buffer = udpServer.Receive(ref remoteIpEndPoint);
                 if (buffer == null) continue;
-                if (onReceivedMsgDelegate != null) { onReceivedMsgDelegate.Invoke(remoteIpEndPoint.Address.ToString(),buffer.Deserialize());  }
+                if (onReceivedMsgDelegate != null && buffer != null) { onReceivedMsgDelegate.Invoke(remoteIpEndPoint.Address.ToString(), buffer.Deserialize()); }
             }
         }
 
-        public void Create(int port,OnReceivedMsgDelegate onReceivedMsgDelegate)
+        public void Create(int port, OnReceivedMsgDelegate onReceivedMsgDelegate)
         {
             this.port = port;
             this.onReceivedMsgDelegate = onReceivedMsgDelegate;

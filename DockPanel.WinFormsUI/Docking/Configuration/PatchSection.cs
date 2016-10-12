@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace WeifenLuo.WinFormsUI.Docking.Configuration
+namespace Yuanfeng.WinFormsUI.Docking.Configuration
 {
     public class PatchSection : ConfigurationSection
     {

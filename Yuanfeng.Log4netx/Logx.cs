@@ -9,6 +9,7 @@ namespace Yuanfeng.Log4netX
 {
     public class LogX : ILogX
     {
+        private string logger = string.Empty;
         private string ipaddr = string.Empty;
         private ILog log;
         private static LogX instance;
@@ -39,19 +40,20 @@ namespace Yuanfeng.Log4netX
         }
 
         private LogX() {
-            ipaddr = NetworkInfoClass.GetLocalIpAddr();
+            logger = NetworkInfoClass.GetLocalIpAddr();
             log = LogManager.GetLogger("Yuanfeng log4net extern");
         }
 
         private LogX(Type logger)
         {
-            ipaddr = NetworkInfoClass.GetLocalIpAddr();
+            this.ipaddr = NetworkInfoClass.GetLocalIpAddr();
             log = LogManager.GetLogger(logger);
         }
 
         private void bindCustomProperties()
         {
-            log4net.LogicalThreadContext.Properties["IpAddr"] = ipaddr;
+            log = LogManager.GetLogger(logger);
+            log4net.LogicalThreadContext.Properties["IpAddr"] = ipaddr;            
         }
 
         #region 一般实现
@@ -96,9 +98,9 @@ namespace Yuanfeng.Log4netX
             this.exception = exception;
             Error();
         }
-        public void Error(string ipaddr, object message, Exception exception)
+        public void Error(string logger, object message, Exception exception)
         {
-            this.ipaddr = ipaddr;
+            this.logger = logger;
             this.message = message;
             this.exception = exception;
             Error();
@@ -117,9 +119,9 @@ namespace Yuanfeng.Log4netX
             this.exception = exception;
             Info();
         }
-        public void Info(string ipaddr, object message, Exception exception)
+        public void Info(string logger, object message, Exception exception)
         {
-            this.ipaddr = ipaddr;
+            this.logger = logger;
             this.message = message;
             this.exception = exception;
             Info();
@@ -138,9 +140,9 @@ namespace Yuanfeng.Log4netX
             this.exception = exception;
             Debug();
         }
-        public void Debug(string ipaddr, object message, Exception exception)
+        public void Debug(string logger, object message, Exception exception)
         {
-            this.ipaddr = ipaddr;
+            this.logger = logger;
             this.message = message;
             this.exception = exception;
             Debug();
@@ -159,9 +161,9 @@ namespace Yuanfeng.Log4netX
             this.exception = exception;
             Fatal();
         }
-        public void Fatal(string ipaddr, object message, Exception exception)
+        public void Fatal(string logger, object message, Exception exception)
         {
-            this.ipaddr = ipaddr;
+            this.logger = logger;
             this.message = message;
             this.exception = exception;
             Fatal();

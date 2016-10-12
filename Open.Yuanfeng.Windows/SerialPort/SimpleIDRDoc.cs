@@ -1,5 +1,5 @@
 ﻿using System;
-using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.ExternalUnit.SerialCommPort.IDR;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Smarty;
@@ -18,8 +18,6 @@ namespace Open.Yuanfeng.Windows.SerialPort
         {
             try
             {
-                throw new Exception("Unfind someting.");
-
                 int result = controller.Scan(new IDReadCompletedHandler((RicTextInfo member) =>
                  {
                      this.Invoke(new Action(() =>
@@ -34,13 +32,18 @@ namespace Open.Yuanfeng.Windows.SerialPort
             }
             catch (Exception exception)
             {
-                log.Debug("192.168.1.199","SimpleIdrDoc find exception.", exception);
+                SimpleConsole.WriteLine(exception);
             }
         }
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
             if (controller.IsOpen) controller.Stop(); this.btnOpen.Enabled = true;
+        }
+
+        private void Photo_Click(object sender, EventArgs e)
+        {
+            this.Photo.Image.Save(@"d:\photo.bmp");
         }
     }
 }

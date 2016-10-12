@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Net.SocketX;
 using Yuanfeng.Smarty;
@@ -25,7 +25,7 @@ namespace Open.Yuanfeng.Windows.SocketX
         {
             try
             {
-                client.Send(this.tbMsg.Text);
+                client.Send(this.tbMsg.Text.ToBuffer());
             }
             catch (Exception exception)
             {

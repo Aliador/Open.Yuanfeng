@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     partial class DockPanel
     {

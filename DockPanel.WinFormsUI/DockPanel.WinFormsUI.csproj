@@ -8,13 +8,14 @@
     <ProjectGuid>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WeifenLuo.WinFormsUI</RootNamespace>
-    <AssemblyName>WeifenLuo.WinFormsUI.Docking</AssemblyName>
+    <RootNamespace>Yuanfeng.WinFormsUI</RootNamespace>
+    <AssemblyName>Yuanfeng.WinFormsUI.Docking</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>dockpanelsuite.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

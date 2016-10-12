@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CcancellableTask.cs" />
     <Compile Include="ConfigManager.cs" />
     <Compile Include="Encrypt\AES.cs" />
+    <Compile Include="Encrypt\DES.cs" />
     <Compile Include="Encrypt\DirectoryEncrypt.cs" />
     <Compile Include="Encrypt\FileEncrypt.cs" />
     <Compile Include="ExternMethodClass.cs" />
@@ -50,7 +53,10 @@
     <Compile Include="SimpleConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeHelper.cs" />
+    <Compile Include="UBinder.cs" />
     <Compile Include="UtilClass.cs" />
+    <Compile Include="Win32.cs" />
+    <Compile Include="WinapiUtil.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

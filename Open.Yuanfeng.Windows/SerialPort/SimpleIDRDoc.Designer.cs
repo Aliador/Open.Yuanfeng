@@ -138,6 +138,7 @@
             this.Photo.Size = new System.Drawing.Size(106, 126);
             this.Photo.TabIndex = 4;
             this.Photo.TabStop = false;
+            this.Photo.Click += new System.EventHandler(this.Photo_Click);
             // 
             // SimpleIDRDoc
             // 

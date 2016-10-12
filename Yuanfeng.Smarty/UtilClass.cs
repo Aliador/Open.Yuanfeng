@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Yuanfeng.Smarty
 {
@@ -12,6 +13,32 @@ namespace Yuanfeng.Smarty
     /// </summary>
     public class UtilClass
     {
+
+        public static T XmlDeserialize<T>(string xml)
+        {
+            T target = default(T);
+            StringBuilder buffer = new StringBuilder();
+            buffer.Append(xml);
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using (TextReader reader = new StringReader(buffer.ToString()))
+            {
+                Object obj = serializer.Deserialize(reader);
+                target = (T)obj;
+            }
+            return target;
+        }
+
+        public static string XmlSerialize<T>(T obj)
+        {
+            StringBuilder buffer = new StringBuilder();
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using (TextWriter writer = new StringWriter(buffer))
+            {
+                serializer.Serialize(writer, obj);
+            }
+            return buffer.ToString();
+        }
+
         public static string RemoveNotNum(string s)
         {
             if (string.IsNullOrEmpty(s)) return s;

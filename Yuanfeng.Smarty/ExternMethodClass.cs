@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Yuanfeng.Smarty
 {
@@ -45,7 +46,7 @@ namespace Yuanfeng.Smarty
         /// 去图形边框
         /// </summary>
         /// <param name="borderWidth"></param>
-        public static Bitmap ClearPicBorder(this Bitmap bmpobj,int borderWidth)
+        public static Bitmap ClearPicBorder(this Bitmap bmpobj, int borderWidth)
         {
             for (int i = 0; i < bmpobj.Height; i++)
             {
@@ -89,7 +90,7 @@ namespace Yuanfeng.Smarty
         /// <param name="dgGrayValue">灰度背景分界值</param>
         /// <param name="CharsCount">有效字符数</param>
         /// <returns></returns>
-        public static void GetPicValidByValue(this Bitmap bmpobj,int dgGrayValue, int CharsCount)
+        public static void GetPicValidByValue(this Bitmap bmpobj, int dgGrayValue, int CharsCount)
         {
             int posx1 = bmpobj.Width; int posy1 = bmpobj.Height;
             int posx2 = 0; int posy2 = 0;
@@ -129,7 +130,7 @@ namespace Yuanfeng.Smarty
         /// <param name="dgGrayValue">灰度背景分界值</param>
         /// <param name="CharsCount">有效字符数</param>
         /// <returns></returns>
-        public static Bitmap GetPicValidByValue(this Bitmap bmpobj,int dgGrayValue)
+        public static Bitmap GetPicValidByValue(this Bitmap bmpobj, int dgGrayValue)
         {
             int posx1 = bmpobj.Width; int posy1 = bmpobj.Height;
             int posx2 = 0; int posy2 = 0;
@@ -154,7 +155,7 @@ namespace Yuanfeng.Smarty
 
             return bmpobj;
         }
-        
+
 
         /// <summary>
         /// 平均分割图片
@@ -162,7 +163,7 @@ namespace Yuanfeng.Smarty
         /// <param name="RowNum">水平上分割数</param>
         /// <param name="ColNum">垂直上分割数</param>
         /// <returns>分割好的图片数组</returns>
-        public static Bitmap[] GetSplitPics(this Bitmap bmpobj,int RowNum, int ColNum)
+        public static Bitmap[] GetSplitPics(this Bitmap bmpobj, int RowNum, int ColNum)
         {
             if (RowNum == 0 || ColNum == 0)
                 return null;
@@ -209,7 +210,7 @@ namespace Yuanfeng.Smarty
         /// </summary>
         /// <param name="dgGrayValue"></param>
         /// <param name="MaxNearPoints"></param>
-        public static Bitmap ClearNoise(this Bitmap bmpobj,int dgGrayValue, int MaxNearPoints)
+        public static Bitmap ClearNoise(this Bitmap bmpobj, int dgGrayValue, int MaxNearPoints)
         {
 
             Color piexl;
@@ -323,7 +324,7 @@ namespace Yuanfeng.Smarty
             imgSource.Dispose();
             return outBmp;
         }
-        
+
         /// <summary>
         /// get image thumbnail
         /// </summary>
@@ -553,6 +554,7 @@ namespace Yuanfeng.Smarty
         /// <returns>返回存放序列化后的数据缓冲区</returns> 
         public static byte[] Serialize(this object obj)
         {
+            if (obj == null) return null;
             BinaryFormatter formatter = new BinaryFormatter();
             using (MemoryStream stream = new MemoryStream())
             {
@@ -567,16 +569,28 @@ namespace Yuanfeng.Smarty
         /// <returns>对象</returns> 
         public static object Deserialize(this byte[] obj)
         {
+            if (obj == null) return null;
             BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Binder = new UBinder();
             using (MemoryStream stream = new MemoryStream(obj))
             {
                 obj = null;
                 return formatter.Deserialize(stream);
             }
         }
+
+        public static byte[] ToBuffer(this string obj)
+        {
+            return Encoding.Unicode.GetBytes(obj);
+        }
+
+        public static string ToString(this byte[] obj)
+        {
+            return Encoding.Unicode.GetString(obj);
+        }
         #endregion
 
-        #region datetime access
+        #region 时间处理
         public static DateTime TryDate(this string s)
         {
             if (string.IsNullOrEmpty(s)) return DateTime.Now;
@@ -630,7 +644,7 @@ namespace Yuanfeng.Smarty
 
             if (s.Length > 14) s = s.Substring(0, 14);
 
-            if (len != 8 || len != 14) return DateTime.Now;
+            if (len != 8 && len != 14) return DateTime.Now;
 
             DateTime outDateTime = DateTime.Now;
             bool result = false;
@@ -649,6 +663,27 @@ namespace Yuanfeng.Smarty
             if (result) return outDateTime;
 
             return DateTime.Now;
+        }
+        #endregion
+
+        #region 字符串加解密
+        /// <summary>
+        /// 使用默认密钥对数据进行加密
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string Encrypt(this string source)
+        {
+            return Smarty.Encrypt.AES.AESEncrypt(source, "Yuanfeng2016");
+        }
+        /// <summary>
+        /// 使用默认密钥对数据解密
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string Decrypt(this string source)
+        {
+            return Smarty.Encrypt.AES.AESDecrypt(source, "Yuanfeng2016");
         }
         #endregion
     }

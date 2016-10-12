@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Net.SocketX;
 using Yuanfeng.Smarty;
@@ -25,9 +26,9 @@ namespace Open.Yuanfeng.Windows.SocketX
         {
             try
             {
-                server.Create(TypeHelper.ParseInt(tbSvrPort.Text), new OnReceivedMsgDelegate((string ipaddr, object msg) =>
+                server.Create(TypeHelper.ParseInt(tbSvrPort.Text), new OnReceivedMsgDelegate((string ipaddr,object msg) =>
                 {
-                    UdpMsg message = msg as UdpMsg;
+                    UdpMsg message = JsonConvert.DeserializeObject<UdpMsg>(msg.ToString());
 
                     switch (message.Level)
                     {

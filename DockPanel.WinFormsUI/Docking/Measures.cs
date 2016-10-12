@@ -1,4 +1,4 @@
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public static class Measures
     {

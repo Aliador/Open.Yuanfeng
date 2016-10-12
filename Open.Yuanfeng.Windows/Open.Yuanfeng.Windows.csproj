@@ -15,12 +15,12 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -37,6 +37,10 @@
   <ItemGroup>
     <Reference Include="DirectShowLib-2010">
       <HintPath>..\Free5lot.DirectShowLib\bin\Debug\DirectShowLib-2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -69,6 +73,12 @@
     <Compile Include="FileSection\PluginsConfigDoc.Designer.cs">
       <DependentUpon>PluginsConfigDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="HttpX\DynamicHttpRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HttpX\DynamicHttpRequest.Designer.cs">
+      <DependentUpon>DynamicHttpRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageUtil\FindGrayImageDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +96,18 @@
     </Compile>
     <Compile Include="ImageUtil\SimpleQrCodeDoc.Designer.cs">
       <DependentUpon>SimpleQrCodeDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageUtil\TesoFaceFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\TesoFaceFeature.Designer.cs">
+      <DependentUpon>TesoFaceFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageUtil\TesoLFCDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\TesoLFCDoc.Designer.cs">
+      <DependentUpon>TesoLFCDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -152,6 +174,9 @@
     <EmbeddedResource Include="FileSection\PluginsConfigDoc.resx">
       <DependentUpon>PluginsConfigDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HttpX\DynamicHttpRequest.resx">
+      <DependentUpon>DynamicHttpRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\FindGrayImageDoc.resx">
       <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +185,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\SimpleQrCodeDoc.resx">
       <DependentUpon>SimpleQrCodeDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\TesoFaceFeature.resx">
+      <DependentUpon>TesoFaceFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\TesoLFCDoc.resx">
+      <DependentUpon>TesoLFCDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -199,6 +230,7 @@
       <DependentUpon>SimpleUdpServerDoc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -231,6 +263,14 @@
     <ProjectReference Include="..\Yuanfeng.ExternalUnit.SerialCommPort\Yuanfeng.ExternalUnit.SerialCommPort.csproj">
       <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
       <Name>Yuanfeng.ExternalUnit.SerialCommPort</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.HttpX\Yuanfeng.HttpX.csproj">
+      <Project>{5AEAD1BE-58F6-4285-BB15-52260A75B13F}</Project>
+      <Name>Yuanfeng.HttpX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.ImageUnit.FaceFeatureCompare\Yuanfeng.ImageUnit.FaceFeatureCompare.csproj">
+      <Project>{3032133E-6D74-4D67-A5D1-8BA245E4D3E0}</Project>
+      <Name>Yuanfeng.ImageUnit.FaceFeatureCompare</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.ImageUnit.Gray\Yuanfeng.ImageUnit.Gray.csproj">
       <Project>{04007866-4422-4E69-8BC2-9062EB74CB88}</Project>

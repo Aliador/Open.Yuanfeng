@@ -120,6 +120,108 @@ namespace Yuanfeng.Smarty
             newG.Dispose();
             return newImage;
         }
+
+        /// <summary>
+        /// 壓縮圖片
+        /// </summary>
+        /// <param name="fileStream">圖片流</param>
+        /// <param name="quality">壓縮質量0-100之間 數值越大質量越高</param>
+        /// <returns></returns>
+        public byte[] CompressionImage(Stream fileStream, long quality)
+        {
+            using (System.Drawing.Image img = System.Drawing.Image.FromStream(fileStream))
+            {
+                using (Bitmap bitmap = new Bitmap(img))
+                {
+                    ImageCodecInfo CodecInfo = GetEncoder(img.RawFormat);
+                    System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                    EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                    EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, quality);
+                    myEncoderParameters.Param[0] = myEncoderParameter;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        bitmap.Save(ms, CodecInfo, myEncoderParameters);
+                        myEncoderParameters.Dispose();
+                        myEncoderParameter.Dispose();
+                        return ms.ToArray();
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// 壓縮圖片
+        /// </summary>
+        /// <param name="fileStream">圖片流</param>
+        /// <param name="quality">壓縮質量0-100之間 數值越大質量越高</param>
+        /// <returns></returns>
+        public byte[] CompressionImage(byte[] buffer, long quality)
+        {
+            using (System.Drawing.Image img = buffer.ToBitmap())
+            {
+                using (Bitmap bitmap = new Bitmap(img))
+                {
+                    ImageCodecInfo CodecInfo = GetEncoder(img.RawFormat);
+                    System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                    EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                    EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, quality);
+                    myEncoderParameters.Param[0] = myEncoderParameter;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        bitmap.Save(ms, CodecInfo, myEncoderParameters);
+                        myEncoderParameters.Dispose();
+                        myEncoderParameter.Dispose();
+                        return ms.ToArray();
+                    }
+                }
+            }
+        }
+        private ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
+        //返回图片解码器信息用于jpg图片
+        private ImageCodecInfo GetCodecInfo(string str)
+        {
+            string ext = str.Substring(str.LastIndexOf(".") + 1);
+            string mimeType = "";
+            switch (ext.ToLower())
+            {
+                case "jpe":
+                case "jpg":
+                case "jpeg":
+                    mimeType = "image/jpeg";
+                    break;
+                case "bmp":
+                    mimeType = "image/bmp";
+                    break;
+                case "png":
+                    mimeType = "image/png";
+                    break;
+                case "tif":
+                case "tiff":
+                    mimeType = "image/tiff";
+                    break;
+                default:
+                    mimeType = "image/jpeg";
+                    break;
+            }
+            ImageCodecInfo[] CodecInfo = ImageCodecInfo.GetImageEncoders();
+            foreach (ImageCodecInfo ici in CodecInfo)
+            {
+                if (ici.MimeType == mimeType) return ici;
+            }
+            return null;
+        }
+
         #endregion
     }
 }

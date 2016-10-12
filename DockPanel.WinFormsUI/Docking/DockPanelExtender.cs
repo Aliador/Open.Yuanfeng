@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Forms;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public sealed class DockPanelExtender
     {

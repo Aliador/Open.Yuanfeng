@@ -1,4 +1,6 @@
-﻿namespace Open.Yuanfeng.Windows
+﻿using Yuanfeng.WinFormsUI.Docking;
+
+namespace Open.Yuanfeng.Windows
 {
     partial class MainForm
     {
@@ -31,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pluginsConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NetworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwSwithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,10 +53,13 @@
             this.SimpleQrCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindGrayImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleOcrDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tesoFaceFeatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.httpXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dynamicInvokeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.vS2012LightTheme = new WeifenLuo.WinFormsUI.Docking.VS2012LightTheme();
-            this.MainDockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.pluginsConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vS2012LightTheme = new VS2012LightTheme();
+            this.MainDockPanel = new DockPanel();
+            this.tesoLFCDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +71,8 @@
             this.WindowsToolStripMenuItem,
             this.HelperToolStripMenuItem,
             this.SerialPortToolStripMenuItem,
-            this.ImageUtilToolStripMenuItem});
+            this.ImageUtilToolStripMenuItem,
+            this.httpXToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Size = new System.Drawing.Size(957, 25);
@@ -78,6 +85,13 @@
             this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
             this.fileFToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
             this.fileFToolStripMenuItem.Text = "File(&F)";
+            // 
+            // pluginsConfigToolStripMenuItem
+            // 
+            this.pluginsConfigToolStripMenuItem.Name = "pluginsConfigToolStripMenuItem";
+            this.pluginsConfigToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.pluginsConfigToolStripMenuItem.Text = "PluginsConfig";
+            this.pluginsConfigToolStripMenuItem.Click += new System.EventHandler(this.pluginsConfigToolStripMenuItem_Click);
             // 
             // NetworkToolStripMenuItem
             // 
@@ -135,7 +149,7 @@
             // ConsoleToolStripMenuItem
             // 
             this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
-            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.ConsoleToolStripMenuItem.Text = "Console(&C)";
             this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
             // 
@@ -197,7 +211,9 @@
             this.ImageUtilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SimpleQrCodeToolStripMenuItem,
             this.FindGrayImageToolStripMenuItem,
-            this.SimpleOcrDocToolStripMenuItem});
+            this.SimpleOcrDocToolStripMenuItem,
+            this.tesoFaceFeatureToolStripMenuItem,
+            this.tesoLFCDocToolStripMenuItem});
             this.ImageUtilToolStripMenuItem.Name = "ImageUtilToolStripMenuItem";
             this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
             this.ImageUtilToolStripMenuItem.Text = "ImageUtil(&I)";
@@ -205,23 +221,45 @@
             // SimpleQrCodeToolStripMenuItem
             // 
             this.SimpleQrCodeToolStripMenuItem.Name = "SimpleQrCodeToolStripMenuItem";
-            this.SimpleQrCodeToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.SimpleQrCodeToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.SimpleQrCodeToolStripMenuItem.Text = "SimpleQrCode(&Q)";
             this.SimpleQrCodeToolStripMenuItem.Click += new System.EventHandler(this.SimpleQrCodeToolStripMenuItem_Click);
             // 
             // FindGrayImageToolStripMenuItem
             // 
             this.FindGrayImageToolStripMenuItem.Name = "FindGrayImageToolStripMenuItem";
-            this.FindGrayImageToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.FindGrayImageToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.FindGrayImageToolStripMenuItem.Text = "FindGrayImage(&F)";
             this.FindGrayImageToolStripMenuItem.Click += new System.EventHandler(this.FindGrayImageToolStripMenuItem_Click);
             // 
             // SimpleOcrDocToolStripMenuItem
             // 
             this.SimpleOcrDocToolStripMenuItem.Name = "SimpleOcrDocToolStripMenuItem";
-            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.SimpleOcrDocToolStripMenuItem.Text = "SimpleOcrDoc(&O)";
             this.SimpleOcrDocToolStripMenuItem.Click += new System.EventHandler(this.SimpleOcrDocToolStripMenuItem_Click);
+            // 
+            // tesoFaceFeatureToolStripMenuItem
+            // 
+            this.tesoFaceFeatureToolStripMenuItem.Name = "tesoFaceFeatureToolStripMenuItem";
+            this.tesoFaceFeatureToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tesoFaceFeatureToolStripMenuItem.Text = "TesoFaceFeature(&T)";
+            this.tesoFaceFeatureToolStripMenuItem.Click += new System.EventHandler(this.tesoFaceFeatureToolStripMenuItem_Click);
+            // 
+            // httpXToolStripMenuItem
+            // 
+            this.httpXToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dynamicInvokeToolStripMenuItem});
+            this.httpXToolStripMenuItem.Name = "httpXToolStripMenuItem";
+            this.httpXToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
+            this.httpXToolStripMenuItem.Text = "HttpX";
+            // 
+            // dynamicInvokeToolStripMenuItem
+            // 
+            this.dynamicInvokeToolStripMenuItem.Name = "dynamicInvokeToolStripMenuItem";
+            this.dynamicInvokeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.dynamicInvokeToolStripMenuItem.Text = "DynamicInvoke";
+            this.dynamicInvokeToolStripMenuItem.Click += new System.EventHandler(this.dynamicInvokeToolStripMenuItem_Click);
             // 
             // MainStatusStrip
             // 
@@ -240,12 +278,12 @@
             this.MainDockPanel.Size = new System.Drawing.Size(957, 454);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // pluginsConfigToolStripMenuItem
+            // tesoLFCDocToolStripMenuItem
             // 
-            this.pluginsConfigToolStripMenuItem.Name = "pluginsConfigToolStripMenuItem";
-            this.pluginsConfigToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.pluginsConfigToolStripMenuItem.Text = "PluginsConfig";
-            this.pluginsConfigToolStripMenuItem.Click += new System.EventHandler(this.pluginsConfigToolStripMenuItem_Click);
+            this.tesoLFCDocToolStripMenuItem.Name = "tesoLFCDocToolStripMenuItem";
+            this.tesoLFCDocToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tesoLFCDocToolStripMenuItem.Text = "TesoLFCDoc(&L)";
+            this.tesoLFCDocToolStripMenuItem.Click += new System.EventHandler(this.tesoLFCDocToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -276,8 +314,8 @@
         private System.Windows.Forms.ToolStripMenuItem WindowsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ConsoleToolStripMenuItem;
         private System.Windows.Forms.StatusStrip MainStatusStrip;
-        private WeifenLuo.WinFormsUI.Docking.VS2012LightTheme vS2012LightTheme;
-        private WeifenLuo.WinFormsUI.Docking.DockPanel MainDockPanel;
+        private VS2012LightTheme vS2012LightTheme;
+        private DockPanel MainDockPanel;
         private System.Windows.Forms.ToolStripMenuItem HelperToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SerialPortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem YuanjingdaToolStripMenuItem;
@@ -293,6 +331,10 @@
         private System.Windows.Forms.ToolStripMenuItem simpleUdpClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simpleUdpServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pluginsConfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem httpXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dynamicInvokeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tesoFaceFeatureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tesoLFCDocToolStripMenuItem;
     }
 }
 

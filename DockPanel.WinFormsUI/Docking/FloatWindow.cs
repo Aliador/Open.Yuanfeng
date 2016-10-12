@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public class FloatWindow : Form, INestedPanesContainer, IDockDragSource
     {

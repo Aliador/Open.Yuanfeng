@@ -48,6 +48,6 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Camera
         /// Realase current use camera.
         /// </summary>
         /// <returns></returns>
-        bool Realase();
+        bool Release();
     }
 }

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Net.SocketX;
+using Yuanfeng.Smarty;
 
 namespace Yuanfeng.Log4netx.UdpServer
 {
@@ -23,16 +25,16 @@ namespace Yuanfeng.Log4netx.UdpServer
                 switch (msg.Level)
                 {
                     case Level.DEBUG:
-                        log.Debug(msg.Message, msg.Exception);
+                        log.Debug(msg.Logger, msg.Message, msg.Exception);
                         break;
                     case Level.FATAL:
-                        log.Fatal(msg.Message, msg.Exception);
+                        log.Fatal(msg.Logger, msg.Message, msg.Exception);
                         break;
                     case Level.INFO:
-                        log.Info(msg.Message, msg.Exception);
+                        log.Info(msg.Logger, msg.Message, msg.Exception);
                         break;
                     case Level.ERROR:
-                        log.Error(msg.Message, msg.Exception);
+                        log.Error(msg.Logger, msg.Message, msg.Exception);
                         break;
                     default:
                         break;

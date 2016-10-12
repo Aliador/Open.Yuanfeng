@@ -21,7 +21,7 @@ namespace Yuanfeng.Smarty.Encrypt
         /// <param name="EncryptKey">加密密钥</param>
         public static string AESEncrypt(string EncryptString, string EncryptKey)
         {
-            return Convert.ToBase64String(AESEncrypt(Encoding.Default.GetBytes(EncryptString), EncryptKey));
+            return Convert.ToBase64String(AESEncrypt(Encoding.Unicode.GetBytes(EncryptString), EncryptKey));
         }
         #endregion
         #region 加密字节数组
@@ -68,7 +68,7 @@ namespace Yuanfeng.Smarty.Encrypt
         /// <param name="DecryptKey">解密密钥</param>
         public static string AESDecrypt(string DecryptString, string DecryptKey)
         {
-            return Convert.ToBase64String(AESDecrypt(Encoding.Default.GetBytes(DecryptString), DecryptKey));
+            return Convert.ToBase64String(AESDecrypt(Convert.FromBase64String(DecryptString), DecryptKey));
         }
         #endregion
         #region 解密字节数组

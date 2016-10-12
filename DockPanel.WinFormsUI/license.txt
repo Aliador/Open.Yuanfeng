@@ -8,8 +8,8 @@
     <ProjectGuid>{4ED4FDB5-9FD0-49E6-876D-1635F727C755}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WeifenLuo.WinFormsUI</RootNamespace>
-    <AssemblyName>WeifenLuo.WinFormsUI.Docking.ThemeVS2012</AssemblyName>
+    <RootNamespace>Yuanfeng.WinFormsUI</RootNamespace>
+    <AssemblyName>Yuanfeng.WinFormsUI.Docking.ThemeVS2012</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>dockpanelsuite.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>

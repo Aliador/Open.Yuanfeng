@@ -1,10 +1,10 @@
 using System;
 using System.Drawing;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     using ThemeVS2012;
-    using WeifenLuo.WinFormsUI.ThemeVS2012.Dark;
+    using Yuanfeng.WinFormsUI.ThemeVS2012.Dark;
 
     /// <summary>
     /// Visual Studio 2012 Dark theme.

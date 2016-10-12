@@ -40,11 +40,13 @@
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -58,6 +60,7 @@
     <Compile Include="UdpMsg.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -72,6 +75,10 @@
     <ProjectReference Include="..\Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj">
       <Project>{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}</Project>
       <Name>Yuanfeng.Net.SocketX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
+      <Project>{476D2977-9746-4264-8A7C-003FB02EF0C4}</Project>
+      <Name>Yuanfeng.Smarty</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

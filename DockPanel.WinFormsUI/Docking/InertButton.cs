@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public class InertButton : Button
     {

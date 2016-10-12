@@ -111,7 +111,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Camera
             return IsOpen;
         }
 
-        public bool Realase()
+        public bool Release()
         {
             if (isOpen) { this.CameraControl.CloseCamera(); isOpen = false; }
             return !IsOpen;

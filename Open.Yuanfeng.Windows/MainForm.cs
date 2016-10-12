@@ -8,7 +8,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI;
+using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows
@@ -109,6 +110,12 @@ namespace Open.Yuanfeng.Windows
             if (sender == this.simpleUdpClientDoc) this.simpleUdpClientToolStripMenuItem.Checked = false;
 
             if (sender == this.simpleUdpServerDoc) this.simpleUdpServerToolStripMenuItem.Checked = false;
+
+            if (sender == this.dynamicHttpRequestDoc) this.dynamicInvokeToolStripMenuItem.Checked = false;
+
+            if (sender == this.faceFeatureDoc) this.tesoFaceFeatureToolStripMenuItem.Checked = false;
+
+            if (sender == this.tesoLFCDoc) this.tesoLFCDocToolStripMenuItem.Checked = false;
 
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
@@ -275,6 +282,51 @@ namespace Open.Yuanfeng.Windows
             PluginsConfigDoc.FormClosing += DummyClosing;
 
             SimpleConsole.WriteLine("The PluginsConfigDoc dummy loaded.");
+        }
+
+        private HttpX.DynamicHttpRequest dynamicHttpRequestDoc;
+        void InitDynamicHttpRequestDoc()
+        {
+            if (dynamicHttpRequestDoc == null || dynamicHttpRequestDoc.IsDisposed) dynamicHttpRequestDoc = new HttpX.DynamicHttpRequest();
+        }
+
+        private void dynamicInvokeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitDynamicHttpRequestDoc();
+            this.dynamicInvokeToolStripMenuItem.Checked = true;
+            dynamicHttpRequestDoc.Show(MainDockPanel, DockState.Document);
+            dynamicHttpRequestDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The dynamicHttpRequestDoc dummy loaded.");
+        }
+
+        private ImageUtil.TesoFaceFeature faceFeatureDoc;
+        void InitFaceFeatureDoc()
+        {
+            if (faceFeatureDoc == null || faceFeatureDoc.IsDisposed) faceFeatureDoc = new ImageUtil.TesoFaceFeature();
+        }
+        private void tesoFaceFeatureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitFaceFeatureDoc();
+            this.tesoFaceFeatureToolStripMenuItem.Checked = true;
+            faceFeatureDoc.Show(MainDockPanel, DockState.Document);
+            faceFeatureDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The faceFeatureDoc dummy loaded.");
+        }
+        private ImageUtil.TesoLFCDoc tesoLFCDoc;
+        void InitTesoLFCDoc()
+        {
+            if (tesoLFCDoc == null || tesoLFCDoc.IsDisposed) tesoLFCDoc = new ImageUtil.TesoLFCDoc();
+        }
+        private void tesoLFCDocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitTesoLFCDoc();
+            this.tesoLFCDocToolStripMenuItem.Checked = true;
+            tesoLFCDoc.Show(MainDockPanel, DockState.Document);
+            tesoLFCDoc.FormClosing += DummyClosing;
+
+            SimpleConsole.WriteLine("The tesoLFCDoc dummy loaded.");
         }
     }
 }

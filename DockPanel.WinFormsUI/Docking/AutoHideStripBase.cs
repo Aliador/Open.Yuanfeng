@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     public abstract class AutoHideStripBase : Control
     {

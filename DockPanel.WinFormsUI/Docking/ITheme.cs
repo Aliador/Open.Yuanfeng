@@ -1,4 +1,4 @@
-namespace WeifenLuo.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking
 {
     /// <summary>
     /// DockPanel Suite theme interface.

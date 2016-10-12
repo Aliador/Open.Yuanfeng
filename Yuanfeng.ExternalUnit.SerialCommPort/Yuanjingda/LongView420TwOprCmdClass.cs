@@ -166,7 +166,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
 
                 this.serialPort.Write(operBytes, 0, operBytes.Length);
 
-                Thread.Sleep(100);this.isOpen = false;
+                Thread.Sleep(100);
             }
            
         }
@@ -202,9 +202,12 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda
 
         public void OpenOnLine()
         {
-            scanHand = true; received = false;
-            threeSecondsOnce.Change(0, 3000);
-            //throw new NotImplementedException();
+            if (isOpen)
+            {
+                if (threeSecondsOnce == null) throw new Exception("串口未初始化");
+                scanHand = true; received = false;
+                threeSecondsOnce.Change(0, 3000);
+            }
         }
 
         public void LiveScan()
