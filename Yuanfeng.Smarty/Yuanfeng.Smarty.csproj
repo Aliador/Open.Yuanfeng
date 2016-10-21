@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CcancellableTask.cs" />
+    <Compile Include="CancellableTask.cs" />
     <Compile Include="ConfigManager.cs" />
     <Compile Include="Encrypt\AES.cs" />
     <Compile Include="Encrypt\DES.cs" />
@@ -55,6 +55,7 @@
     <Compile Include="TypeHelper.cs" />
     <Compile Include="UBinder.cs" />
     <Compile Include="UtilClass.cs" />
+    <Compile Include="VolkCollection.cs" />
     <Compile Include="Win32.cs" />
     <Compile Include="WinapiUtil.cs" />
   </ItemGroup>

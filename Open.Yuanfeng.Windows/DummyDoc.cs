@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
+using Yuanfeng.Controls.Simple;
 
 namespace Open.Yuanfeng.Windows
 {
@@ -15,6 +16,11 @@ namespace Open.Yuanfeng.Windows
         public DummyDoc()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpaquePlayerController.New().Show(this);   
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Open.Yuanfeng.Windows.SocketX
             client.Close();
         }
 
-        private IUdpLog log = SimpleUdpLog.NewInstance("192.168.100.199");
+        private IUdpLog log = SimpleUdpLog.NewInstance("192.168.100.2");
         private void btnBug_Click(object sender, EventArgs e)
         {
             log.Debug("UDP-Debug方式发送异常", new Exception("UDP-Debug发送异常"));

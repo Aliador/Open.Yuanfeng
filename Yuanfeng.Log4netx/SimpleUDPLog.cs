@@ -33,7 +33,7 @@ namespace Yuanfeng.Log4netX
             if (client == null)
             {
                 client = new SimpleUdpClient();
-                client.Create(ipaddr, 8000);
+                client.Create(ipaddr, 8099);
             }
         }
 

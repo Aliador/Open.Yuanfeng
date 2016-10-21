@@ -20,9 +20,9 @@ namespace Yuanfeng.ImageUnit.FaceFeatureCompare
             {
                 string result = control.closeDevice();
                 bool right = IsRight(result);
-                if (right) isOpen = false;
+                if (right) isOpen = false; return right ? 1 : 0;
             }
-            return 1;
+            return 0;
         }
 
         public int Init(Control container, LFCompletedHandler handler)
@@ -90,7 +90,7 @@ namespace Yuanfeng.ImageUnit.FaceFeatureCompare
                 var xes = doc.DocumentElement.SelectNodes("imgBase");
                 return xes[0].InnerText;
             }
-            catch (Exception exception)
+            catch
             {
                 return string.Empty;
             }

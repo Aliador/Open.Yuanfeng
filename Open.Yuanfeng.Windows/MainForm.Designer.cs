@@ -40,9 +40,11 @@ namespace Open.Yuanfeng.Windows
             this.simpleSocketXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleUdpClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleUdpServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redisClientDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.YuanjingdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +56,13 @@ namespace Open.Yuanfeng.Windows
             this.FindGrayImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleOcrDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tesoFaceFeatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tesoLFCDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.httpXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dynamicInvokeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new VS2012LightTheme();
             this.MainDockPanel = new DockPanel();
-            this.tesoLFCDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.videtekFeactureDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +101,8 @@ namespace Open.Yuanfeng.Windows
             this.NetworkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NwListToolStripMenuItem,
             this.NwSwithToolStripMenuItem,
-            this.simpleSocketXToolStripMenuItem});
+            this.simpleSocketXToolStripMenuItem,
+            this.redisClientDocToolStripMenuItem});
             this.NetworkToolStripMenuItem.Name = "NetworkToolStripMenuItem";
             this.NetworkToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
             this.NetworkToolStripMenuItem.Text = "Network(&N)";
@@ -106,13 +110,13 @@ namespace Open.Yuanfeng.Windows
             // NwListToolStripMenuItem
             // 
             this.NwListToolStripMenuItem.Name = "NwListToolStripMenuItem";
-            this.NwListToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.NwListToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.NwListToolStripMenuItem.Text = "Interface List(&L)";
             // 
             // NwSwithToolStripMenuItem
             // 
             this.NwSwithToolStripMenuItem.Name = "NwSwithToolStripMenuItem";
-            this.NwSwithToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.NwSwithToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.NwSwithToolStripMenuItem.Text = "Enable All(&E)";
             // 
             // simpleSocketXToolStripMenuItem
@@ -121,7 +125,7 @@ namespace Open.Yuanfeng.Windows
             this.simpleUdpClientToolStripMenuItem,
             this.simpleUdpServerToolStripMenuItem});
             this.simpleSocketXToolStripMenuItem.Name = "simpleSocketXToolStripMenuItem";
-            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.simpleSocketXToolStripMenuItem.Text = "SimpleSocketX";
             // 
             // simpleUdpClientToolStripMenuItem
@@ -137,6 +141,13 @@ namespace Open.Yuanfeng.Windows
             this.simpleUdpServerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.simpleUdpServerToolStripMenuItem.Text = "SimpleUdpServer";
             this.simpleUdpServerToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpServerToolStripMenuItem_Click);
+            // 
+            // redisClientDocToolStripMenuItem
+            // 
+            this.redisClientDocToolStripMenuItem.Name = "redisClientDocToolStripMenuItem";
+            this.redisClientDocToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.redisClientDocToolStripMenuItem.Text = "RedisClientDoc(&R)";
+            this.redisClientDocToolStripMenuItem.Click += new System.EventHandler(this.redisClientDocToolStripMenuItem_Click);
             // 
             // WindowsToolStripMenuItem
             // 
@@ -155,9 +166,18 @@ namespace Open.Yuanfeng.Windows
             // 
             // HelperToolStripMenuItem
             // 
+            this.HelperToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
             this.HelperToolStripMenuItem.Name = "HelperToolStripMenuItem";
             this.HelperToolStripMenuItem.Size = new System.Drawing.Size(76, 21);
             this.HelperToolStripMenuItem.Text = "Helper(&H)";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.aboutToolStripMenuItem.Text = "About(&X)";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // SerialPortToolStripMenuItem
             // 
@@ -213,7 +233,8 @@ namespace Open.Yuanfeng.Windows
             this.FindGrayImageToolStripMenuItem,
             this.SimpleOcrDocToolStripMenuItem,
             this.tesoFaceFeatureToolStripMenuItem,
-            this.tesoLFCDocToolStripMenuItem});
+            this.tesoLFCDocToolStripMenuItem,
+            this.videtekFeactureDToolStripMenuItem});
             this.ImageUtilToolStripMenuItem.Name = "ImageUtilToolStripMenuItem";
             this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
             this.ImageUtilToolStripMenuItem.Text = "ImageUtil(&I)";
@@ -245,6 +266,13 @@ namespace Open.Yuanfeng.Windows
             this.tesoFaceFeatureToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.tesoFaceFeatureToolStripMenuItem.Text = "TesoFaceFeature(&T)";
             this.tesoFaceFeatureToolStripMenuItem.Click += new System.EventHandler(this.tesoFaceFeatureToolStripMenuItem_Click);
+            // 
+            // tesoLFCDocToolStripMenuItem
+            // 
+            this.tesoLFCDocToolStripMenuItem.Name = "tesoLFCDocToolStripMenuItem";
+            this.tesoLFCDocToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tesoLFCDocToolStripMenuItem.Text = "TesoLFCDoc(&L)";
+            this.tesoLFCDocToolStripMenuItem.Click += new System.EventHandler(this.tesoLFCDocToolStripMenuItem_Click);
             // 
             // httpXToolStripMenuItem
             // 
@@ -278,12 +306,12 @@ namespace Open.Yuanfeng.Windows
             this.MainDockPanel.Size = new System.Drawing.Size(957, 454);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // tesoLFCDocToolStripMenuItem
+            // videtekFeactureDToolStripMenuItem
             // 
-            this.tesoLFCDocToolStripMenuItem.Name = "tesoLFCDocToolStripMenuItem";
-            this.tesoLFCDocToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.tesoLFCDocToolStripMenuItem.Text = "TesoLFCDoc(&L)";
-            this.tesoLFCDocToolStripMenuItem.Click += new System.EventHandler(this.tesoLFCDocToolStripMenuItem_Click);
+            this.videtekFeactureDToolStripMenuItem.Name = "videtekFeactureDToolStripMenuItem";
+            this.videtekFeactureDToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.videtekFeactureDToolStripMenuItem.Text = "VidetekFeacture(&D)";
+            this.videtekFeactureDToolStripMenuItem.Click += new System.EventHandler(this.videtekFeactureDToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -335,6 +363,9 @@ namespace Open.Yuanfeng.Windows
         private System.Windows.Forms.ToolStripMenuItem dynamicInvokeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tesoFaceFeatureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tesoLFCDocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redisClientDocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem videtekFeactureDToolStripMenuItem;
     }
 }
 

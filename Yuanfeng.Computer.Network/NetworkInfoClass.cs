@@ -71,7 +71,10 @@ namespace Yuanfeng.Computer.Network
         {
             string hostname = Dns.GetHostName();
             IPHostEntry localhost = Dns.GetHostEntry(hostname);
-            IPAddress localaddr = localhost.AddressList.ToList().Find(new Predicate<IPAddress>((IPAddress ipaddr)=> { return ipaddr.AddressFamily == AddressFamily.InterNetwork; }));
+            IPAddress localaddr = localhost.AddressList.ToList().Find(new Predicate<IPAddress>((IPAddress ipaddr) =>
+            {
+                return ipaddr.AddressFamily == AddressFamily.InterNetwork;
+            }));
             return localaddr.ToString();
         }
     }

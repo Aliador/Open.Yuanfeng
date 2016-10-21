@@ -191,7 +191,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
                 int sexCode = TypeHelper.ParseInt(EncodingConvert(bytes, i, 2));
                 i += 2;
                 int nationCode = TypeHelper.ParseInt(EncodingConvert(bytes, i, 4));
-                string nation = new EthnicityCollection()[nationCode];
+                string nation = new VolkCollection()[nationCode];
                 i += 4;
                 int birthDate = TypeHelper.ParseInt(EncodingConvert(bytes, i, 16));
                 i += 16;
@@ -213,8 +213,8 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
                 idCardInfo.Authority = issuingAuthority;
                 idCardInfo.AuthortityDate = issuingDate;
                 idCardInfo.Name = name;
-                idCardInfo.Ethnicity = nation;
-                idCardInfo.EthnicityCode = TypeHelper.ParseString(nationCode);
+                idCardInfo.Volk = nation;
+                idCardInfo.VolkCode = TypeHelper.ParseString(nationCode);
                 idCardInfo.Sex = DecodeSex(sexCode);
                 idCardInfo.SexCode = TypeHelper.ParseString(sexCode);
             }

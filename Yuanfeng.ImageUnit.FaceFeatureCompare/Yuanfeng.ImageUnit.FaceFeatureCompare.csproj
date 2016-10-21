@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaqianSDK.cs" />
     <Compile Include="IFaceFeatureContoller.cs" />
     <Compile Include="ILiveFaceCompare.cs" />
     <Compile Include="TaiSDK.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="ULFControl.Designer.cs">
       <DependentUpon>ULFControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="VidetekLController.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxcriterionLib">
@@ -87,7 +89,18 @@
       <DependentUpon>ULFControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
+      <Project>{476D2977-9746-4264-8A7C-003FB02EF0C4}</Project>
+      <Name>Yuanfeng.Smarty</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Reactor_Enabled="1" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="" Reactor_Output="" Reactor_Deploy="0" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

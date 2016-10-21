@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace Yuanfeng.ImageUnit.FaceFeatureCompare
@@ -40,17 +41,31 @@ namespace Yuanfeng.ImageUnit.FaceFeatureCompare
             string value = xes[0].InnerText;
             return "0".Equals(value.Trim());
         }
-
+        private string GetImg64(string xml)
+        {
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(xml);
+                var xes = doc.DocumentElement.SelectNodes("imgBase");
+                return xes[0].InnerText;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
         private void GetImageEvent(object sender, AxcriterionLib._IstdfcectlEvents_GetImageEventEvent e)
         {
-            if (e.dwResult == 0)
+            string bmp = string.Empty;
+            string result = axstdfcectl1.GetImageData(0);
+            bmp = GetImg64(result);
+            string gray = string.Empty;
+            result = axstdfcectl1.GetImageData(1);
+            gray = GetImg64(result);
+            if (this.handler != null)
             {
-                string bmp = axstdfcectl1.GetImageData(0);
-                string gray = axstdfcectl1.GetImageData(1);
-                if (this.handler != null)
-                {
-                    handler.Invoke(bmp, gray);
-                }
+                handler.Invoke(bmp, gray);
             }
         }
     }

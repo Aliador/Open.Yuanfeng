@@ -69,7 +69,7 @@
             this.tbSvrPort.Name = "tbSvrPort";
             this.tbSvrPort.Size = new System.Drawing.Size(67, 21);
             this.tbSvrPort.TabIndex = 8;
-            this.tbSvrPort.Text = "8000";
+            this.tbSvrPort.Text = "8099";
             // 
             // btnOpen
             // 

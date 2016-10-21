@@ -17,6 +17,7 @@ namespace Yuanfeng.Net.SocketX
         private UdpClient simpleSvrClient;
         private System.Threading.Thread threadlistener;
         private bool isOpen = false;
+        public string IpAddr { get { return localIpAddr; } }
         public void Close()
         {
             if (isOpen && simpleSvrClient != null)

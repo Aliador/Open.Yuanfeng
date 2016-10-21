@@ -328,5 +328,38 @@ namespace Open.Yuanfeng.Windows
 
             SimpleConsole.WriteLine("The tesoLFCDoc dummy loaded.");
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var doc = new DummyDoc();
+            doc.Show(MainDockPanel, DockState.Document);
+            doc.FormClosing += DummyClosing;
+        }
+
+        private SocketX.RedisClientDoc redisDoc;
+        private void InitRedisDoc()
+        {
+            if (redisDoc == null || redisDoc.IsDisposed) redisDoc = new SocketX.RedisClientDoc();
+        }
+        private void redisClientDocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitRedisDoc();
+            this.redisClientDocToolStripMenuItem.Checked = true;
+            redisDoc.Show(MainDockPanel, DockState.Document);
+            redisDoc.FormClosing += DummyClosing;
+        }
+
+        private ImageUtil.VidetekDoc videtekDoc;
+        private void InitvidetekDoc()
+        {
+            if (videtekDoc == null || videtekDoc.IsDisposed) videtekDoc = new ImageUtil.VidetekDoc();
+        }
+        private void videtekFeactureDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitvidetekDoc();
+            this.videtekFeactureDToolStripMenuItem.Checked = true;
+            videtekDoc.Show(MainDockPanel, DockState.Document);
+            videtekDoc.FormClosing += DummyClosing;
+        }
     }
 }

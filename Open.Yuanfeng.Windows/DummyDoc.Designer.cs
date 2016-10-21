@@ -1,4 +1,6 @@
-﻿namespace Open.Yuanfeng.Windows
+﻿using Yuanfeng.Controls.Simple;
+
+namespace Open.Yuanfeng.Windows
 {
     partial class DummyDoc
     {
@@ -28,13 +30,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(252, 199);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "This back Control";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DummyDoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 305);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(636, 421);
+            this.Controls.Add(this.button1);
             this.Name = "DummyDoc";
             this.Text = "Unname Doc";
             this.ResumeLayout(false);
@@ -42,5 +57,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
     }
 }

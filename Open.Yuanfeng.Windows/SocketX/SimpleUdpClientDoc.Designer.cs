@@ -71,7 +71,7 @@
             this.tbSvrIpAddr.Name = "tbSvrIpAddr";
             this.tbSvrIpAddr.Size = new System.Drawing.Size(167, 21);
             this.tbSvrIpAddr.TabIndex = 2;
-            this.tbSvrIpAddr.Text = "192.168.100.199";
+            this.tbSvrIpAddr.Text = "192.168.100.2";
             // 
             // label1
             // 
@@ -97,7 +97,7 @@
             this.tbSvrPort.Name = "tbSvrPort";
             this.tbSvrPort.Size = new System.Drawing.Size(67, 21);
             this.tbSvrPort.TabIndex = 2;
-            this.tbSvrPort.Text = "8000";
+            this.tbSvrPort.Text = "8099";
             // 
             // tbMsg
             // 

@@ -4,9 +4,92 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
+namespace Yuanfeng.Smarty
 {
-    public class EthnicityCollection : IList<string>
+    public class Volks
+    {
+        private static string[] nationArray = new string[]
+        {
+            "",
+            "汉",
+            "蒙古",
+            "回",
+            "藏",
+            "维吾尔",
+            "苗",
+            "彝",
+            "壮",
+            "布依",
+            "朝鲜",
+            "满",
+            "侗",
+            "瑶",
+            "白",
+            "土家",
+            "哈尼",
+            "哈萨克",
+            "傣",
+            "黎",
+            "傈僳",
+            "佤",
+            "畲",
+            "高山",
+            "拉祜",
+            "水",
+            "东乡",
+            "纳西",
+            "景颇",
+            "柯尔克孜",
+            "土",
+            "达斡尔",
+            "仫佬",
+            "羌",
+            "布朗",
+            "撒拉",
+            "毛南",
+            "仡佬",
+            "锡伯",
+            "阿昌",
+            "普米",
+            "塔吉克",
+            "怒",
+            "乌孜别克",
+            "俄罗斯",
+            "鄂温克",
+            "德昂",
+            "保安",
+            "裕固",
+            "京",
+            "塔塔尔",
+            "独龙",
+            "鄂伦春",
+            "赫哲",
+            "门巴",
+            "珞巴",
+            "基诺"
+        };
+        public static List<Volk> Init()
+        {
+            var tmps = new List<Volk>();
+            for (int i = 0; i < nationArray.Length; i++)
+            {
+                tmps.Add(new Volk(Convert.ToString(i), nationArray[i]));
+            }
+            return tmps;
+        }
+    }
+    public class Volk
+    {
+        public Volk() { }
+        public Volk(string code, string name) : this()
+        {
+            this.Code = code;
+            this.Name = name;
+        }
+        public string Code { get; set; }
+        public string Name { get; set; }
+    }
+    public class VolkCollection : IList<string>
     {
         private string[] nationArray = new string[]
         {
@@ -80,7 +163,7 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
             {
 
             }
-        }        
+        }
 
         public int Count
         {
@@ -129,12 +212,12 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
 
         public void Add(string item)
         {
-            
+
         }
 
         public void Clear()
         {
-            
+
         }
 
         public bool Contains(object value)

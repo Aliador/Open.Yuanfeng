@@ -15,12 +15,12 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
         /// <summary>
         /// 民族
         /// </summary>
-        public string Ethnicity { get; set; }
+        public string Volk { get; set; }
 
         /// <summary>
         /// 民族代码
         /// </summary>
-        public string EthnicityCode { get; set; }
+        public string VolkCode { get; set; }
 
         /// <summary>
         /// 签发机关
@@ -86,8 +86,8 @@ namespace Yuanfeng.ExternalUnit.SerialCommPort.IDR
         {
             StringBuilder line = new StringBuilder();
             line.AppendLine("姓名：" + Name);
-            line.AppendLine("民族：" + Ethnicity);
-            line.AppendLine("民族代码：" + EthnicityCode);
+            line.AppendLine("民族：" + Volk);
+            line.AppendLine("民族代码：" + VolkCode);
             line.AppendLine("性别：" + Sex);
             line.AppendLine("性别代码：" + SexCode);
             line.AppendLine("身份证号码：" + CitizenIDNumber);

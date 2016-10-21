@@ -13,6 +13,20 @@ namespace Yuanfeng.Log4netx.UdpServer
     {
         static void Main(string[] args)
         {
+            try
+            {
+                StartServer();
+            }
+            catch (Exception exception)
+            {
+                Console.Write(exception);
+                Console.Write("尝试重启服务器...");
+                StartServer();
+            }
+        }
+
+        private static void StartServer()
+        {
             Console.Title = "[Yuanfeng] Log UDP Server v1.0";
             Console.WriteLine("正在启动日志服务...");
 
@@ -43,7 +57,9 @@ namespace Yuanfeng.Log4netx.UdpServer
                 Console.Write(msg.Message + ",");
                 Console.WriteLine(msg.Exception);
             }));
-            Console.WriteLine("启动成功，退出系统[exit]");
+            Console.WriteLine("日志服务启动成功..");
+            Console.WriteLine(string.Format("服务器IP地址：{0}，端口：8000", server.IpAddr));
+            Console.WriteLine("操作命令：【1、exit-退出】");
             while (true)
             {
                 string line = Console.ReadLine();
