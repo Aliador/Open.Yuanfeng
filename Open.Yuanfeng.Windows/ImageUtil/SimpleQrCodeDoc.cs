@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
-using Yuanfeng.ImageUnit.QrCode;
+using Yuanfeng.Unit.QrCode;
 using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows.ImageUtil

@@ -31,15 +31,17 @@ namespace Yuanfeng.PluginEngine
             {
                 if (!Directory.Exists(pluginRootDir)) throw new Exception("未找到指定目录：" + pluginRootDir);
 
-                string[] exeFiles = Directory.GetFiles(pluginRootDir, "*.exe");
-                string[] dllFiles = Directory.GetFiles(pluginRootDir, "*.dll");
-                string[] files = new string[exeFiles.Length + dllFiles.Length];
-                exeFiles.CopyTo(files, 0);
-                dllFiles.CopyTo(files, exeFiles.Length);
+                string[] exes = Directory.GetFiles(pluginRootDir, "*.exe");
+                string[] dlls = Directory.GetFiles(pluginRootDir, "*.dll");
+                string[] files = new string[exes.Length + dlls.Length];
+                exes.CopyTo(files, 0);
+                dlls.CopyTo(files, exes.Length);
 
-                var matchFiles = from val in files where MatchFile(new FileInfo(val).Name) select val;
+                Console.WriteLine(" Load assemblys filter:" + this.plugins.Filter);
 
-                return matchFiles.ToList<string>();
+                var matchs = from val in files where MatchFile(new FileInfo(val).Name) select val;
+
+                return matchs.ToList<string>();
             }
         }
 
@@ -48,9 +50,9 @@ namespace Yuanfeng.PluginEngine
             string filter = this.plugins.Filter;
             foreach (var item in filter.Split(','))
             {
-                if (!string.IsNullOrEmpty(item) && fileName.Contains(item)) return false;
+                if (!string.IsNullOrEmpty(item) && fileName.Contains(item)) return true;
             }
-            return true;
+            return false;
         }
 
         private TypeInfo FindTypeInfo(string assembly, string classname)
@@ -74,6 +76,7 @@ namespace Yuanfeng.PluginEngine
                 {
                     if (!assemblyFiles.ContainsKey(file))
                     {
+                        Console.WriteLine("Plugin Loading (" + file + ")");
                         Assembly assembly = Assembly.LoadFile(file);
                         assemblys.Add(assembly);
                         assemblyFiles.Add(file, true);
@@ -162,6 +165,7 @@ namespace Yuanfeng.PluginEngine
         }
         private PluginLoader()
         {
+            this.plugins = new ConfigParser().Plugins;
             this.pluginRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this.plugins.RootDir);
             LoadTypeFromFile();
         }

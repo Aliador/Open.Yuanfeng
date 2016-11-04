@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Yuanfeng.ImageUnit.FaceFeatureCompare;
+using Yuanfeng.Unit.FaceFeatureCompare;
 using Yuanfeng.Smarty;
 using Yuanfeng.WinFormsUI.Docking;
 
@@ -19,7 +19,7 @@ namespace Open.Yuanfeng.Windows.ImageUtil
             InitializeComponent();
         }
 
-        private IFaceFeatureContoller controller = VidetekLController.New();
+        private IFaceFeatureContoller controller = VidetekController.New();
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -39,7 +39,8 @@ namespace Open.Yuanfeng.Windows.ImageUtil
 
         private void button3_Click(object sender, EventArgs e)
         {
-            controller.Init();
+            int result = controller.Init();
+            MessageBox.Show(result.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)

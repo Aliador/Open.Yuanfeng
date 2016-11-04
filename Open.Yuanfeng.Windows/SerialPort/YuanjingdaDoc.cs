@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
 
-using Yuanfeng.ExternalUnit.SerialCommPort.Yuanjingda;
+using Yuanfeng.Unit.SerialCommPort.Yuanjingda;
 using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows.SerialPort

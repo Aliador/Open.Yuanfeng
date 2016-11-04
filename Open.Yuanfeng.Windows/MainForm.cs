@@ -361,5 +361,18 @@ namespace Open.Yuanfeng.Windows
             videtekDoc.Show(MainDockPanel, DockState.Document);
             videtekDoc.FormClosing += DummyClosing;
         }
+
+        private SerialPort.SimpleAviDoc aviDoc;
+        private void InitAviDoc()
+        {
+            if (aviDoc == null || aviDoc.IsDisposed) aviDoc = new SerialPort.SimpleAviDoc();
+        }
+        private void aviRecorderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitAviDoc();
+            this.aviRecorderToolStripMenuItem.Checked = true;
+            aviDoc.Show(MainDockPanel, DockState.Document);
+            aviDoc.FormClosing += DummyClosing;
+        }
     }
 }

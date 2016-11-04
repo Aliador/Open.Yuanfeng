@@ -1,4 +1,4 @@
-﻿using Yuanfeng.ImageUnit.FaceFeatureCompare;
+﻿using Yuanfeng.Unit.FaceFeatureCompare;
 
 namespace Open.Yuanfeng.Windows.ImageUtil
 {
@@ -174,6 +174,8 @@ namespace Open.Yuanfeng.Windows.ImageUtil
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TesoLFCDoc";
             this.Text = "TesoLFCDoc";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TesoLFCDoc_FormClosing);
+            this.Load += new System.EventHandler(this.TesoLFCDoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGray)).EndInit();
             this.ResumeLayout(false);

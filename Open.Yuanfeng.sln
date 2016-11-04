@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Yuanfeng.Windows", "Op
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Computer.Network", "Yuanfeng.Computer.Network\Yuanfeng.Computer.Network.csproj", "{3E4CF85B-0207-4BAD-AF54-4523434A42F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ExternalUnit.SerialCommPort", "Yuanfeng.ExternalUnit.SerialCommPort\Yuanfeng.ExternalUnit.SerialCommPort.csproj", "{CCE59962-3B56-4D8B-949C-1A6699DD945D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.SerialCommPort", "Yuanfeng.Unit.SerialCommPort\Yuanfeng.Unit.SerialCommPort.csproj", "{CCE59962-3B56-4D8B-949C-1A6699DD945D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Smarty", "Yuanfeng.Smarty\Yuanfeng.Smarty.csproj", "{476D2977-9746-4264-8A7C-003FB02EF0C4}"
 EndProject
@@ -19,15 +19,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockPanel.WinFormsUI", "Doc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockPanel.ThemeVS2012", "DockPanel.WinFormsUI\DockPanel.ThemeVS2012.csproj", "{4ED4FDB5-9FD0-49E6-876D-1635F727C755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ExternalUnit.Print", "Yuanfeng.ExternalUnit.Print\Yuanfeng.ExternalUnit.Print.csproj", "{82198B81-2D73-4578-B765-9D60515852A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.Print", "Yuanfeng.Unit.Print\Yuanfeng.Unit.Print.csproj", "{82198B81-2D73-4578-B765-9D60515852A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.QrCode", "Yuanfeng.ImageUnit.QrCode\Yuanfeng.ImageUnit.QrCode.csproj", "{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.QrCode", "Yuanfeng.Unit.QrCode\Yuanfeng.Unit.QrCode.csproj", "{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Net.SocketX", "Yuanfeng.Net.SocketX\Yuanfeng.Net.SocketX.csproj", "{69C13851-4AA9-4F92-9CF5-6AA9D4BF4824}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.Gray", "Yuanfeng.ImageUnit.Gray\Yuanfeng.ImageUnit.Gray.csproj", "{04007866-4422-4E69-8BC2-9062EB74CB88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.Gray", "Yuanfeng.Unit.Gray\Yuanfeng.Unit.Gray.csproj", "{04007866-4422-4E69-8BC2-9062EB74CB88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.OCR", "Yuanfeng.ImageUnit.OCR\Yuanfeng.ImageUnit.OCR.csproj", "{8DC928DA-3AE2-483C-B00D-C435B40069AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.OCR", "Yuanfeng.Unit.OCR\Yuanfeng.Unit.OCR.csproj", "{8DC928DA-3AE2-483C-B00D-C435B40069AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Log4netX", "Yuanfeng.Log4netx\Yuanfeng.Log4netX.csproj", "{8732E9B4-1206-4C7B-A287-82E1C331036F}"
 EndProject
@@ -37,9 +37,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.PluginEngine", "Yu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.HttpX", "Yuanfeng.HttpX\Yuanfeng.HttpX.csproj", "{5AEAD1BE-58F6-4285-BB15-52260A75B13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.ImageUnit.FaceFeatureCompare", "Yuanfeng.ImageUnit.FaceFeatureCompare\Yuanfeng.ImageUnit.FaceFeatureCompare.csproj", "{3032133E-6D74-4D67-A5D1-8BA245E4D3E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.FaceFeatureCompare","Yuanfeng.Unit.FaceFeatureCompare\Yuanfeng.Unit.FaceFeatureCompare.csproj", "{3032133E-6D74-4D67-A5D1-8BA245E4D3E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Controls.Simple", "Yuanfeng.Controls.Simple\Yuanfeng.Controls.Simple.csproj", "{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.AviRec", "Yuanfeng.Unit.AviRec\Yuanfeng.Unit.AviRec.csproj", "{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

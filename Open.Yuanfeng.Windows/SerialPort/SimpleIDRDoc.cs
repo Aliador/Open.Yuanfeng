@@ -1,6 +1,6 @@
 ﻿using System;
 using Yuanfeng.WinFormsUI.Docking;
-using Yuanfeng.ExternalUnit.SerialCommPort.IDR;
+using Yuanfeng.Unit.SerialCommPort.IDR;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Smarty;
 

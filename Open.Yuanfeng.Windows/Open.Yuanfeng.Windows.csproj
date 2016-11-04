@@ -131,6 +131,12 @@
     <Compile Include="ImageUtil\VidetekDoc.Designer.cs">
       <DependentUpon>VidetekDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageUtil\VidetekLiveingDetectDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\VidetekLiveingDetectDoc.Designer.cs">
+      <DependentUpon>VidetekLiveingDetectDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,12 @@
     </Compile>
     <Compile Include="SerialPort\CameraControlToolDoc.Designer.cs">
       <DependentUpon>CameraControlToolDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerialPort\SimpleAviDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialPort\SimpleAviDoc.Designer.cs">
+      <DependentUpon>SimpleAviDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="SerialPort\SimpleCameraDoc.cs">
       <SubType>Form</SubType>
@@ -223,6 +235,9 @@
     <EmbeddedResource Include="ImageUtil\VidetekDoc.resx">
       <DependentUpon>VidetekDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\VidetekLiveingDetectDoc.resx">
+      <DependentUpon>VidetekLiveingDetectDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\CameraControlToolDoc.resx">
       <DependentUpon>CameraControlToolDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SerialPort\SimpleAviDoc.resx">
+      <DependentUpon>SimpleAviDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SerialPort\SimpleCameraDoc.resx">
       <DependentUpon>SimpleCameraDoc.cs</DependentUpon>
@@ -298,29 +316,29 @@
       <Project>{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}</Project>
       <Name>Yuanfeng.Controls.Simple</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.ExternalUnit.SerialCommPort\Yuanfeng.ExternalUnit.SerialCommPort.csproj">
+    <ProjectReference Include="..\Yuanfeng.Unit.SerialCommPort\Yuanfeng.Unit.SerialCommPort.csproj">
       <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
-      <Name>Yuanfeng.ExternalUnit.SerialCommPort</Name>
+      <Name>Yuanfeng.Unit.SerialCommPort</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.HttpX\Yuanfeng.HttpX.csproj">
       <Project>{5AEAD1BE-58F6-4285-BB15-52260A75B13F}</Project>
       <Name>Yuanfeng.HttpX</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.ImageUnit.FaceFeatureCompare\Yuanfeng.ImageUnit.FaceFeatureCompare.csproj">
+    <ProjectReference Include="..\Yuanfeng.Unit.FaceFeatureCompare\Yuanfeng.Unit.FaceFeatureCompare.csproj">
       <Project>{3032133E-6D74-4D67-A5D1-8BA245E4D3E0}</Project>
-      <Name>Yuanfeng.ImageUnit.FaceFeatureCompare</Name>
+      <Name>Yuanfeng.Unit.FaceFeatureCompare</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.ImageUnit.Gray\Yuanfeng.ImageUnit.Gray.csproj">
+    <ProjectReference Include="..\Yuanfeng.Unit.Gray\Yuanfeng.Unit.Gray.csproj">
       <Project>{04007866-4422-4E69-8BC2-9062EB74CB88}</Project>
-      <Name>Yuanfeng.ImageUnit.Gray</Name>
+      <Name>Yuanfeng.Unit.Gray</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.ImageUnit.OCR\Yuanfeng.ImageUnit.OCR.csproj">
+    <ProjectReference Include="..\Yuanfeng.Unit.OCR\Yuanfeng.Unit.OCR.csproj">
       <Project>{8DC928DA-3AE2-483C-B00D-C435B40069AA}</Project>
-      <Name>Yuanfeng.ImageUnit.OCR</Name>
+      <Name>Yuanfeng.Unit.OCR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.ImageUnit.QrCode\Yuanfeng.ImageUnit.QrCode.csproj">
+    <ProjectReference Include="..\Yuanfeng.Unit.QrCode\Yuanfeng.Unit.QrCode.csproj">
       <Project>{12CA7FD9-B421-4397-A8DA-16E8A7B2B872}</Project>
-      <Name>Yuanfeng.ImageUnit.QrCode</Name>
+      <Name>Yuanfeng.Unit.QrCode</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Log4netx\Yuanfeng.Log4netX.csproj">
       <Project>{8732E9B4-1206-4C7B-A287-82E1C331036F}</Project>
@@ -337,6 +355,10 @@
     <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
       <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
       <Name>Yuanfeng.Smarty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Unit.AviRec\Yuanfeng.Unit.AviRec.csproj">
+      <Project>{fb64ff3b-001f-4e79-9c87-94fd4771b3e5}</Project>
+      <Name>Yuanfeng.Unit.AviRec</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

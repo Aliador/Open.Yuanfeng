@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
-using Yuanfeng.ExternalUnit.SerialCommPort.Camera;
+using Yuanfeng.Unit.SerialCommPort.Camera;
 using Yuanfeng.Smarty;
 using Yuanfeng.Smarty.Encrypt;
 
@@ -62,8 +62,8 @@ namespace Open.Yuanfeng.Windows.SerialPort
 
                 SimpleConsole.WriteLine("Snapshot.");
 
-                byte[] encryptBuffer = AES.AESEncrypt(snapshotImageBuffer, "yuanfeng");
-                encryptBuffer.Writer(FileNameGenerator.Generator());
+                //byte[] encryptBuffer = AES.AESEncrypt(snapshotImageBuffer, "yuanfeng");
+                snapshotImageBuffer.Writer(FileNameGenerator.Generator());
 
                 var end = DateTime.Now;
 

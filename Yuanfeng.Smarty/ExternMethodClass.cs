@@ -664,6 +664,22 @@ namespace Yuanfeng.Smarty
 
             return DateTime.Now;
         }
+
+        public static int TryAge(this string s)
+        {
+            DateTime birth = TryDate(s);
+
+            return DateTime.Now.Year - birth.Year;
+        }
+
+        public static int TryAge(this string s, int len)
+        { 
+            DateTime birth = TryDate(s, len);
+
+            return DateTime.Now.Year - birth.Year;
+        }
+
+
         #endregion
 
         #region 字符串加解密

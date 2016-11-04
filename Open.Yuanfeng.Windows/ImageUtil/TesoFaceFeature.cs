@@ -6,8 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Yuanfeng.ExternalUnit.SerialCommPort.Camera;
-using Yuanfeng.ImageUnit.FaceFeatureCompare;
+using Yuanfeng.Unit.SerialCommPort.Camera;
+using Yuanfeng.Unit.FaceFeatureCompare;
 using Yuanfeng.Smarty;
 using Yuanfeng.WinFormsUI.Docking;
 

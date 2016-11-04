@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
-using Yuanfeng.ImageUnit.OCR;
+using Yuanfeng.Unit.OCR;
 using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows.ImageUtil

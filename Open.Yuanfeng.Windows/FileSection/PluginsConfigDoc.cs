@@ -25,7 +25,7 @@ namespace Open.Yuanfeng.Windows.FileSection
 
             if (plugins != null)
             {
-                this.lbConfigs.Items.Add("Version:" + plugins.Version + ",RootDir:" + plugins.RootDir + ",Multiple:" + plugins.Multiple);
+                this.lbConfigs.Items.Add("Version:" + plugins.Version + ",RootDir:" + plugins.RootDir + ",Multiple:" + plugins.Multiple+",Filter:"+plugins.Filter);
 
                 int count = plugins.Plugins.Count;
                 for (int i = 0; i < count; i++)
