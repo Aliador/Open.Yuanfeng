@@ -30,9 +30,12 @@ namespace Open.Yuanfeng.Windows.SerialPort
         private bool isRecord = false;
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            video = new AviRecorder(this.pictureBox1.Handle, 640, 480);
+            int x = 320;
+            int y = 240;
+            int index = this.cbbDvrs.SelectedIndex;
+            if (index == 1) { x = 640; y = 480; }
             //打开视频
-            if (video.StartWebCam(320, 240))
+            if (video.StartWebCam(x, y))
             {
                 video.get();
                 video.Capparms.fYield = true;
@@ -50,7 +53,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
             if (isOpened && isRecord)
             {
                 video.StopKinescope();
-                video.CompressVideoFfmpeg();
+                video.CompressVideoFfmpeg(true);
                 isRecord = false;
             }
         }
@@ -67,6 +70,12 @@ namespace Open.Yuanfeng.Windows.SerialPort
                 video.CloseWebcam();
                 isOpened = false;
             }
+        }
+
+        private void SimpleAviDoc_Load(object sender, EventArgs e)
+        {            
+            video = new AviRecorder(this.pictureBox1.Handle, 320, 240);
+            this.cbbDvrs.DataSource = video.CamDicts;
         }
     }
 }

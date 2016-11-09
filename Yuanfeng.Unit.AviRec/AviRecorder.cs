@@ -10,6 +10,8 @@ namespace Yuanfeng.Unit.AviRec
 {
     public class AviRecorder     //视频类
     {
+        public List<string> CamDicts = new List<string>();
+        private bool delsrc = false;
         public bool flag = true;
         private IntPtr lwndC;       //保存无符号句柄
         private IntPtr mControlPtr; //保存管理指示器
@@ -22,7 +24,7 @@ namespace Yuanfeng.Unit.AviRec
         private Win32.FrameEventHandler mFrameEventHandler;
         public Win32.CAPDRIVERCAPS CapDriverCAPS;//捕获驱动器的能力，如有无视频叠加能力、有无控制视频源、视频格式的对话框等；
         public Win32.CAPSTATUS CapStatus;//该结构用于保存视频设备捕获窗口的当前状态，如图像的宽、高等
-        string strFileName;
+        private string destFilename;        
         public AviRecorder(IntPtr handle, int width, int height)
         {
             CapDriverCAPS = new Win32.CAPDRIVERCAPS();//捕获驱动器的能力，如有无视频叠加能力、有无控制视频源、视频格式的对话框等；
@@ -30,6 +32,16 @@ namespace Yuanfeng.Unit.AviRec
             mControlPtr = handle; //显示视频控件的句柄
             mWidth = width;      //视频宽度
             mHeight = height;    //视频高度
+
+            for (int i = 0; i < 10; i++)
+            {
+                byte[] lpszName = new byte[100];
+                byte[] lpszVer = new byte[100];
+                if (Win32.capGetDriverDescriptionA((short)i, lpszName, 100, lpszVer, 100))
+                {
+                    CamDicts.Add(Convert.ToBase64String(lpszName).Trim());
+                }
+            }
         }
         public bool StartWebCam()
         {
@@ -57,7 +69,7 @@ namespace Yuanfeng.Unit.AviRec
             //{
             //    return false;
             //}
-            this.lwndC = Win32.capCreateCaptureWindow(null, Win32.WS_CHILD | Win32.WS_VISIBLE, 0, 0, mWidth, mHeight, mControlPtr, 0);//AVICap类的捕捉窗口
+            this.lwndC = Win32.capCreateCaptureWindow("My Own Capture Control", Win32.WS_CHILD | Win32.WS_VISIBLE, 0, 0, mWidth, mHeight, mControlPtr, 0);//AVICap类的捕捉窗口
             Win32.FrameEventHandler FrameEventHandler = new Win32.FrameEventHandler(FrameCallback);
             Win32.SendMessage(this.lwndC, Win32.WM_CAP_SET_CALLBACK_ERROR, 0, 0);//注册错误回调函数
             Win32.SendMessage(this.lwndC, Win32.WM_CAP_SET_CALLBACK_STATUS, 0, 0);//注册状态回调函数 
@@ -166,7 +178,7 @@ namespace Yuanfeng.Unit.AviRec
         {
             try
             {
-                strFileName = path;
+                destFilename = path;
                 string dir = path.Remove(path.LastIndexOf("\\"));
                 if (!File.Exists(dir))
                 {
@@ -199,57 +211,26 @@ namespace Yuanfeng.Unit.AviRec
             if (this.RecievedFrame != null)
                 this.RecievedFrame(VideoData);
         }
-        private Thread myThread;
-
-        public void CompressVideoFfmpeg()
+        public void CompressVideoFfmpeg(bool delsrc)
         {
-            myThread = new Thread(new ThreadStart(testfn));
-            myThread.Start();
+            testfn();
+            this.delsrc = delsrc;
         }
         private void testfn()
         {
-            string file_name = strFileName;
-            string command_line = " -i " + file_name + " -vcodec libx264 -cqp 25 -y " + file_name.Replace(".avi", "_264") + ".avi";
+            string filename = destFilename;
+            string args = " -i " + filename + " -vcodec libx264 -cqp 25 -y " + filename.Replace(".avi", "_264") + ".avi";
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
             proc.StartInfo.UseShellExecute = false; //use false if you want to hide the window
             proc.StartInfo.CreateNoWindow = true;
             proc.StartInfo.FileName = "ffmpeg";
-            proc.StartInfo.Arguments = command_line;
+            proc.StartInfo.Arguments = args;
             proc.Start();
             proc.WaitForExit();
             proc.Close();
-            // 删除原始avi文件
-            FileInfo file = new FileInfo(file_name);
-            if (file.Exists)
-            {
-                try
-                {
-                    file.Delete(); //删除单个文件
-                }
-                catch (Exception e)
-                {
-                    (new Thread(() =>
-                    {
-                        bool b = false;
-                        for (int i = 0; i < 5; i++)
-                        {
-                            Thread.Sleep(10000 * (i * i));
-                            try
-                            {
-                                file.Delete();
-                                b = true;
-                                break;
-                            }
-                            catch
-                            {
-                            }
-                        };
-                        if (!b) throw new Exception("压缩失败");
-                    }
-                    )).Start();
-                }
-            }
+
+            if (delsrc && File.Exists(filename)) File.Delete(filename);
         }
     }
 }

@@ -37,6 +37,8 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnClose = new System.Windows.Forms.Button();
+            this.cbbDvrs = new System.Windows.Forms.ComboBox();
+            this.cbbRts = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,11 +116,32 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // cbbDvrs
+            // 
+            this.cbbDvrs.FormattingEnabled = true;
+            this.cbbDvrs.Location = new System.Drawing.Point(338, 142);
+            this.cbbDvrs.Name = "cbbDvrs";
+            this.cbbDvrs.Size = new System.Drawing.Size(75, 20);
+            this.cbbDvrs.TabIndex = 4;
+            // 
+            // cbbRts
+            // 
+            this.cbbRts.FormattingEnabled = true;
+            this.cbbRts.Items.AddRange(new object[] {
+            "320x240",
+            "640x480"});
+            this.cbbRts.Location = new System.Drawing.Point(338, 168);
+            this.cbbRts.Name = "cbbRts";
+            this.cbbRts.Size = new System.Drawing.Size(75, 20);
+            this.cbbRts.TabIndex = 4;
+            // 
             // SimpleAviDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 307);
+            this.Controls.Add(this.cbbRts);
+            this.Controls.Add(this.cbbDvrs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbDestfile);
             this.Controls.Add(this.btnClose);
@@ -129,6 +152,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "SimpleAviDoc";
             this.Text = "SimpleAviDoc";
+            this.Load += new System.EventHandler(this.SimpleAviDoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +170,7 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ComboBox cbbDvrs;
+        private System.Windows.Forms.ComboBox cbbRts;
     }
 }
