@@ -17,7 +17,7 @@ namespace Open.Yuanfeng.Windows.ImageUtil
         public VidetekLiveingDetectDoc()
         {
             InitializeComponent();
-            this.videtekLDControl1.completedHandler += new LFCompletedHandler(handle);
+            this.videtekLDControl1.completedHandler += new LiveRecongtionCompletedHandler(handle);
         }
 
         void handle(string a, string b)

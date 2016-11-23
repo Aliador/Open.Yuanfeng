@@ -19,10 +19,10 @@ namespace Open.Yuanfeng.Windows.ImageUtil
             InitializeComponent();
         }
 
-        private ILiveFaceCompare LFC = new TesoLFContoller();
+        private ILiveFaceCompare LFC = new TesoLiveReconitionContoller();
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            LFC.Init(this.panelContainer, new LFCompletedHandler((string bmp, string gray) =>
+            LFC.Init(this.panelContainer, new LiveRecongtionCompletedHandler((string bmp, string gray) =>
             {
                 if (string.IsNullOrEmpty(bmp) || string.IsNullOrEmpty(gray))
                 {
@@ -67,7 +67,7 @@ namespace Open.Yuanfeng.Windows.ImageUtil
         private bool completed = true;
         private void TesoLFCDoc_Load(object sender, EventArgs e)
         {
-            LFC.Init(this.panelContainer, new LFCompletedHandler((string bmp, string gray) =>
+            LFC.Init(this.panelContainer, new LiveRecongtionCompletedHandler((string bmp, string gray) =>
             {
                 this.Invoke(new Action(() =>
                 {

@@ -27,48 +27,53 @@ namespace Yuanfeng.Log4netx.UdpServer
 
         private static void StartServer()
         {
-            Console.Title = "[Yuanfeng] Log UDP Server v1.0";
-            Console.WriteLine("正在启动日志服务...");
-
-            ILogX log = LogX.NewLogger(typeof(Program));
-            IUdpServerX server = new SimpleUdpServer();
-
-            server.Create(8000, new OnReceivedMsgDelegate((string ipaddr, object obj) =>
+            ILogX log = null;
+            try
             {
-                UdpMsg msg = obj as UdpMsg;
-                switch (msg.Level)
+                Console.Title = "[Yuanfeng] Log UDP Server v1.0";
+                Console.WriteLine("正在启动日志服务...");
+
+                log = LogX.NewLogger(typeof(Program));
+                IUdpServerX server = new SimpleUdpServer();
+
+                server.Create(8000, new OnReceivedMsgDelegate((string ipaddr, object obj) =>
                 {
-                    case Level.DEBUG:
-                        log.Debug(msg.Logger, msg.Message, msg.Exception);
-                        break;
-                    case Level.FATAL:
-                        log.Fatal(msg.Logger, msg.Message, msg.Exception);
-                        break;
-                    case Level.INFO:
-                        log.Info(msg.Logger, msg.Message, msg.Exception);
-                        break;
-                    case Level.ERROR:
-                        log.Error(msg.Logger, msg.Message, msg.Exception);
-                        break;
-                    default:
-                        break;
-                }
-                Console.Write("[" + ipaddr + "]");
-                Console.Write(msg.Message + ",");
-                Console.WriteLine(msg.Exception);
-            }));
-            Console.WriteLine("日志服务启动成功..");
-            Console.WriteLine(string.Format("服务器IP地址：{0}，端口：8000", server.IpAddr));
-            Console.WriteLine("操作命令：【1、exit-退出】");
-            while (true)
-            {
-                string line = Console.ReadLine();
-                if ("exit".Equals(line))
+                    UdpMsg msg = obj as UdpMsg;
+                    switch (msg.Level)
+                    {
+                        case Level.DEBUG:
+                            log.Debug(msg.Logger, msg.Message, msg.Exception);
+                            break;
+                        case Level.FATAL:
+                            log.Fatal(msg.Logger, msg.Message, msg.Exception);
+                            break;
+                        case Level.INFO:
+                            log.Info(msg.Logger, msg.Message, msg.Exception);
+                            break;
+                        case Level.ERROR:
+                            log.Error(msg.Logger, msg.Message, msg.Exception);
+                            break;
+                        default:
+                            break;
+                    }
+                    Console.Write("[" + ipaddr + "]");
+                    Console.Write(msg.Message + ",");
+                    Console.WriteLine(msg.Exception);
+                }));
+                Console.WriteLine("日志服务启动成功..");
+                Console.WriteLine(string.Format("服务器IP地址：{0}，端口：8000", server.IpAddr));
+                Console.WriteLine("操作命令：【1、exit-退出】");
+                while (true)
                 {
-                    server.Close();
-                    break;
+                    string line = Console.ReadLine();
+                    if ("exit".Equals(line))
+                    {
+                        server.Close();
+                        break;
+                    }
                 }
             }
+            catch (Exception exception) { log.Error(exception); }
         }
     }
 }

@@ -374,5 +374,17 @@ namespace Open.Yuanfeng.Windows
             aviDoc.Show(MainDockPanel, DockState.Document);
             aviDoc.FormClosing += DummyClosing;
         }
+        private FileSection.TestDoc testDoc;
+        private void InitTestDoc()
+        {
+            if (testDoc == null || testDoc.IsDisposed) testDoc = new FileSection.TestDoc();
+        }
+        private void testDocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitTestDoc();
+            this.testDocToolStripMenuItem.Checked = true;
+            testDoc.Show(MainDockPanel, DockState.Document);
+            testDoc.FormClosing += DummyClosing;
+        }
     }
 }

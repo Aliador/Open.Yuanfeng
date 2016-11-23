@@ -1,9 +1,6 @@
 ﻿using log4net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Yuanfeng.Computer.Network;
+using System.Configuration;
 
 namespace Yuanfeng.Log4netX
 {
@@ -18,7 +15,7 @@ namespace Yuanfeng.Log4netX
 
         public static ILogX NewLogger()
         {
-           if (instance == null) instance = new LogX(); return instance;
+            if (instance == null) instance = new LogX(); return instance;
         }
 
         public static ILogX NewLogger(Type logger)
@@ -39,21 +36,24 @@ namespace Yuanfeng.Log4netX
             }
         }
 
-        private LogX() {
-            logger = NetworkInfoClass.GetLocalIpAddr();
-            log = LogManager.GetLogger("Yuanfeng log4net extern");
+        private LogX()
+        {
+            this.ipaddr = Yuanfeng.Computer.Network.NetworkInfoClass.GetLocalIpAddr();
+            this.logger = typeof(LogX).FullName;
+            this.log = LogManager.GetLogger("Yuanfeng log4net extern");
         }
 
         private LogX(Type logger)
         {
-            this.ipaddr = NetworkInfoClass.GetLocalIpAddr();
-            log = LogManager.GetLogger(logger);
+            this.ipaddr = Yuanfeng.Computer.Network.NetworkInfoClass.GetLocalIpAddr();
+            this.logger = logger.FullName;
+            this.log = LogManager.GetLogger(logger);
         }
 
         private void bindCustomProperties()
         {
-            log = LogManager.GetLogger(logger);
-            log4net.LogicalThreadContext.Properties["IpAddr"] = ipaddr;            
+            this.log = LogManager.GetLogger(logger);
+            log4net.LogicalThreadContext.Properties["IpAddr"] = ipaddr;
         }
 
         #region 一般实现

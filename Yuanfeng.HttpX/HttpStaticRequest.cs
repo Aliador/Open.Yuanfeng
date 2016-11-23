@@ -25,9 +25,9 @@ namespace Yuanfeng.HttpX
         /// <param name="methodname">方法名称</param>
         /// <param name="args">参数列表</param>
         /// <returns></returns>
-        public static object InvokeWebService(string url, string methodname, object[] args)
+        public static string InvokeWebService(string url, string methodname, object[] args)
         {
-            return InvokeWebService(url, "Yuanfeng.HttpX", null, methodname, args);
+            return InvokeWebService(url, "Yuanfeng.HttpX", methodname, args);
         }
         /// <summary>
         /// 动态调用web服务
@@ -37,9 +37,54 @@ namespace Yuanfeng.HttpX
         /// <param name="methodname">方法名称</param>
         /// <param name="args">参数列表</param>
         /// <returns></returns>
-        public static object InvokeWebService(string url, string @namespace, string methodname, object[] args)
+        public static string InvokeWebService(string url, string @namespace, string methodname, object[] args)
         {
-            return InvokeWebService(url, @namespace, null, methodname, args);
+            string reqVal = string.Empty;
+            try
+            {
+                CancellableTask.WorkCallback workCallBack = delegate (object obj)
+                {
+                    object val = "";
+                    try
+                    {
+                        val = InvokeWebService(url, @namespace, null, methodname, args);
+                    }
+                    catch (Exception exception)
+                    {
+                        SimpleConsole.WriteLine(exception);
+                        val = "请求地址不存在或参数错误";
+                    }
+                    reqVal = val.ToString();
+                    return val;
+                };
+                CancellableTask.CancelCallback cacelCallBack = delegate (object obj)
+                {
+                    reqVal = "请求超时，已被取消";
+                };
+                CancellableTask task = new CancellableTask(workCallBack, cacelCallBack);
+
+                AsyncCallback asyncCallback = delegate (IAsyncResult obj)
+                {
+                    try { task.EndInvoke(obj); } catch { }
+                    SimpleConsole.WriteLine("AsyncCallback");
+                };
+
+                var result = task.BeginInvoke(null, asyncCallback, null, 15 * 1000);
+                try
+                {
+                    object endResult = task.EndInvoke(result);
+                    SimpleConsole.WriteLine(endResult);
+                }
+                catch (Exception exception)
+                {
+                    SimpleConsole.WriteLine(exception);
+                }
+            }
+            catch (Exception exception)
+            {
+                reqVal = exception.Message;
+            }
+            return reqVal;
         }
 
         /// <summary>
@@ -121,48 +166,50 @@ namespace Yuanfeng.HttpX
             {
                 //获取WSDL
                 WebClient wc = new WebClient();
-                Stream stream = wc.OpenRead(url + "?WSDL");
-                ServiceDescription sd = ServiceDescription.Read(stream);
-                ServiceDescriptionImporter sdi = new ServiceDescriptionImporter();
-                sdi.AddServiceDescription(sd, "", "");
-                CodeNamespace cn = new CodeNamespace(@namespace);
-
-                //生成客户端代理类代码
-                CodeCompileUnit ccu = new CodeCompileUnit();
-                ccu.Namespaces.Add(cn);
-                sdi.Import(cn, ccu);
-                CSharpCodeProvider csc = new CSharpCodeProvider();
-                ICodeCompiler icc = csc.CreateCompiler();
-
-                //设定编译参数
-                CompilerParameters cplist = new CompilerParameters();
-                cplist.GenerateExecutable = false;
-                cplist.GenerateInMemory = true;
-                cplist.ReferencedAssemblies.Add("System.dll");
-                cplist.ReferencedAssemblies.Add("System.XML.dll");
-                cplist.ReferencedAssemblies.Add("System.Web.Services.dll");
-                cplist.ReferencedAssemblies.Add("System.Data.dll");
-
-                //编译代理类
-                CompilerResults cr = icc.CompileAssemblyFromDom(cplist, ccu);
-                if (true == cr.Errors.HasErrors)
+                using (Stream stream = wc.OpenRead(url + "?WSDL"))
                 {
-                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                    foreach (System.CodeDom.Compiler.CompilerError ce in cr.Errors)
+                    ServiceDescription sd = ServiceDescription.Read(stream);
+                    ServiceDescriptionImporter sdi = new ServiceDescriptionImporter();
+                    sdi.AddServiceDescription(sd, "", "");
+                    CodeNamespace cn = new CodeNamespace(@namespace);
+
+                    //生成客户端代理类代码
+                    CodeCompileUnit ccu = new CodeCompileUnit();
+                    ccu.Namespaces.Add(cn);
+                    sdi.Import(cn, ccu);
+                    CSharpCodeProvider csc = new CSharpCodeProvider();
+                    ICodeCompiler icc = csc.CreateCompiler();
+
+                    //设定编译参数
+                    CompilerParameters cplist = new CompilerParameters();
+                    cplist.GenerateExecutable = false;
+                    cplist.GenerateInMemory = true;
+                    cplist.ReferencedAssemblies.Add("System.dll");
+                    cplist.ReferencedAssemblies.Add("System.XML.dll");
+                    cplist.ReferencedAssemblies.Add("System.Web.Services.dll");
+                    cplist.ReferencedAssemblies.Add("System.Data.dll");
+
+                    //编译代理类
+                    CompilerResults cr = icc.CompileAssemblyFromDom(cplist, ccu);
+                    if (true == cr.Errors.HasErrors)
                     {
-                        sb.Append(ce.ToString());
-                        sb.Append(System.Environment.NewLine);
+                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                        foreach (System.CodeDom.Compiler.CompilerError ce in cr.Errors)
+                        {
+                            sb.Append(ce.ToString());
+                            sb.Append(System.Environment.NewLine);
+                        }
+                        throw new Exception(sb.ToString());
                     }
-                    throw new Exception(sb.ToString());
+
+                    //生成代理实例，并调用方法
+                    System.Reflection.Assembly assembly = cr.CompiledAssembly;
+                    Type t = assembly.GetType(@namespace + "." + classname, true, true);
+                    object obj = Activator.CreateInstance(t);
+                    System.Reflection.MethodInfo mi = t.GetMethod(methodname);
+
+                    return mi.Invoke(obj, args);
                 }
-
-                //生成代理实例，并调用方法
-                System.Reflection.Assembly assembly = cr.CompiledAssembly;
-                Type t = assembly.GetType(@namespace + "." + classname, true, true);
-                object obj = Activator.CreateInstance(t);
-                System.Reflection.MethodInfo mi = t.GetMethod(methodname);
-
-                return mi.Invoke(obj, args);
             }
             catch (Exception ex)
             {

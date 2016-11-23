@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,17 +42,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigParser.cs" />
+    <Compile Include="DynImage.cs" />
+    <Compile Include="DynImageCollection.cs" />
+    <Compile Include="ImageSection.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginCollection.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="PluginsSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcePreInit.cs" />
     <Compile Include="TypeInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="plugins.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
+      <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
+      <Name>Yuanfeng.Smarty</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

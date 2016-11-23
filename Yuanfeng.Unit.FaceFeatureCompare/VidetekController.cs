@@ -71,6 +71,8 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
                     {
                         score = -1;//比对失败
                     }
+
+                    if (File.Exists(img1)) File.Delete(img1); if (File.Exists(img2)) File.Delete(img2);
                 }
                 catch { }
                 return score;
@@ -87,6 +89,31 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
         public int Release()
         {
             if (isInited) return release(); return 1;
+        }
+
+        public FaceQuality Detect(byte[] buffer1)
+        {
+            if (isInited)
+            {
+                int quality = 0;
+                try
+                {
+                    int x = 0, y = 0, widht = 0, height = 0;
+                    img1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "videtek_img3.bmp");
+
+                    buffer1.ToBitmap().Save(img1, System.Drawing.Imaging.ImageFormat.Bmp);
+
+                    int result = detectface(img1, ref x, ref y, ref widht, ref height, ref quality);
+                    if (result == 0)
+                    {
+                        quality = 0;
+                    }
+                    if (File.Exists(img1)) File.Delete(img1);
+                    return new FaceQuality(x, y, widht, height, quality);
+                }
+                catch { }
+            }
+            return new FaceQuality();
         }
     }
 }

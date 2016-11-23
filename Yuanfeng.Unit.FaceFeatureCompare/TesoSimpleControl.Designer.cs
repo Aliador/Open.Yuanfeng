@@ -1,6 +1,6 @@
 ﻿namespace Yuanfeng.Unit.FaceFeatureCompare
 {
-    partial class ULFControl
+    partial class TesoSimpleControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ULFControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TesoSimpleControl));
             this.axstdfcectl1 = new AxcriterionLib.Axstdfcectl();
             ((System.ComponentModel.ISupportInitialize)(this.axstdfcectl1)).BeginInit();
             this.SuspendLayout();
@@ -39,15 +39,15 @@
             this.axstdfcectl1.Location = new System.Drawing.Point(0, 0);
             this.axstdfcectl1.Name = "axstdfcectl1";
             this.axstdfcectl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axstdfcectl1.OcxState")));
-            this.axstdfcectl1.Size = new System.Drawing.Size(640, 477);
+            this.axstdfcectl1.Size = new System.Drawing.Size(640, 480);
             this.axstdfcectl1.TabIndex = 0;
             // 
-            // ULFControl
+            // TesoSimpleControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.axstdfcectl1);
-            this.Name = "ULFControl";
+            this.Name = "TesoSimpleControl";
             this.Size = new System.Drawing.Size(640, 480);
             ((System.ComponentModel.ISupportInitialize)(this.axstdfcectl1)).EndInit();
             this.ResumeLayout(false);

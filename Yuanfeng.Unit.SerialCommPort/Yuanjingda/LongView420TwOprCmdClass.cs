@@ -35,12 +35,10 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
         {
             try
             {
+                this.serialPortReceivedDataDelegate = serialPortReceivedDataDelegate;
                 this.openedPortName = serialPort;
                 if (!this.openedPortName.ToLower().Contains("com")) throw new Exception("This port name is invalid.");
-                this.serialPortReceivedDataDelegate = serialPortReceivedDataDelegate;
-
                 if (this.serialPort != null && this.serialPort.IsOpen) throw new Exception("This serial port was using.");
-
                 this.serialPort = new SerialPort();
                 this.serialPort.BaudRate = 9600;
                 this.serialPort.Encoding = Encoding.Unicode;
@@ -49,7 +47,6 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
                 this.serialPort.DataReceived += new SerialDataReceivedEventHandler(OnSerialPortDataReceived);
                 this.serialPort.WriteTimeout = 200;
                 this.serialPortReceivedData = new SerialPortReceivedData();
-
                 threeSecondsOnce = new Timer(new TimerCallback((object obj) =>
                 {
                     if (!received && scanHand) { Open(); }
@@ -60,7 +57,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
             }
             catch (Exception exception)
             {
-                SimpleConsole.WriteLine(exception.Message);this.isOpen = false;
+                SimpleConsole.WriteLine(exception.Message); this.isOpen = false;
             }
 
             //throw new NotImplementedException();
@@ -113,7 +110,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
 
         public void Open()
         {
-            if(isOpen)
+            if (isOpen)
             {
                 try
                 {
@@ -132,22 +129,17 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
 
         public void Realase()
         {
-            if(isOpen)
+            if (isOpen)
             {
                 if (this.serialPort == null || !this.serialPort.IsOpen) throw new Exception("This serial port is not open.");
 
+                this.serialPort.DataReceived -= new SerialDataReceivedEventHandler(OnSerialPortDataReceived);
                 this.serialPortReceivedDataDelegate = null;
-
                 this.serialPortReceivedData = null;
-
                 byte[] operBytes = HexStringToBytes(closeOperCmdStr);
-
                 this.serialPort.Write(operBytes, 0, operBytes.Length);
-
                 Thread.Sleep(100);
-
                 this.serialPort.Close();
-
                 this.isOpen = false;
                 //throw new NotImplementedException();
             }
@@ -156,19 +148,14 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
 
         public void Close()
         {
-            if(isOpen)
+            if (isOpen)
             {
                 scanHand = false;
-
                 if (this.serialPort == null || !this.serialPort.IsOpen) throw new Exception("This serial port is not open.");
-
                 byte[] operBytes = HexStringToBytes(closeOperCmdStr);
-
                 this.serialPort.Write(operBytes, 0, operBytes.Length);
-
                 Thread.Sleep(100);
             }
-           
         }
 
         public string ConvertHexArrToString(string strHex)

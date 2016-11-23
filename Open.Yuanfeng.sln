@@ -37,11 +37,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.PluginEngine", "Yu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.HttpX", "Yuanfeng.HttpX\Yuanfeng.HttpX.csproj", "{5AEAD1BE-58F6-4285-BB15-52260A75B13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.FaceFeatureCompare","Yuanfeng.Unit.FaceFeatureCompare\Yuanfeng.Unit.FaceFeatureCompare.csproj", "{3032133E-6D74-4D67-A5D1-8BA245E4D3E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.FaceFeatureCompare", "Yuanfeng.Unit.FaceFeatureCompare\Yuanfeng.Unit.FaceFeatureCompare.csproj", "{3032133E-6D74-4D67-A5D1-8BA245E4D3E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Controls.Simple", "Yuanfeng.Controls.Simple\Yuanfeng.Controls.Simple.csproj", "{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.AviRec", "Yuanfeng.Unit.AviRec\Yuanfeng.Unit.AviRec.csproj", "{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Handwrite.MyTouch", "Yuanfeng.Handwrite.MyTouch\Yuanfeng.Handwrite.MyTouch.csproj", "{09E2CEB5-3114-419E-8A55-74CE83F6221A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB64FF3B-001F-4E79-9C87-94FD4771B3E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09E2CEB5-3114-419E-8A55-74CE83F6221A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E2CEB5-3114-419E-8A55-74CE83F6221A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09E2CEB5-3114-419E-8A55-74CE83F6221A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09E2CEB5-3114-419E-8A55-74CE83F6221A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

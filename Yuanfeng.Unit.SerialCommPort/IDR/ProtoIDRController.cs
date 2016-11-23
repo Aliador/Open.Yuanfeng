@@ -262,15 +262,19 @@ namespace Yuanfeng.Unit.SerialCommPort.IDR
                     RicTextInfo temp = null;
                     while (tmpRemainTime > 0)
                     {
-                        Init(channel);
-                        if (Authenticate())
+                        try
                         {
-                            temp = DecodeObject();
-                            break;
+                            Init(channel);
+                            if (Authenticate())
+                            {
+                                temp = DecodeObject();
+                                break;
+                            }
+                            Realase();
+                            Thread.Sleep(100);
+                            tmpRemainTime -= 100;
                         }
-                        Realase();
-                        Thread.Sleep(100);
-                        tmpRemainTime -= 100;
+                        catch { }
                     }
                     isOpen = false; completedHandler.Invoke(temp);
                 }

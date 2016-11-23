@@ -89,6 +89,12 @@
     <Compile Include="FileSection\PluginsConfigDoc.Designer.cs">
       <DependentUpon>PluginsConfigDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileSection\TestDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileSection\TestDoc.Designer.cs">
+      <DependentUpon>TestDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="HttpX\DynamicHttpRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     </Compile>
     <Compile Include="ImageUtil\TesoLFCDoc.Designer.cs">
       <DependentUpon>TesoLFCDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageUtil\TesoSimpleDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\TesoSimpleDoc.Designer.cs">
+      <DependentUpon>TesoSimpleDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageUtil\VidetekDoc.cs">
       <SubType>Form</SubType>
@@ -214,6 +226,9 @@
     <EmbeddedResource Include="FileSection\PluginsConfigDoc.resx">
       <DependentUpon>PluginsConfigDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FileSection\TestDoc.resx">
+      <DependentUpon>TestDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HttpX\DynamicHttpRequest.resx">
       <DependentUpon>DynamicHttpRequest.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\TesoLFCDoc.resx">
       <DependentUpon>TesoLFCDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\TesoSimpleDoc.resx">
+      <DependentUpon>TesoSimpleDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\VidetekDoc.resx">
       <DependentUpon>VidetekDoc.cs</DependentUpon>

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using TesoSeeuLib;
 
 namespace Yuanfeng.Unit.FaceFeatureCompare
 {
-    public class TesoLFContoller : ILiveFaceCompare
+    public class TesoLiveReconitionContoller : ILiveFaceCompare
     {
-        private LFCompletedHandler handler;
+        private string args;
+        private LiveRecongtionCompletedHandler handler;
         private bool isOpen = false;
         public bool IsOpen { get { return isOpen; } }
         private AxcriterionLib.Axstdfcectl control = new AxcriterionLib.Axstdfcectl();
@@ -25,7 +25,7 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
             return 0;
         }
 
-        public int Init(Control container, LFCompletedHandler handler)
+        public int Init(Control container, LiveRecongtionCompletedHandler handler)
         {
             if (container == null) throw new Exception("container参数为空");
             if (container.Controls.Count > 0) container.Controls.RemoveAt(0);
@@ -34,6 +34,20 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
             container.Controls.Add(control);
             control.GetImageEvent += GetImageEvent;
             this.handler = handler;
+            this.args = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<param>\n    <imgWidth>640</imgWidth>\n    <imgHeight>480</imgHeight>\n    <imgCompress>85</imgCompress>\n    <pupilDistMin>0</pupilDistMin>\n    <pupilDistMax>150</pupilDistMax>\n    <isActived>2</isActived>\n    <isAudio>1</isAudio>\n    <timeOut>300</timeOut>\n    <version>1.1.7.2</version>\n    <deviceIdx>0</deviceIdx>\n    <definitionAsk>15</definitionAsk>\n    <action>3</action>\n    <headLeft>16</headLeft>\n    <headRight>-16</headRight>\n    <headLow>-8</headLow>\n    <headHigh>8</headHigh>\n    <eyeDegree>27</eyeDegree>\n    <mouthDegree>27</mouthDegree>\n    <edage1>0.1</edage1>\n    <edage2>0.9</edage2>\n    <goodOne>0</goodOne>\n</param>\n";
+            return 1;
+        }
+
+        public int Init(Control container,string args, LiveRecongtionCompletedHandler handler)
+        {
+            if (container == null) throw new Exception("container参数为空");
+            if (container.Controls.Count > 0) container.Controls.RemoveAt(0);
+            control.Size = new System.Drawing.Size(640, 480);
+            control.Location = new System.Drawing.Point(0, 0);
+            container.Controls.Add(control);
+            control.GetImageEvent += GetImageEvent;
+            this.handler = handler;
+            this.args = args;
             return 1;
         }
 
@@ -43,9 +57,9 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
             string result = string.Empty;
             var IdCard = "000000000000000000";
             var Serise = "000000000000000000000000000000";
-            string Param = "<? xml version =\"1.0\" encoding=\"utf-8\" ?><param><imgWidth>640</imgWidth><imgHeight>480</imgHeight><imgCompress>85</imgCompress><pupilDistMin>0</pupilDistMin><pupilDistMax>150</pupilDistMax><isActived>2</isActived><isAudio>0</isAudio><timeOut>30</timeOut><version>1.1.7.2</version><deviceIdx>0</deviceIdx><definitionAsk>15</definitionAsk><action>3</action><headLeft>16</headLeft><headRight>-16</headRight><headLow>-8</headLow><headHigh>8</headHigh><eyeDegree>27</eyeDegree><mouthDegree>27</mouthDegree><edage1>0.1</edage1><edage2>0.9</edage2><goodOne>0</goodOne></param>";
-
-            result = control.getFaceB64A(IdCard, Serise, Param);
+            //string Param = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<param>\n    <imgWidth>640</imgWidth>\n    <imgHeight>480</imgHeight>\n    <imgCompress>85</imgCompress>\n    <pupilDistMin>0</pupilDistMin>\n    <pupilDistMax>150</pupilDistMax>\n    <isActived>2</isActived>\n    <isAudio>1</isAudio>\n    <timeOut>30</timeOut>\n    <version>1.1.7.2</version>\n    <deviceIdx>0</deviceIdx>\n    <definitionAsk>15</definitionAsk>\n    <action>3</action>\n    <headLeft>16</headLeft>\n    <headRight>-16</headRight>\n    <headLow>-8</headLow>\n    <headHigh>8</headHigh>\n    <eyeDegree>27</eyeDegree>\n    <mouthDegree>27</mouthDegree>\n    <edage1>0.1</edage1>\n    <edage2>0.9</edage2>\n    <goodOne>0</goodOne>\n</param>\n";
+            result = control.openDevice(args);
+            result = control.getFaceB64A(IdCard, Serise, args);
             if (IsRight(result))
             {
                 isOpen = true;

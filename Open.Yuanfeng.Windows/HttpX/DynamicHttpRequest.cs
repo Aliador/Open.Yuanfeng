@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.HttpX;
+using Yuanfeng.Smarty;
 
 namespace Open.Yuanfeng.Windows.HttpX
 {
@@ -24,14 +25,19 @@ namespace Open.Yuanfeng.Windows.HttpX
             string[] args = null;
             if (!string.IsNullOrEmpty(this.tbArgs.Text)) args = this.tbArgs.Text.Split(',');
 
-            HttpStaticRequest.InvokeWebService(this.tbUrl.Text, "Open.Yuanfeng.Windows.HttpX", this.tbMethod.Text,args, new HttpStaticRequest.ASyncResultCallback((object result) =>
-            {
-                string xml = (string)result;
-                this.Invoke(new Action(() =>
-                {
-                    this.tbResponse.AppendText(xml + Environment.NewLine);
-                }));
-            }));
+            //HttpStaticRequest.InvokeWebService(this.tbUrl.Text, "Open.Yuanfeng.Windows.HttpX", this.tbMethod.Text,args, new HttpStaticRequest.ASyncResultCallback((object result) =>
+            //{
+            //    string xml = (string)result;
+            //    this.Invoke(new Action(() =>
+            //    {
+            //        this.tbResponse.AppendText(xml + Environment.NewLine);
+            //    }));
+            //}));
+
+            string obj = "初始值";
+            obj = HttpStaticRequest.InvokeWebService(this.tbUrl.Text, this.tbMethod.Text, args);           
+            this.tbResponse.AppendText(obj);
+            SimpleConsole.WriteLine(obj);
         }
     }
 }

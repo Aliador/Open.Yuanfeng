@@ -4,34 +4,33 @@ using System.Xml;
 
 namespace Yuanfeng.Unit.FaceFeatureCompare
 {
-    public partial class ULFControl : UserControl
+    public partial class TesoSimpleControl : UserControl
     {
         private bool isInited = false;
-        private LFCompletedHandler handler;
-        public ULFControl()
+        private LiveRecongtionCompletedHandler handler;
+        public TesoSimpleControl()
         {
             InitializeComponent();
+            axstdfcectl1.GetImageEvent += GetImageEvent;
         }
 
-        public void Start(LFCompletedHandler handler)
+        public bool Start(LiveRecongtionCompletedHandler handler)
         {
             string result;
             var IdCard = "000000000000000000";
             var Serise = "000000000000000000000000000000";
-            string Param = "<? xml version =\"1.0\" encoding=\"utf-8\" ?><param><imgWidth>640</imgWidth><imgHeight>480</imgHeight><imgCompress>85</imgCompress><pupilDistMin>0</pupilDistMin><pupilDistMax>150</pupilDistMax><isActived>2</isActived><isAudio>1</isAudio><timeOut>30</timeOut><version>1.1.7.2</version><deviceIdx>0</deviceIdx><definitionAsk>15</definitionAsk><action>3</action><headLeft>16</headLeft><headRight>-16</headRight><headLow>-8</headLow><headHigh>8</headHigh><eyeDegree>27</eyeDegree><mouthDegree>27</mouthDegree><edage1>0.1</edage1><edage2>0.9</edage2><goodOne>0</goodOne></param>";
+            string Param = "<? xml version =\"1.0\" encoding=\"utf-8\" ?><param><imgWidth>640</imgWidth><imgHeight>480</imgHeight><imgCompress>85</imgCompress><pupilDistMin>0</pupilDistMin><pupilDistMax>150</pupilDistMax><isActived>2</isActived><isAudio>1</isAudio><timeOut>300</timeOut><version>1.1.7.2</version><deviceIdx>0</deviceIdx><definitionAsk>15</definitionAsk><action>3</action><headLeft>16</headLeft><headRight>-16</headRight><headLow>-8</headLow><headHigh>8</headHigh><eyeDegree>27</eyeDegree><mouthDegree>27</mouthDegree><edage1>0.1</edage1><edage2>0.9</edage2><goodOne>0</goodOne></param>";
+            result = axstdfcectl1.openDevice(Param);
             result = axstdfcectl1.getFaceB64A(IdCard, Serise, Param);
             bool right = IsRight(result);
             isInited = right;
-            if (right)
-            {                
-                axstdfcectl1.GetImageEvent += GetImageEvent;
-            }
             this.handler = handler;
+            return isInited;
         }
 
-        public void Close()
+        public bool Close()
         {
-            axstdfcectl1.closeDevice();
+            return IsRight(axstdfcectl1.closeDevice());
         }
 
         bool IsRight(string xml)

@@ -31,7 +31,7 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
         private int handle;
         private int timeout = 30 * 1000;
 
-        public LFCompletedHandler completedHandler;
+        public LiveRecongtionCompletedHandler completedHandler;
         public VidetekLDControl()
         {
             InitializeComponent();

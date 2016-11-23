@@ -36,5 +36,7 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
         /// <param name="img2">图片2路径</param>
         /// <returns></returns>
         float Compare(string img1, string img2);
+
+        FaceQuality Detect(byte[] buffer1);
     }
 }

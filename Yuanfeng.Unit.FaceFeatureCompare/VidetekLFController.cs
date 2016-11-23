@@ -21,8 +21,9 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
         private static extern void LD_Release_SDK(int handle);
         private ICamera camera = new CameraDirectShowClass();
         private bool isOpened = false;
-        private LFCompletedHandler handler;
+        private LiveRecongtionCompletedHandler handler;
         private int handle;
+        private string args;
         public bool IsOpen
         {
             get
@@ -36,10 +37,26 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
             return 0;
         }
 
-        public int Init(Control container, LFCompletedHandler handler)
+        public int Init(Control container, LiveRecongtionCompletedHandler handler)
         {
             bool result = camera.Init(container);
             this.handler = handler;
+            if (result)
+            {
+                handle = LD_Init_SDK(640, 480);
+            }
+            if (handle > 0) { isOpened = true; return 1; }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int Init(Control container,string args, LiveRecongtionCompletedHandler handler)
+        {
+            bool result = camera.Init(container);
+            this.handler = handler;
+            this.args = args;
             if (result)
             {
                 handle = LD_Init_SDK(640, 480);

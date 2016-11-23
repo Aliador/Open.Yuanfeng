@@ -13,6 +13,7 @@ namespace Yuanfeng.PluginEngine
         private bool isUsingDefaultConfig = false;
         private string filename = "plugins.config";
         private PluginsSection plugins = new PluginsSection();
+        private ImageSection dnyImages = new ImageSection();
 
         public bool IsUsingDefaultConfig { get { return isUsingDefaultConfig; } }
 
@@ -35,10 +36,12 @@ namespace Yuanfeng.PluginEngine
                 var fileMap = new ExeConfigurationFileMap() { ExeConfigFilename = filename };
                 var config = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
                 this.plugins = config.GetSection("plugin-section") as PluginsSection;
+                this.dnyImages = config.GetSection("image-section") as ImageSection;
             }
             else
             {
                 this.plugins = ConfigurationManager.GetSection("plugin-section") as PluginsSection;
+                this.dnyImages = ConfigurationManager.GetSection("image-section") as ImageSection;
             }
 
             if (this.plugins == null)
@@ -51,6 +54,7 @@ namespace Yuanfeng.PluginEngine
         /// 插件配置项
         /// </summary>
         public PluginsSection Plugins { get { return this.plugins; } }
+        public ImageSection Images { get { return this.dnyImages; } }
 
         /// <summary>
         /// 解析配置文件

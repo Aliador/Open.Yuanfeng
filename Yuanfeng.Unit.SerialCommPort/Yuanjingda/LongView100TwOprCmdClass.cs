@@ -53,11 +53,9 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
 
         public void Init(string serialPortName, SerialPortReceivedDataDelegate serialPortReceivedDataDelegate)
         {
+            this.serialPortReceivedDataDelegate = serialPortReceivedDataDelegate;
             this.serialPortName = serialPortName;
-            this.serialPortReceivedDataDelegate = serialPortReceivedDataDelegate;
             if (!this.serialPortName.ToLower().Contains("com")) throw new Exception("This port name is invalid.");
-
-            this.serialPortReceivedDataDelegate = serialPortReceivedDataDelegate;
 
             if (this.serialPort != null && this.serialPort.IsOpen) throw new Exception("This serial port was using.");
 
@@ -147,6 +145,8 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
             if (isOpen)
             {
                 if (this.serialPort == null || !this.serialPort.IsOpen) throw new Exception("This serial port is not open.");
+
+                this.serialPort.DataReceived-= new SerialDataReceivedEventHandler(SerialPortDataReceived);
 
                 this.serialPortReceivedDataDelegate = null;
 

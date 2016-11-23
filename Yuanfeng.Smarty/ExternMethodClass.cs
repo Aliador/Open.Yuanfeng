@@ -588,6 +588,17 @@ namespace Yuanfeng.Smarty
         {
             return Encoding.Unicode.GetString(obj);
         }
+
+        public static bool Exists(this object[] objs, object obj)
+        {
+            foreach (var item in objs)
+            {
+                if (item.Equals(obj)) return true;
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region 时间处理
@@ -673,12 +684,35 @@ namespace Yuanfeng.Smarty
         }
 
         public static int TryAge(this string s, int len)
-        { 
+        {
             DateTime birth = TryDate(s, len);
 
             return DateTime.Now.Year - birth.Year;
         }
 
+        public static int TryTotalDays(this string s)
+        {
+            DateTime begin = s.TryDate().AddDays(1);
+
+            double totals = Math.Abs((begin - DateTime.Now.Date).TotalDays);
+
+            return (int)totals;
+        }
+
+        public static DateTime TryAuthdDay(this string s, int days)
+        {
+            return s.TryDate().AddDays(1).AddDays(days);
+        }
+
+        public static bool NearExpired(this string s, int days)
+        {
+            return !IsExpired(s) && s.TryTotalDays() <= days;
+        }
+
+        public static bool IsExpired(this string s)
+        {
+            return s.TryDate().CompareTo(DateTime.Now.Date) < 0;
+        }
 
         #endregion
 

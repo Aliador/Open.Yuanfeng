@@ -83,5 +83,10 @@ namespace Yuanfeng.Unit.FaceFeatureCompare
             }
             return 0;
         }
+
+        public FaceQuality Detect(byte[] buffer1)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

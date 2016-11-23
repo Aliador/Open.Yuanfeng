@@ -8,6 +8,7 @@ namespace Yuanfeng.Smarty
 {
     public class CancellableTask
     {
+        private bool isBusy = false;
         public delegate object WorkCallback(object arg);
         public delegate void CancelCallback(object state);
         protected class TimeoutState
@@ -54,6 +55,7 @@ namespace Yuanfeng.Smarty
         }
         public object EndInvoke(IAsyncResult result)
         {
+            isBusy = false;
             return wrapper.EndInvoke(result);
         }
         protected void WaitOrTimeout(object state, bool isTimeout)

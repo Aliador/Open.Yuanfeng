@@ -76,7 +76,6 @@ namespace Yuanfeng.Smarty
             return DateTime.Now.ToString("yyyy/MM/dd");
         }
 
-
         public static string Generator()
         {
             string filename = string.Empty;
@@ -137,6 +136,36 @@ namespace Yuanfeng.Smarty
             filename = Path.Combine(dir, name + ext);
 
             return filename;
+        }
+
+        public static string Generator(string disk = "d", string ext = "b", params string[] folder)
+        {
+            string dir = string.Empty;
+            foreach (string item in folder)
+            {
+                dir = Path.Combine(dir, item);
+            }
+            disk = disk.Replace(":", "") + ":";
+            dir = Path.Combine(disk, dir);
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+            string filename = UseTicks() + "." + ext.Replace(".", "");
+            filename = Path.Combine(dir, filename); return filename;
+        }
+
+        public static string Generator(params string[] folder)
+        {
+            string disk = "d";
+            string ext = "b";
+            string dir = string.Empty;
+            foreach (string item in folder)
+            {
+                dir = Path.Combine(dir, item);
+            }
+            disk = disk.Replace(":", "") + ":";
+            dir = Path.Combine(disk, dir);
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+            string filename = UseTicks() + "." + ext.Replace(".", "");
+            filename = Path.Combine(dir, filename); return filename;
         }
     }
 }

@@ -51,6 +51,7 @@ namespace Open.Yuanfeng.Windows
             this.SimpleCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleIDRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleFprCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aviRecorderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageUtilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SimpleQrCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FindGrayImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,7 @@ namespace Open.Yuanfeng.Windows
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new VS2012LightTheme();
             this.MainDockPanel = new DockPanel();
-            this.aviRecorderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,8 @@ namespace Open.Yuanfeng.Windows
             // fileFToolStripMenuItem
             // 
             this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pluginsConfigToolStripMenuItem});
+            this.pluginsConfigToolStripMenuItem,
+            this.testDocToolStripMenuItem});
             this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
             this.fileFToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.fileFToolStripMenuItem.Text = "File(&F)";
@@ -161,7 +163,7 @@ namespace Open.Yuanfeng.Windows
             // ConsoleToolStripMenuItem
             // 
             this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
-            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.ConsoleToolStripMenuItem.Text = "Console(&C)";
             this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
             // 
@@ -227,6 +229,13 @@ namespace Open.Yuanfeng.Windows
             this.SimpleFprCaptureToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.SimpleFprCaptureToolStripMenuItem.Text = "SimpleFprCapture(&F)";
             this.SimpleFprCaptureToolStripMenuItem.Click += new System.EventHandler(this.SimpleFprCaptureToolStripMenuItem_Click);
+            // 
+            // aviRecorderToolStripMenuItem
+            // 
+            this.aviRecorderToolStripMenuItem.Name = "aviRecorderToolStripMenuItem";
+            this.aviRecorderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.aviRecorderToolStripMenuItem.Text = "AviRecorder(&R)";
+            this.aviRecorderToolStripMenuItem.Click += new System.EventHandler(this.aviRecorderToolStripMenuItem_Click);
             // 
             // ImageUtilToolStripMenuItem
             // 
@@ -315,12 +324,12 @@ namespace Open.Yuanfeng.Windows
             this.MainDockPanel.Size = new System.Drawing.Size(957, 455);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // aviRecorderToolStripMenuItem
+            // testDocToolStripMenuItem
             // 
-            this.aviRecorderToolStripMenuItem.Name = "aviRecorderToolStripMenuItem";
-            this.aviRecorderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.aviRecorderToolStripMenuItem.Text = "AviRecorder(&R)";
-            this.aviRecorderToolStripMenuItem.Click += new System.EventHandler(this.aviRecorderToolStripMenuItem_Click);
+            this.testDocToolStripMenuItem.Name = "testDocToolStripMenuItem";
+            this.testDocToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testDocToolStripMenuItem.Text = "TestDoc";
+            this.testDocToolStripMenuItem.Click += new System.EventHandler(this.testDocToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -376,6 +385,7 @@ namespace Open.Yuanfeng.Windows
         private System.Windows.Forms.ToolStripMenuItem redisClientDocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem videtekFeactureDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aviRecorderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testDocToolStripMenuItem;
     }
 }
 
