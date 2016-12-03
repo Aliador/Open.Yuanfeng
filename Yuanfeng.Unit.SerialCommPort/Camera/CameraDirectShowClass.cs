@@ -18,6 +18,15 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
         private List<string> DeviceNames = new List<string>();
         private CameraControl CameraControl = new CameraControl();
         private CameraChoice CameraChoice = new CameraChoice();
+        public CameraDirectShowClass()
+        {
+            this.DeviceNames.Clear();
+            this.CameraChoice.UpdateDeviceList();
+            foreach (var item in CameraChoice.Devices)
+            {
+                this.DeviceNames.Add(item.Name);
+            }
+        }
         public bool IsOpen
         {
             get
@@ -31,14 +40,6 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
             this.Width = 640;
             this.Height = 480;
 
-            this.DeviceNames.Clear();
-            this.CameraChoice.UpdateDeviceList();
-
-            foreach (var item in CameraChoice.Devices)
-            {
-                this.DeviceNames.Add(item.Name);
-            }
-
             if (this.DeviceNames.Count <= 0) throw new Exception("Not find this camera device.");
 
             this.DeviceName = this.DeviceNames[0];
@@ -50,14 +51,6 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
         {
             this.Width = x;
             this.Height = y;
-
-            this.DeviceNames.Clear();
-            this.CameraChoice.UpdateDeviceList();
-
-            foreach (var item in CameraChoice.Devices)
-            {
-                this.DeviceNames.Add(item.Name);
-            }
 
             if (this.DeviceNames.Count <= 0) throw new Exception("Not find this camera device.");
 
@@ -73,14 +66,6 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
             this.DeviceName = cameraName;
             this.Width = x;
             this.Height = y;
-
-            this.DeviceNames.Clear();
-            this.CameraChoice.UpdateDeviceList();
-
-            foreach (var item in CameraChoice.Devices)
-            {
-                this.DeviceNames.Add(item.Name);
-            }
 
             if (this.DeviceNames.Count <= 0) throw new Exception("Not find this camera device.");
 
@@ -129,6 +114,11 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
             pictureBuffer = bmp.ToBuffer();
 
             return true;
+        }
+
+        public string[] Cameras
+        {
+           get { return this.DeviceNames.ToArray<string>(); }
         }
     }
 }

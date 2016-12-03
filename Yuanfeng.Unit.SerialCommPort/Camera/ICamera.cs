@@ -49,5 +49,9 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
         /// </summary>
         /// <returns></returns>
         bool Release();
+
+        #region extern
+        string[] Cameras { get; }
+        #endregion
     }
 }

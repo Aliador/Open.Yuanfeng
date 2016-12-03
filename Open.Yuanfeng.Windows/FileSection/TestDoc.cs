@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.Smarty;
+using Yuanfeng.WinFormsUI.Docking;
 
 namespace Open.Yuanfeng.Windows.FileSection
 {
