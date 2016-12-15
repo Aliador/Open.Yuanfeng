@@ -584,7 +584,7 @@ namespace Yuanfeng.Smarty
             return Encoding.Unicode.GetBytes(obj);
         }
 
-        public static string ToString(this byte[] obj)
+        public static string BufferToStr(this byte[] obj)
         {
             return Encoding.Unicode.GetString(obj);
         }

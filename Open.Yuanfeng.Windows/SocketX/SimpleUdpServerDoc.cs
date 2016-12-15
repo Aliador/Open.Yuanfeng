@@ -1,12 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Net.SocketX;
@@ -28,8 +21,8 @@ namespace Open.Yuanfeng.Windows.SocketX
             {
                 server.Create(TypeHelper.ParseInt(tbSvrPort.Text), new OnReceivedMsgDelegate((string ipaddr,object msg) =>
                 {
-                    UdpMsg message = JsonConvert.DeserializeObject<UdpMsg>(msg.ToString());
-
+                    //UdpMsg message = JsonConvert.DeserializeObject<UdpMsg>(msg.ToString());
+                    /*
                     switch (message.Level)
                     {
                         case Level.DEBUG:
@@ -52,12 +45,13 @@ namespace Open.Yuanfeng.Windows.SocketX
                     {
                         this.tbMsg.AppendText("[" + ipaddr + "]" + message.Message + Environment.NewLine);
                     }));
-                    /*
-                    SimpleConsole.WriteLine(msg);
+                    */
+                    
+                    SimpleConsole.WriteLine(((byte[])msg).BufferToStr());
                     this.Invoke(new Action(() =>
                     {
-                        this.tbMsg.AppendText("[" + ipaddr + "]" + msg.ToString() + Environment.NewLine);
-                    }));*/
+                        this.tbMsg.AppendText("[" + ipaddr + "]" +((byte[]) msg).BufferToStr() + Environment.NewLine);
+                    }));
                 }));
             }
             catch (Exception exception)

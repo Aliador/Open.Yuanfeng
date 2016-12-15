@@ -50,8 +50,8 @@ namespace Open.Yuanfeng.Windows.SocketX
         {
             client.Close();
         }
-
-        private IUdpLog log = SimpleUdpLog.NewInstance("192.168.100.2");
+        /*
+        private IUdpLog log = SimpleUdpLog.NewInstance("192.168.253.4");
         private void btnBug_Click(object sender, EventArgs e)
         {
             log.Debug("UDP-Debug方式发送异常", new Exception("UDP-Debug发送异常"));
@@ -71,10 +71,10 @@ namespace Open.Yuanfeng.Windows.SocketX
         {
             log.Fatal("UDP-Fatal方式发送异常", new Exception("UDP-Fatal发送异常"));
         }
-
+        */
         private void btnRelease_Click(object sender, EventArgs e)
         {
-            log.Release();
+            //log.Release();
         }
     }
 }

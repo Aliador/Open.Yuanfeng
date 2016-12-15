@@ -1,67 +1,48 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using Yuanfeng.Net.SocketX;
 using Yuanfeng.Smarty;
 
 namespace Yuanfeng.Log4netX
 {
+    public class SimpleUpdLogManager
+    {
+        private const int port = 8000;
+        private static Dictionary<string, IUdpClientX> clients = new Dictionary<string, IUdpClientX>();
+        public static SimpleUdpLog Create(string ipaddr, string logger)
+        {
+            if (!clients.ContainsKey(ipaddr))
+            {
+                var temp = new SimpleUdpClient();
+                temp.Create(ipaddr, port);
+                clients.Add(ipaddr, temp);
+            }
+            var client = clients[ipaddr];
+            return new SimpleUdpLog(client, logger);
+        }
+    }
+
     public class SimpleUdpLog : IUdpLog
     {
-        private static SimpleUdpLog instance;
+        private SimpleUdpLog instance;
         private IUdpClientX client;
         private string ipaddr;
         private UdpMsg message = new UdpMsg();
+
         private string logger;
 
-        private SimpleUdpLog(string ipaddr)
+        public SimpleUdpLog(IUdpClientX client, string logger)
         {
-            this.ipaddr = ipaddr;
-            this.message.Logger = logger;
-            if (client == null)
-            {
-                client = new SimpleUdpClient();
-                client.Create(ipaddr, 8000);
-            }
-        }
-
-        private SimpleUdpLog(string ipaddr, string logger)
-        {
+            this.client = client;
             this.logger = logger;
-            this.ipaddr = ipaddr;
-            this.message.Logger = logger;
-            if (client == null)
-            {
-                client = new SimpleUdpClient();
-                client.Create(ipaddr, 8099);
-            }
         }
 
-        public static SimpleUdpLog NewInstance()
-        {
-            if (instance == null) instance = new SimpleUdpLog("127.0.0.1");
-            return instance;
-        }
-
-        public static SimpleUdpLog NewInstance(string ipaddr)
-        {
-            if (instance == null) instance = new SimpleUdpLog(ipaddr);
-            instance.ipaddr = ipaddr;
-            return instance;
-        }
-
-
-        public static SimpleUdpLog NewInstance(string ipaddr, string logger)
-        {
-            if (instance == null) instance = new SimpleUdpLog(ipaddr, logger);
-            instance.logger = logger;
-            instance.ipaddr = ipaddr;
-            return instance;
-        }
-        
         private void SendMsg()
         {
             message.IpAddr = ipaddr;
+            message.Logger = logger;
             client.Send(message);
         }
 
@@ -123,11 +104,6 @@ namespace Yuanfeng.Log4netX
             this.message.Exception = exception;
             this.message.Level = Level.INFO;
             SendMsg();
-        }
-
-        public void Release()
-        {
-            if (client != null) client.Close();
         }
     }
 }

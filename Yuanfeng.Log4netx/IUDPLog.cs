@@ -7,8 +7,6 @@ namespace Yuanfeng.Log4netX
 {
     public interface IUdpLog
     {
-        void Release();
-
         void Error(object message);
         void Info(object message);
         void Debug(object message);

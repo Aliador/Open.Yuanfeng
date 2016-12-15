@@ -18,6 +18,13 @@ namespace Yuanfeng.Net.SocketX
         private System.Threading.Thread threadlistener;
         private bool isOpen = false;
         public string IpAddr { get { return localIpAddr; } }
+
+        private List<string> clients = new List<string>();
+        public List<string> Clients
+        {
+          get { return clients; }
+        }
+
         public void Close()
         {
             if (isOpen && simpleSvrClient != null)
@@ -35,9 +42,11 @@ namespace Yuanfeng.Net.SocketX
             IPEndPoint remoteIpEndPoint = new IPEndPoint(IPAddress.Any, 7788);
             while (true)
             {
+                string ipaddr = remoteIpEndPoint.Address.ToString();
+                if (!clients.Contains(ipaddr)) clients.Add(ipaddr);
                 byte[] buffer = udpServer.Receive(ref remoteIpEndPoint);
                 if (buffer == null) continue;
-                if (onReceivedMsgDelegate != null && buffer != null) { onReceivedMsgDelegate.Invoke(remoteIpEndPoint.Address.ToString(), buffer.Deserialize()); }
+                if (onReceivedMsgDelegate != null && buffer != null) { onReceivedMsgDelegate.Invoke(ipaddr, buffer.Deserialize()); }
             }
         }
 

@@ -330,6 +330,10 @@
       <Project>{E6052609-A070-41D5-85B9-ACABA91170C5}</Project>
       <Name>Free5lot.Camera_NET</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Computer.Network\Yuanfeng.Computer.Network.csproj">
+      <Project>{3e4cf85b-0207-4bad-af54-4523434a42f0}</Project>
+      <Name>Yuanfeng.Computer.Network</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Controls.Simple\Yuanfeng.Controls.Simple.csproj">
       <Project>{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}</Project>
       <Name>Yuanfeng.Controls.Simple</Name>
@@ -383,7 +387,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Enabled="0" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="ALL" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="0" />
+      <UserProperties Reactor_Deploy="0" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="ALL" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="0" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

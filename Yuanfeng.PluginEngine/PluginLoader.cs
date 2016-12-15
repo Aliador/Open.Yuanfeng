@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Yuanfeng.Smarty;
 
 namespace Yuanfeng.PluginEngine
 {
@@ -76,10 +77,18 @@ namespace Yuanfeng.PluginEngine
                 {
                     if (!assemblyFiles.ContainsKey(file))
                     {
-                        Console.WriteLine("Plugin Loading (" + file + ")");
-                        Assembly assembly = Assembly.LoadFile(file);
-                        assemblys.Add(assembly);
-                        assemblyFiles.Add(file, true);
+                        try
+                        {
+                            Console.WriteLine("Plugin Loading (" + file + ")");
+                            byte[] buffer = file.Reader();
+                            Assembly assembly = Assembly.Load(buffer);
+                            assemblys.Add(assembly);
+                            assemblyFiles.Add(file, true);
+                        }
+                        catch (Exception exception)
+                        {
+                            SimpleConsole.Write(exception);
+                        }
                     }
                 }
             }

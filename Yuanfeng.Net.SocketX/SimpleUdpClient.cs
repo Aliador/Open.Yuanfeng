@@ -12,7 +12,7 @@ namespace Yuanfeng.Net.SocketX
     public class SimpleUdpClient : IUdpClientX
     {
         private string svrIpAddr = string.Empty;
-        private int svrPort = 8000;        
+        private int svrPort = 8000;
 
         private bool isOpen = false;
 
@@ -20,7 +20,7 @@ namespace Yuanfeng.Net.SocketX
 
         public void Close()
         {
-          if(simpleUdpClient!=null)  simpleUdpClient.Close(); isOpen = false;
+            if (simpleUdpClient != null) simpleUdpClient.Close(); isOpen = false;
         }
 
         public void Create(string ipaddr, int port)
@@ -36,10 +36,10 @@ namespace Yuanfeng.Net.SocketX
 
                 simpleUdpClient = new UdpClient(new IPEndPoint(IPAddress.Parse(NetworkInfoClass.GetLocalIpAddr()), 7788));
                 simpleUdpClient.Connect(IPAddress.Parse(svrIpAddr), port);
-
                 isOpen = true;
             }
-            catch (Exception exception) {
+            catch (Exception exception)
+            {
                 throw exception;
             };
         }
@@ -50,10 +50,11 @@ namespace Yuanfeng.Net.SocketX
 
             if (message == null) throw new Exception("目标数据不能为空");
 
-            var threadSendBuffer = new System.Threading.Thread((object arg) => {
+            var threadSendBuffer = new System.Threading.Thread((object arg) =>
+            {
                 UdpClient client = arg as UdpClient;
                 byte[] buffer = message.Serialize();
-                client.Send(buffer,buffer.Length);
+                client.Send(buffer, buffer.Length);
             });
 
             threadSendBuffer.Start(simpleUdpClient);

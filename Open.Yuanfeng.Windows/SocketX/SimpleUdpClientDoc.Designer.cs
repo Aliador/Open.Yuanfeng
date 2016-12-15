@@ -71,7 +71,7 @@
             this.tbSvrIpAddr.Name = "tbSvrIpAddr";
             this.tbSvrIpAddr.Size = new System.Drawing.Size(167, 21);
             this.tbSvrIpAddr.TabIndex = 2;
-            this.tbSvrIpAddr.Text = "192.168.100.2";
+            this.tbSvrIpAddr.Text = "192.168.253.4";
             // 
             // label1
             // 
@@ -134,7 +134,7 @@
             this.btnBug.TabIndex = 0;
             this.btnBug.Text = "Debug";
             this.btnBug.UseVisualStyleBackColor = true;
-            this.btnBug.Click += new System.EventHandler(this.btnBug_Click);
+            //this.btnBug.Click += new System.EventHandler(this.btnBug_Click);
             // 
             // btnError
             // 
@@ -144,7 +144,7 @@
             this.btnError.TabIndex = 0;
             this.btnError.Text = "Error";
             this.btnError.UseVisualStyleBackColor = true;
-            this.btnError.Click += new System.EventHandler(this.btnError_Click);
+            //this.btnError.Click += new System.EventHandler(this.btnError_Click);
             // 
             // btnInfo
             // 
@@ -154,7 +154,7 @@
             this.btnInfo.TabIndex = 0;
             this.btnInfo.Text = "Info";
             this.btnInfo.UseVisualStyleBackColor = true;
-            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            //this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // btnFatal
             // 
@@ -164,7 +164,7 @@
             this.btnFatal.TabIndex = 0;
             this.btnFatal.Text = "Fatal";
             this.btnFatal.UseVisualStyleBackColor = true;
-            this.btnFatal.Click += new System.EventHandler(this.btnFatal_Click);
+            //this.btnFatal.Click += new System.EventHandler(this.btnFatal_Click);
             // 
             // btnRelease
             // 

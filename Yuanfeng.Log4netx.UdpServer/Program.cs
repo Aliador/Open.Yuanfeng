@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Yuanfeng.Log4netX;
 using Yuanfeng.Net.SocketX;
 using Yuanfeng.Smarty;
@@ -20,8 +21,6 @@ namespace Yuanfeng.Log4netx.UdpServer
             catch (Exception exception)
             {
                 Console.Write(exception);
-                Console.Write("尝试重启服务器...");
-                StartServer();
             }
         }
 
@@ -62,18 +61,31 @@ namespace Yuanfeng.Log4netx.UdpServer
                 }));
                 Console.WriteLine("日志服务启动成功..");
                 Console.WriteLine(string.Format("服务器IP地址：{0}，端口：8000", server.IpAddr));
-                Console.WriteLine("操作命令：【1、exit-退出】");
-                while (true)
+                Console.WriteLine("操作命令：\n1、exit-关闭日志服务\n2、list-客户端列表");
+                Console.Write("<yuanfeng.udpserver>");
+                new Thread(new ThreadStart(() =>
                 {
-                    string line = Console.ReadLine();
-                    if ("exit".Equals(line))
+                    while (true)
                     {
-                        server.Close();
-                        break;
+                        string line = Console.ReadLine();
+                        if ("exit".Equals(line))
+                        {
+                            server.Close(); break;
+                        }
+                        else if ("list".Equals(line))
+                        {
+                            foreach (var item in server.Clients)
+                            {
+                                Console.WriteLine(item);
+                            }
+                        }
+                        else if ("clear".Equals(line)) Console.Clear();
+
+                        Console.Write("<yuanfeng.udpserver>");
                     }
-                }
+                })).Start();
             }
-            catch (Exception exception) { log.Error(exception); }
+            catch (Exception exception) { log.Error(exception); throw new Exception("启动服务失败", exception); }
         }
     }
 }

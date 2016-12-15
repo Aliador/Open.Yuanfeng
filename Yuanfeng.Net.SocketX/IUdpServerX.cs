@@ -11,5 +11,6 @@ namespace Yuanfeng.Net.SocketX
         void Create(int port, OnReceivedMsgDelegate onReceivedMsgDelegate);
         void Close();
         string IpAddr { get; }
+        List<string> Clients { get;}
     }
 }
