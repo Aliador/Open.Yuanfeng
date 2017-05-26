@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Yuanfeng.WinFormsUI;
 using Yuanfeng.WinFormsUI.Docking;
 using Yuanfeng.Smarty;
+using Yuanfeng.Unit.QrCode;
 
 namespace Open.Yuanfeng.Windows
 {
@@ -116,6 +117,8 @@ namespace Open.Yuanfeng.Windows
             if (sender == this.faceFeatureDoc) this.tesoFaceFeatureToolStripMenuItem.Checked = false;
 
             if (sender == this.tesoLFCDoc) this.tesoLFCDocToolStripMenuItem.Checked = false;
+
+            if (sender == this.iamgeColorDoc) this.imageColorToolStripMenuItem.Checked = false;
 
             SimpleConsole.WriteLine(string.Format("This [{0}] is closed.", sender));
         }
@@ -385,6 +388,134 @@ namespace Open.Yuanfeng.Windows
             this.testDocToolStripMenuItem.Checked = true;
             testDoc.Show(MainDockPanel, DockState.Document);
             testDoc.FormClosing += DummyClosing;
+        }
+
+        private void copyScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var copyScreen = new CopyScreen();
+            copyScreen.GetScreenImage += CopyScreen_GetScreenImage;
+            copyScreen.GerScreenFormRectangle();
+        }
+
+        private void CopyScreen_GetScreenImage(Image p_Image)
+        {
+            var form = new Form(); form.BackgroundImage = p_Image; form.Size = p_Image.Size; form.Show(); this.Show();
+        }
+
+        private void simpleTextDocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TextDocPrintHelper().Print(mutiContent(), 80, true);
+        }
+
+        public PrintFixedImage testImage()
+        {
+            Image image = ((Bitmap)@"C:\Users\Yuanfeng Recluse\Pictures\myhead_mini.jpg".Reader().ToBitmap()).GetThumbnail(150, 150);
+            Image newImage = image.FixedPos(new Size(332, 453), new Point(247, 102));
+            return new PrintFixedImage() { X = -7, Y = 0, Page = 1, PrintOffset = true, Content = newImage };
+        }
+
+
+        private TextPrintContentBuffer mutiContent()
+        {
+            TextPrintContentBuffer sb = new TextPrintContentBuffer();
+            sb.AppendText("党的十九大是在我国全面建成小康社会决胜阶段召开的一次十分重要的代表大会十九大代表是从全体党员中千挑万选出来的优秀分子坚决同以习近平同志为核心的党中央保持高度一致", 9, false);
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("导办信息单", 20, true);
+
+            Bitmap img = new BaseQrCode().Generator("http://image.baidu.com/search/index?tn=baiduimage&ct=201326592&lm=-1&cl=2&ie=gbk&word=%C8%FD%BD%C7%BC%FD%CD%B7%20%CD%BC%C6%AC&hs=2&xthttps=000000&fr=ala&ori_query=%E4%B8%89%E8%A7%92%E7%AE%AD%E5%A4%B4%20%E5%9B%BE%E7%89%87&ala=0&alatpl=sp&pos=0", 170).ToBitmap();
+
+            sb.AppendImage(img);
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("浙江温州浙江温州皮革厂倒闭了");
+            sb.AppendText("安全驾驶，文明出行", 20);
+
+            return sb;
+        }
+
+        private StringBuilder testContent()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            string tou = "派号信息单 [福南中队]".PadSpaceOfMiddle(44);
+
+            string saleID = "201703310001";
+
+            sb.AppendLine(tou);
+
+            sb.AppendLine("日期:" + DateTime.Now.ToShortDateString() + "  单号:" + saleID);
+            sb.AppendLine("------------------------------");
+            sb.AppendLine("必需要在窗口办理的违章：");
+            sb.AppendLine("序号  违法行为  违法时间  违法地点  采集机关");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("------------------------------");
+            sb.AppendLine("可在好易自助终端处理的违章：");
+            sb.AppendLine("序号  违法行为  违法时间  违法地点  采集机关");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("------------------------------");
+
+            sb.AppendLine("必需回采集机关处理的违章：");
+            sb.AppendLine("序号  违法行为  违法时间  违法地点  采集机关");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("1  闯红灯  2017/01/1  龙井路  南山大队");
+            sb.AppendLine("------------------------------");
+            sb.AppendLine("安全驾驶，文明出行".PadSpaceOfMiddle(44));
+
+            return sb;
+        }
+
+        private void imageColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InitImageColorDoc();
+            this.imageColorToolStripMenuItem.Checked = true;
+            iamgeColorDoc.Show(MainDockPanel, DockState.Document);
+            iamgeColorDoc.FormClosing += DummyClosing;
+        }
+
+        private ImageUtil.ImageColorDoc iamgeColorDoc;
+        private void InitImageColorDoc()
+        {
+            if (iamgeColorDoc == null || iamgeColorDoc.IsDisposed) iamgeColorDoc = new ImageUtil.ImageColorDoc();
+        }
+
+        private void sendMailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string result = new MailHelper().Send("smtp.163.com", 25, "p2soft@163.com", "", "Sanyi", new string[] { "aping.yellow@qq.com" }, new string[] { "sanyiws@qq.com" }, "This is test mail", "Hello world.");
+            MessageBox.Show(result);
         }
     }
 }

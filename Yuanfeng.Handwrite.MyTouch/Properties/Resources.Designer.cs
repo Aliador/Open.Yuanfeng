@@ -63,6 +63,16 @@ namespace Yuanfeng.Handwrite.MyTouch.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SignBoard {
+            get {
+                object obj = ResourceManager.GetObject("SignBoard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SimpleHandwrite {
             get {
                 object obj = ResourceManager.GetObject("SimpleHandwrite", resourceCulture);

@@ -3,7 +3,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using Yuanfeng.WinFormsUI.Docking;
 
-namespace Yuanfeng.WinFormsUI.ThemeVS2012
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
     internal class VS2012PaneIndicatorFactory : DockPanelExtender.IPaneIndicatorFactory
     {

@@ -29,18 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleTest));
-            this.simpleHandwriteControl1 = new Yuanfeng.Handwrite.MyTouch.SimpleHandwriteControl();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.simpleHandwriteControl1 = new Yuanfeng.Handwrite.MyTouch.SimpleHandwriteControl();
             this.SuspendLayout();
-            // 
-            // simpleHandwriteControl1
-            // 
-            this.simpleHandwriteControl1.BackColor = System.Drawing.Color.White;
-            this.simpleHandwriteControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("simpleHandwriteControl1.BackgroundImage")));
-            this.simpleHandwriteControl1.Location = new System.Drawing.Point(31, 12);
-            this.simpleHandwriteControl1.Name = "simpleHandwriteControl1";
-            this.simpleHandwriteControl1.Size = new System.Drawing.Size(610, 400);
-            this.simpleHandwriteControl1.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -50,13 +41,22 @@
             this.textBox1.Size = new System.Drawing.Size(610, 44);
             this.textBox1.TabIndex = 1;
             // 
+            // simpleHandwriteControl1
+            // 
+            this.simpleHandwriteControl1.BackColor = System.Drawing.Color.White;
+            this.simpleHandwriteControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("simpleHandwriteControl1.BackgroundImage")));
+            this.simpleHandwriteControl1.Location = new System.Drawing.Point(31, 12);
+            this.simpleHandwriteControl1.Name = "simpleHandwriteControl1";
+            this.simpleHandwriteControl1.Size = new System.Drawing.Size(785, 398);
+            this.simpleHandwriteControl1.TabIndex = 2;
+            // 
             // SimpleTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 507);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1354, 507);
             this.Controls.Add(this.simpleHandwriteControl1);
+            this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SimpleTest";
             this.Text = "易维输入法（简单版）";
@@ -67,8 +67,7 @@
         }
 
         #endregion
-
-        private SimpleHandwriteControl simpleHandwriteControl1;
         private System.Windows.Forms.TextBox textBox1;
+        private SimpleHandwriteControl simpleHandwriteControl1;
     }
 }

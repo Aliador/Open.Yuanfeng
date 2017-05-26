@@ -107,6 +107,12 @@
     <Compile Include="ImageUtil\FindGrayImageDoc.Designer.cs">
       <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageUtil\ImageColorDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageUtil\ImageColorDoc.Designer.cs">
+      <DependentUpon>ImageColorDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageUtil\SimpleOcrDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\SimplePrintDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print\SimplePrintDoc.Designer.cs">
+      <DependentUpon>SimplePrintDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +247,9 @@
     <EmbeddedResource Include="ImageUtil\FindGrayImageDoc.resx">
       <DependentUpon>FindGrayImageDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImageUtil\ImageColorDoc.resx">
+      <DependentUpon>ImageColorDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ImageUtil\SimpleOcrDoc.resx">
       <DependentUpon>SimpleOcrDoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\SimplePrintDoc.resx">
+      <DependentUpon>SimplePrintDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -318,13 +336,13 @@
     <None Include="Resources\OutputWindow.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DockPanel.WinFormsUI\DockPanel.ThemeVS2012.csproj">
+    <ProjectReference Include="..\DockPanel.WinFormsUI\Yuanfeng.WinFormsUI.Docking.ThemeVS2012.csproj">
       <Project>{4ed4fdb5-9fd0-49e6-876d-1635f727c755}</Project>
-      <Name>DockPanel.ThemeVS2012</Name>
+      <Name>Yuanfeng.WinFormsUI.Docking.ThemeVS2012</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DockPanel.WinFormsUI\DockPanel.WinFormsUI.csproj">
+    <ProjectReference Include="..\DockPanel.WinFormsUI\Yuanfeng.WinFormsUI.Docking.csproj">
       <Project>{c75532c4-765b-418e-b09b-46d36b2abdb1}</Project>
-      <Name>DockPanel.WinFormsUI</Name>
+      <Name>Yuanfeng.WinFormsUI.Docking</Name>
     </ProjectReference>
     <ProjectReference Include="..\Free5lot.Camera_Net\Free5lot.Camera_NET.csproj">
       <Project>{E6052609-A070-41D5-85B9-ACABA91170C5}</Project>
@@ -337,6 +355,10 @@
     <ProjectReference Include="..\Yuanfeng.Controls.Simple\Yuanfeng.Controls.Simple.csproj">
       <Project>{26D309DC-F7E0-40AF-A5AC-B93BCFBD5233}</Project>
       <Name>Yuanfeng.Controls.Simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
+      <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
+      <Name>Yuanfeng.Smarty</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Unit.SerialCommPort\Yuanfeng.Unit.SerialCommPort.csproj">
       <Project>{cce59962-3b56-4d8b-949c-1a6699dd945d}</Project>
@@ -374,10 +396,6 @@
       <Project>{7aee6989-7ae4-4fa9-a5da-bd5f16b224cf}</Project>
       <Name>Yuanfeng.PluginEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuanfeng.Smarty\Yuanfeng.Smarty.csproj">
-      <Project>{476d2977-9746-4264-8a7c-003fb02ef0c4}</Project>
-      <Name>Yuanfeng.Smarty</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Yuanfeng.Unit.AviRec\Yuanfeng.Unit.AviRec.csproj">
       <Project>{fb64ff3b-001f-4e79-9c87-94fd4771b3e5}</Project>
       <Name>Yuanfeng.Unit.AviRec</Name>
@@ -387,7 +405,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Deploy="0" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="ALL" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="0" />
+      <UserProperties Reactor_Enabled="0" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="ALL" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="0" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

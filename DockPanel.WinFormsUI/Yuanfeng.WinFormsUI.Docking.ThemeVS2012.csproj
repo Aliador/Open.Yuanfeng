@@ -8,7 +8,7 @@
     <ProjectGuid>{4ED4FDB5-9FD0-49E6-876D-1635F727C755}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yuanfeng.WinFormsUI</RootNamespace>
+    <RootNamespace>Yuanfeng.WinFormsUI.Docking.ThemeVS2012</RootNamespace>
     <AssemblyName>Yuanfeng.WinFormsUI.Docking.ThemeVS2012</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>dockpanelsuite.snk</AssemblyOriginatorKeyFile>
@@ -119,9 +119,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DockPanel.WinFormsUI.csproj">
+    <ProjectReference Include="Yuanfeng.WinFormsUI.Docking.csproj">
       <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>
-      <Name>DockPanel.WinFormsUI</Name>
+      <Name>Yuanfeng.WinFormsUI.Docking</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

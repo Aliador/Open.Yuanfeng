@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Yuanfeng.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
     internal class VS2012SplitterControl : DockPane.SplitterControlBase
     {

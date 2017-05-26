@@ -54,7 +54,22 @@
             "----COM2----",
             "----COM3----",
             "----COM4----",
-            "----COM5----"});
+            "----COM5----",
+            "----COM6----",
+            "----COM7----",
+            "----COM8----",
+            "----COM9----",
+            "----COM10----",
+            "----COM11----",
+            "----COM12----",
+            "----COM13----",
+            "----COM14----",
+            "----COM15----",
+            "----COM16----",
+            "----COM17----",
+            "----COM18----",
+            "----COM19----",
+            "----COM20----"});
             this.cmbSerialPortName.Location = new System.Drawing.Point(139, 31);
             this.cmbSerialPortName.Name = "cmbSerialPortName";
             this.cmbSerialPortName.Size = new System.Drawing.Size(247, 20);

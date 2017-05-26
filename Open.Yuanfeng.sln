@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Free5lot.DirectShowLib-2010
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Free5lot.Camera_NET", "Free5lot.Camera_Net\Free5lot.Camera_NET.csproj", "{E6052609-A070-41D5-85B9-ACABA91170C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockPanel.WinFormsUI", "DockPanel.WinFormsUI\DockPanel.WinFormsUI.csproj", "{C75532C4-765B-418E-B09B-46D36B2ABDB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.WinFormsUI.Docking", "DockPanel.WinFormsUI\Yuanfeng.WinFormsUI.Docking.csproj", "{C75532C4-765B-418E-B09B-46D36B2ABDB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockPanel.ThemeVS2012", "DockPanel.WinFormsUI\DockPanel.ThemeVS2012.csproj", "{4ED4FDB5-9FD0-49E6-876D-1635F727C755}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.WinFormsUI.Docking.ThemeVS2012", "DockPanel.WinFormsUI\Yuanfeng.WinFormsUI.Docking.ThemeVS2012.csproj", "{4ED4FDB5-9FD0-49E6-876D-1635F727C755}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuanfeng.Unit.Print", "Yuanfeng.Unit.Print\Yuanfeng.Unit.Print.csproj", "{82198B81-2D73-4578-B765-9D60515852A1}"
 EndProject

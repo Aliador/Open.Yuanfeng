@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Yuanfeng.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
     /// <summary>
     /// Dock window of Visual Studio 2012 Light theme.

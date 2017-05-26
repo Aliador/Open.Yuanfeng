@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using Yuanfeng.WinFormsUI.Docking;
 
-namespace Yuanfeng.WinFormsUI.ThemeVS2012.Light
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012.Light
 {
     public class ImageService : IImageService
     {

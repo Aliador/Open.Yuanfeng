@@ -247,7 +247,15 @@ namespace Yuanfeng.PluginEngine
                                 containts = true;
                             }
                         }
-                        if (!containts) pluginInstances.Add((T)type.Instance);
+                        try
+                        {
+                            if (!containts) pluginInstances.Add((T)type.Instance);
+                        }
+                        catch (Exception exception)
+                        {
+                            SimpleConsole.WriteLine("创建接口出现异常");
+                            SimpleConsole.WriteLine(exception);
+                        }
                     }
                 }
                 if (pluginInstances.Count == 0)

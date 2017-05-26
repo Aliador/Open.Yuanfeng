@@ -1,6 +1,6 @@
 ﻿using Yuanfeng.WinFormsUI.Docking;
 
-namespace Yuanfeng.WinFormsUI.ThemeVS2012
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
     internal class VS2012AutoHideWindowFactory : DockPanelExtender.IAutoHideWindowFactory
     {

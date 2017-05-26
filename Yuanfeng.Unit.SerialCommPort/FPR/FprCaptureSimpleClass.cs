@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Yuanfeng.Smarty;
 
 namespace Yuanfeng.Unit.SerialCommPort.FPR
 {
     public class FprCaptureSimpleClass : IFprCapture
     {
-        private bool isOpen = false;
+        private bool isOpened = false;
         private CaptureCompletedHandler captureCompletedHandler;
         private CaptureFingerHandler captureFingerHandler;
         private Dictionary<int, int> channelSizeDict = new Dictionary<int, int>();
@@ -17,7 +18,7 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
         {
             get
             {
-                return IsOpen;
+                return isOpened;
             }
         }
 
@@ -35,7 +36,7 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
         {
             if (channel + 1 > channels) throw new Exception("Not find target device.");
 
-            if (!isOpen) throw new Exception("Please open device first.");
+            if (!isOpened) throw new Exception("Please open device first.");
 
             threadCaptureFinger = new Thread((object arg) =>
             {
@@ -43,7 +44,7 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
                 int quality = 0;
                 byte[] featureBuffer = null;
                 int tempTimeout = (int)arg;
-                while (tempTimeout >= 0)
+                while (tempTimeout >= 0 && isOpened)
                 {
                     byte[] pRawData = null;
                     byte[] pBmpData = null;
@@ -64,16 +65,26 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
                             featureBuffer = new byte[512];
                             result = feature.Extract(fingerPosCode, pRawData, featureBuffer);
                         }
+                        else
+                        {
+                            SimpleConsole.WriteLine(new Exception(string.Format("get finger quality failed, error code:{0}", result)));
+                        }
                         imageBuffer = pBmpData;
-
-                        if (pBmpData != null && captureFingerHandler != null) captureFingerHandler.Invoke(pBmpData);
+                    }
+                    else
+                    {
+                        SimpleConsole.WriteLine(new Exception(string.Format("get finger bmp or fpr failed, error code:{0}", result)));
                     }
                     IDFprCapDll.LIVESCAN_EndCapture(channel);
+
+                    if (pBmpData != null && captureFingerHandler != null) captureFingerHandler.Invoke(pBmpData);
+                    if (this.captureCompletedHandler != null) this.captureCompletedHandler.Invoke(imageBuffer, featureBuffer, quality, 0);
+
                     pRawData = null;
                     pBmpData = null;
-                }
-                if (this.captureCompletedHandler != null) this.captureCompletedHandler.Invoke(imageBuffer, featureBuffer, quality, 0);
-                GC.Collect();//force
+
+                    GC.Collect();//force
+                }                
             });
 
             threadCaptureFinger.Start(operTimeout);
@@ -87,11 +98,12 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
 
         public int Close()
         {
-            if (isOpen)
+            if (isOpened)
             {
                 this.captureCompletedHandler = null;
                 this.captureFingerHandler = null;
-                threadCaptureFinger.Abort(); isOpen = false;
+                this.isOpened = false;
+                if (this.threadCaptureFinger != null) this.threadCaptureFinger.Abort();
                 for (int i = 0; i < channels; i++)
                 {
                     IDFprCapDll.LIVESCAN_EndCapture(i);
@@ -104,13 +116,13 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
 
         public int Open(CaptureFingerHandler captureFingerHandler, CaptureCompletedHandler captureCompletedHandler)
         {
-            if (isOpen) return 1;
+            if (isOpened) return 1;
             try
             {
                 int result = IDFprCapDll.LIVESCAN_Init();
                 if (result != 1)
                 {
-                    throw new Exception("The device is error.");
+                    throw new Exception(string.Format("The device is error.error code:{0}", result));
                 }
                 int nChannelCount = IDFprCapDll.LIVESCAN_GetChannelCount();
                 if (nChannelCount <= 0)
@@ -127,14 +139,14 @@ namespace Yuanfeng.Unit.SerialCommPort.FPR
                 }
                 channels = nChannelCount;
 
-                if (result == 1) isOpen = true;
+                if (result == 1) isOpened = true;
 
                 this.captureCompletedHandler = captureCompletedHandler;
                 this.captureFingerHandler = captureFingerHandler;
 
                 return result;
             }
-            catch(Exception excetion) { throw new Exception(excetion.Message); }
+            catch (Exception excetion) { throw new Exception(excetion.Message); }
         }
     }
 }

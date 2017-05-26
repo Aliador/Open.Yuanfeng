@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yuanfeng.WinFormsUI.ThemeVS2012.Light {
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012.Light
+{
     using System;
     
     
@@ -39,7 +40,7 @@ namespace Yuanfeng.WinFormsUI.ThemeVS2012.Light {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yuanfeng.WinFormsUI.ThemeVS2012.Light.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yuanfeng.WinFormsUI.Docking.ThemeVS2012.ThemeVS2012.Light.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

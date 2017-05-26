@@ -25,7 +25,7 @@ namespace Open.Yuanfeng.Windows.SerialPort
         {
             try
             {
-                simpleCamera.Init(this.CameraContainer, 640, 480, this.textBoxDeviceName.Text);
+                simpleCamera.Init(this.CameraContainer, 2048, 1536, this.textBoxDeviceName.Text);
             }
             catch (Exception exception)
             {

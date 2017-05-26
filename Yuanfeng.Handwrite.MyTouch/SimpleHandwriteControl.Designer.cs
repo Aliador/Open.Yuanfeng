@@ -1,4 +1,6 @@
-﻿namespace Yuanfeng.Handwrite.MyTouch
+﻿using AxMyTouchHandwriteActiveX;
+
+namespace Yuanfeng.Handwrite.MyTouch
 {
     partial class SimpleHandwriteControl
     {
@@ -32,7 +34,7 @@
             this.panelWords = new System.Windows.Forms.Panel();
             this.pbClear = new System.Windows.Forms.PictureBox();
             this.pbHandwrite = new System.Windows.Forms.PictureBox();
-            this.axActiveHandWrite1 = new AxACTIVEHANDWRITELib.AxActiveHandWrite();
+            this.axActiveHandWrite1 = new AxMyTouchHandwriteActiveX.AxHandwrite();
             ((System.ComponentModel.ISupportInitialize)(this.pbClear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHandwrite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axActiveHandWrite1)).BeginInit();
@@ -40,6 +42,8 @@
             // 
             // panelWords
             // 
+            this.panelWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWords.BackColor = System.Drawing.Color.Transparent;
             this.panelWords.Location = new System.Drawing.Point(0, 0);
             this.panelWords.Name = "panelWords";
@@ -48,6 +52,7 @@
             // 
             // pbClear
             // 
+            this.pbClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClear.BackColor = System.Drawing.Color.Transparent;
             this.pbClear.Location = new System.Drawing.Point(522, 0);
             this.pbClear.Name = "pbClear";
@@ -58,8 +63,11 @@
             // 
             // pbHandwrite
             // 
+            this.pbHandwrite.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbHandwrite.BackColor = System.Drawing.Color.Transparent;
-            this.pbHandwrite.Location = new System.Drawing.Point(1, 59);
+            this.pbHandwrite.Location = new System.Drawing.Point(2, 61);
             this.pbHandwrite.Name = "pbHandwrite";
             this.pbHandwrite.Size = new System.Drawing.Size(606, 337);
             this.pbHandwrite.TabIndex = 3;
@@ -73,7 +81,6 @@
             this.axActiveHandWrite1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axActiveHandWrite1.OcxState")));
             this.axActiveHandWrite1.Size = new System.Drawing.Size(604, 337);
             this.axActiveHandWrite1.TabIndex = 0;
-            this.axActiveHandWrite1.OnRecognizer += new AxACTIVEHANDWRITELib._DActiveHandWriteEvents_OnRecognizerEventHandler(this.AxActiveHandWrite1_OnRecognizer);
             // 
             // SimpleHandwriteControl
             // 
@@ -81,10 +88,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Yuanfeng.Handwrite.MyTouch.Properties.Resources.SimpleHandwrite;
-            this.Controls.Add(this.axActiveHandWrite1);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pbHandwrite);
             this.Controls.Add(this.pbClear);
             this.Controls.Add(this.panelWords);
+            this.Controls.Add(this.axActiveHandWrite1);
+            this.DoubleBuffered = true;
             this.Name = "SimpleHandwriteControl";
             this.Size = new System.Drawing.Size(610, 398);
             ((System.ComponentModel.ISupportInitialize)(this.pbClear)).EndInit();
@@ -96,7 +105,7 @@
 
         #endregion
 
-        private AxACTIVEHANDWRITELib.AxActiveHandWrite axActiveHandWrite1;
+        private AxHandwrite axActiveHandWrite1;
         private System.Windows.Forms.Panel panelWords;
         private System.Windows.Forms.PictureBox pbClear;
         private System.Windows.Forms.PictureBox pbHandwrite;

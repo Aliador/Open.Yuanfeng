@@ -64,14 +64,20 @@ namespace Yuanfeng.Unit.SerialCommPort.IDR
             bool result = false;
             try
             {
-                int tryTimes = 3;
-                while (tryTimes > 0 && !result)
-                {
-                    result = (ProtoController.Authenticate() == 1);
-                    SimpleConsole.Write(string.Format(" try time {0},result {1}", 3 - tryTimes, result));
-                    Thread.Sleep(200);
-                    tryTimes--;
-                }
+                double fixedMsec = 500;
+
+                DateTime begin = DateTime.Now;
+                result = (ProtoController.Authenticate() == 1);
+                //SimpleConsole.Write(string.Format(" try time {0},result {1}", 5 - tryTimes, result));
+
+                DateTime end = DateTime.Now;
+                double totalMsecs = (end - begin).TotalMilliseconds;
+
+                fixedMsec = fixedMsec - totalMsecs;
+
+                Thread.Sleep((int)fixedMsec);
+
+                SimpleConsole.WriteLine("RID Use Time:" + totalMsecs);
             }
             catch (Exception exception)
             {
@@ -256,26 +262,26 @@ namespace Yuanfeng.Unit.SerialCommPort.IDR
             if (isOpen) return 1;
             idrReadThrad = new Thread((object arg) =>
             {
-                int tmpRemainTime = (int)arg;
+                int tmpRemainTime = (int)arg * 2;
                 try
                 {
                     RicTextInfo temp = null;
-                    while (tmpRemainTime > 0)
+                    do
                     {
                         try
                         {
                             Init(channel);
-                            if (Authenticate())
+                            if (Authenticate())//fixed time 500 ms
                             {
                                 temp = DecodeObject();
+                                Realase();
                                 break;
                             }
                             Realase();
-                            Thread.Sleep(100);
-                            tmpRemainTime -= 100;
+                            tmpRemainTime -= 1;
                         }
                         catch { }
-                    }
+                    } while (tmpRemainTime > 0);
                     isOpen = false; completedHandler.Invoke(temp);
                 }
                 catch (Exception exception) { throw exception; }
@@ -283,6 +289,35 @@ namespace Yuanfeng.Unit.SerialCommPort.IDR
             idrReadThrad.Start(timeout); isOpen = true;
 
             return 1;
+        }
+
+        public RicTextInfo Scan(int channel,int timeout= 30)
+        {
+            RicTextInfo temp = null;
+            int tmpRemainTime = timeout * 2;
+            try
+            {
+               
+                do
+                {
+                    try
+                    {
+                        Init(channel);
+                        if (Authenticate())//fixed time 500 ms
+                        {
+                            temp = DecodeObject();
+                            break;
+                        }
+                        Realase();
+                        tmpRemainTime -= 1;
+                    }
+                    catch { }
+                } while (tmpRemainTime > 0);
+                isOpen = false;
+            }
+            catch (Exception exception) { throw exception; }
+
+            return temp;
         }
 
         public int Stop()

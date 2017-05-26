@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Printing;
 using System.Text;
 
 namespace Yuanfeng.Unit.Print
@@ -20,6 +21,22 @@ namespace Yuanfeng.Unit.Print
                 item.Delete();deleteCounts += 1;
             }
             return deleteCounts;
+        }
+
+        /// <summary>
+        /// Cancel Print Job
+        /// </summary>
+        /// <param name="printName"></param>
+        public static void ClearJob(string printName)
+        {
+            PrintServer localPrintServer = new LocalPrintServer();
+            PrintQueue pq = localPrintServer.GetPrintQueue(printName);
+            pq.Refresh();
+            PrintJobInfoCollection allPrintJobs = pq.GetPrintJobInfoCollection();
+            foreach (PrintSystemJobInfo printJob in allPrintJobs)
+            {
+                printJob.Cancel();
+            }
         }
     }
 }

@@ -4,10 +4,10 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace Yuanfeng.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
-    using Yuanfeng.WinFormsUI.ThemeVS2012;
-    using Yuanfeng.WinFormsUI.ThemeVS2012.Light;
+    using Yuanfeng.WinFormsUI.Docking.ThemeVS2012;
+    using Yuanfeng.WinFormsUI.Docking.ThemeVS2012.Light;
 
     internal class VS2012DockPaneCaption : DockPaneCaptionBase
     {

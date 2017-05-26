@@ -4,9 +4,9 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace Yuanfeng.WinFormsUI.Docking
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
-    using Yuanfeng.WinFormsUI.ThemeVS2012;
+    using Yuanfeng.WinFormsUI.Docking.ThemeVS2012;
 
     internal class VS2012DockPaneStrip : DockPaneStripBase
     {
@@ -1214,7 +1214,7 @@ namespace Yuanfeng.WinFormsUI.Docking
 
         private Rectangle GetCloseButtonRect(Rectangle rectTab)
         {
-            if (Appearance != Docking.DockPane.AppearanceStyle.Document)
+            if (Appearance != DockPane.AppearanceStyle.Document)
             {
                 return Rectangle.Empty;
             }

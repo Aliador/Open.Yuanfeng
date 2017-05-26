@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Yuanfeng.WinFormsUI.Docking;
 
-namespace Yuanfeng.WinFormsUI.ThemeVS2012
+namespace Yuanfeng.WinFormsUI.Docking.ThemeVS2012
 {
     public class PaintingService : IPaintingService
     {

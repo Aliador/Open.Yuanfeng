@@ -5,9 +5,12 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Yuanfeng.Smarty
@@ -15,6 +18,112 @@ namespace Yuanfeng.Smarty
     public static class ExternMethodClass
     {
         #region 图片处理静态扩展方法
+
+        private static bool IsSimilarColor(this Color a, Color b, int nOffset)
+        {
+            int offsetNum = Math.Abs(nOffset);
+            if (offsetNum > 255)
+                offsetNum = offsetNum - 256;
+
+            List<int> ArrNumA = new List<int> { };
+            ArrNumA.Add(a.R);
+            ArrNumA.Add(a.G);
+            ArrNumA.Add(a.B);
+
+            List<int> ArrNumB = new List<int> { };
+            ArrNumB.Add(b.R);
+            ArrNumB.Add(b.G);
+            ArrNumB.Add(b.B);
+
+            for (int i = 0; i < ArrNumA.Count; i++)
+            {
+                if (Math.Abs(ArrNumA[i] - ArrNumB[i]) > offsetNum)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static Image Merge(this Image image, Image dest, Point position)
+        {
+            if (image != null && dest != null)
+            {
+                Image newImage = new Bitmap(image);
+                Graphics g = Graphics.FromImage(newImage);//使用图片作为画布
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.DrawImage(dest, position);
+                g.Dispose();
+                return newImage;
+            }
+            else if (dest == null)
+            {
+                return image;
+            }
+            else if (image == null)
+            {
+                return dest;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static Image FixedPos(this Image image, Size dest, Point position)
+        {
+            if (image != null && dest != null)
+            {
+                Image newImage = new Bitmap(dest.Width, dest.Height);
+                Graphics g = Graphics.FromImage(newImage);//使用图片作为画布
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.Clear(Color.White);
+                g.DrawImage(image, position);
+                g.Dispose();
+                return newImage;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public static Image ClearColor(this Image image, Color color)
+        {
+            if (image == null || color == null) return image;
+
+            Bitmap bmpobj = new Bitmap(image);
+            for (int i = 0; i < bmpobj.Width; i++)
+            {
+                for (int j = 0; j < bmpobj.Height; j++)
+                {
+                    if (bmpobj.GetPixel(i, j).IsSimilarColor(color, 20))
+                        bmpobj.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                }
+            }
+            return bmpobj;
+        }
+
+        public static Image ClearColor(this Image image, Color color, int offset)
+        {
+            if (image == null || color == null) return image;
+
+            Bitmap bmpobj = new Bitmap(image);
+            for (int i = 0; i < bmpobj.Width; i++)
+            {
+                for (int j = 0; j < bmpobj.Height; j++)
+                {
+                    if (bmpobj.GetPixel(i, j).IsSimilarColor(color, offset))
+                        bmpobj.SetPixel(i, j, Color.FromArgb(255, 255, 255));
+                }
+            }
+            return bmpobj;
+        }
 
         /// <summary>
         /// 根据RGB，计算灰度值
@@ -397,14 +506,14 @@ namespace Yuanfeng.Smarty
             }
 
         }
-        public static Image ToBitmap(this byte[] buffer)
+        public static Bitmap ToBitmap(this byte[] buffer)
         {
             if (buffer == null || buffer.Length == 0) throw new Exception("The iamge buffer is null or empty.");
 
-            Image bmp = null;
+            Bitmap bmp = null;
             try
             {
-                bmp = Bitmap.FromStream(new MemoryStream(buffer));
+                bmp = (Bitmap)Bitmap.FromStream(new MemoryStream(buffer));
             }
             catch (Exception exception)
             {
@@ -514,7 +623,7 @@ namespace Yuanfeng.Smarty
         /// <returns>if file exists and read data return true</returns>
         public static byte[] Reader(this string filename)
         {
-            if (!File.Exists(filename)) return null;
+            if (!File.Exists(filename)) throw new Exception(string.Format("this file '{0}' is not found.", filename));
 
             byte[] buffer = null;
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -734,6 +843,200 @@ namespace Yuanfeng.Smarty
         public static string Decrypt(this string source)
         {
             return Smarty.Encrypt.AES.AESDecrypt(source, "Yuanfeng2016");
+        }
+        #endregion
+
+        #region 字符串处理
+        public static string SubStrDChar(this string s, int len)
+        {
+            int dlen = len * 2;
+
+            string destStr = "";
+
+            if (dlen == 0) return "";
+            else if (dlen == s.SCharLength()) return s;
+
+            Regex pattern = new Regex("[^\x00-\xff]");
+            foreach (char c in s)
+            {
+                bool isDc = pattern.IsMatch(c.ToString());
+                if (isDc) { dlen -= 2; destStr += c; } else { dlen -= 1; destStr += c; }
+
+                if (dlen == 0) break;
+            }
+
+            return destStr;
+        }
+        public static string SubStrSChar(this string s, int len)
+        {
+            int slen = len;
+
+            string destStr = "";
+
+            if (slen == 0) return "";
+            else if (slen == s.SCharLength()) return s;
+
+            Regex pattern = new Regex("[^\x00-\xff]");
+            foreach (char c in s)
+            {
+                bool isDc = pattern.IsMatch(c.ToString());
+                if (isDc) { slen -= 2; destStr += c; } else { slen -= 1; destStr += c; }
+
+                if (slen == 0) break;
+            }
+
+            return destStr;
+        }
+
+        public static string SubStrSChar(this string s, int start, int len)
+        {
+            if (string.IsNullOrEmpty(s)) return s;
+
+            int slen = s.SCharLength();
+
+            int end = start + len;
+
+            string destStr = "";
+
+            if (len == 0) return "";
+            else if (start >= slen) return "";
+            else if (start == 0 && end == slen) return s;
+
+            Regex pattern = new Regex("[^\x00-\xff]");
+
+            int scount = 0;
+            foreach (char c in s)
+            {
+                bool isDc = pattern.IsMatch(c.ToString());
+                if (isDc)
+                {
+                    scount += 2;
+                }
+                else
+                {
+                    scount += 1;
+                }
+                if (scount > start && scount <= end)
+                {
+                    destStr += c;
+                }
+                else if (scount >= end)
+                    break;
+            }
+
+            return destStr;
+        }
+
+        public static int SCharLength(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return 0;
+
+            Regex pattern = new Regex("[^\x00-\xff]");
+
+            int dlen = 0;
+
+            foreach (char c in s)
+            {
+                bool isDc = pattern.IsMatch(c.ToString());
+                if (isDc) dlen += 2; else dlen += 1;
+            }
+            return dlen;
+        }
+
+        public static int DCharLength(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return 0;
+
+            Regex pattern = new Regex("[^\x00-\xff]");
+
+            float dlen = 0;
+
+            foreach (char c in s)
+            {
+                bool isDc = pattern.IsMatch(c.ToString());
+                if (isDc) dlen += 1; else dlen += 0.5f;
+            }
+            return (int)dlen;
+        }
+
+        public static string PadSpaceOfMiddle(this string s, int len)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+
+            int slen = s.SCharLength();
+
+            if (slen >= len) return s;
+
+            int padlen = (len - slen) / 2;
+
+            string padStr = "";
+
+            for (int i = 0; i < padlen; i++)
+            {
+                padStr += " ";
+            }
+
+            return padStr + s;
+        }
+
+        public static string PadSCharOfMiddle(this string s, int len, char pad, bool d = true)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+
+            int slen = s.SCharLength();
+
+            if (slen >= len) return s;
+
+            int padlen = (len - slen) / 2;
+
+            string padStr = "";
+
+            for (int i = 0; i < padlen; i++)
+            {
+                padStr += pad + "";
+            }
+
+            string dest = padStr + s;
+            if (d) dest = dest + padStr;
+
+            return dest;
+        }
+
+        public static List<string> TrySplitStrOfLine(this string s, int len)
+        {
+            List<string> lines = new List<string>();
+
+            int slen = s.SCharLength();
+
+            if (len > slen) lines.Add(s);
+            else
+            {
+                var sources = s.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var ss in sources)
+                {
+                    string subStr = "";
+                    int start = 0;
+                    do
+                    {
+                        subStr = ss.SubStrSChar(start, len);
+                        if (!string.IsNullOrEmpty(subStr))
+                        {
+                            lines.Add(subStr);
+                            start += len;
+                        }
+                    } while (!string.IsNullOrEmpty(subStr));
+                }
+            }
+
+            return lines;
+        }
+        #endregion
+
+        #region 控件操作
+        public static void NoFoucsControl(this Control control)
+        {
+            MethodInfo methodinfo = control.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.InvokeMethod);
+            methodinfo.Invoke(control, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.InvokeMethod, null, new object[] { ControlStyles.Selectable, false }, Application.CurrentCulture);
         }
         #endregion
     }

@@ -98,7 +98,7 @@ namespace Yuanfeng.Smarty
         /// <summary>
         /// 图片按比例缩放
         /// </summary>
-        private Image ZoomPicture(Image initImage, double n)
+        public Image ZoomPicture(Image initImage, double n)
         {
             //缩略图宽、高计算
             double newWidth = initImage.Width;
@@ -120,7 +120,6 @@ namespace Yuanfeng.Smarty
             newG.Dispose();
             return newImage;
         }
-
         /// <summary>
         /// 壓縮圖片
         /// </summary>

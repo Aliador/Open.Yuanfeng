@@ -1,4 +1,7 @@
-﻿using Yuanfeng.WinFormsUI.Docking;
+﻿//using Yuanfeng.WinFormsUI.Docking;
+
+using Yuanfeng.WinFormsUI.Docking;
+using Yuanfeng.WinFormsUI.Docking.ThemeVS2012;
 
 namespace Open.Yuanfeng.Windows
 {
@@ -34,6 +37,8 @@ namespace Open.Yuanfeng.Windows
             this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginsConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NetworkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NwSwithToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,12 +64,15 @@ namespace Open.Yuanfeng.Windows
             this.tesoFaceFeatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tesoLFCDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.videtekFeactureDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.httpXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dynamicInvokeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printerPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleTextDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.vS2012LightTheme = new VS2012LightTheme();
             this.MainDockPanel = new DockPanel();
-            this.testDocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendMailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +85,8 @@ namespace Open.Yuanfeng.Windows
             this.HelperToolStripMenuItem,
             this.SerialPortToolStripMenuItem,
             this.ImageUtilToolStripMenuItem,
-            this.httpXToolStripMenuItem});
+            this.httpXToolStripMenuItem,
+            this.printerPToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Size = new System.Drawing.Size(957, 24);
@@ -87,17 +96,32 @@ namespace Open.Yuanfeng.Windows
             // 
             this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pluginsConfigToolStripMenuItem,
-            this.testDocToolStripMenuItem});
+            this.testDocToolStripMenuItem,
+            this.copyScreenToolStripMenuItem});
             this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
-            this.fileFToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.fileFToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.fileFToolStripMenuItem.Text = "File(&F)";
             // 
             // pluginsConfigToolStripMenuItem
             // 
             this.pluginsConfigToolStripMenuItem.Name = "pluginsConfigToolStripMenuItem";
-            this.pluginsConfigToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pluginsConfigToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.pluginsConfigToolStripMenuItem.Text = "PluginsConfig";
             this.pluginsConfigToolStripMenuItem.Click += new System.EventHandler(this.pluginsConfigToolStripMenuItem_Click);
+            // 
+            // testDocToolStripMenuItem
+            // 
+            this.testDocToolStripMenuItem.Name = "testDocToolStripMenuItem";
+            this.testDocToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.testDocToolStripMenuItem.Text = "TestDoc";
+            this.testDocToolStripMenuItem.Click += new System.EventHandler(this.testDocToolStripMenuItem_Click);
+            // 
+            // copyScreenToolStripMenuItem
+            // 
+            this.copyScreenToolStripMenuItem.Name = "copyScreenToolStripMenuItem";
+            this.copyScreenToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.copyScreenToolStripMenuItem.Text = "CopyScreen";
+            this.copyScreenToolStripMenuItem.Click += new System.EventHandler(this.copyScreenToolStripMenuItem_Click);
             // 
             // NetworkToolStripMenuItem
             // 
@@ -107,19 +131,19 @@ namespace Open.Yuanfeng.Windows
             this.simpleSocketXToolStripMenuItem,
             this.redisClientDocToolStripMenuItem});
             this.NetworkToolStripMenuItem.Name = "NetworkToolStripMenuItem";
-            this.NetworkToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.NetworkToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.NetworkToolStripMenuItem.Text = "Network(&N)";
             // 
             // NwListToolStripMenuItem
             // 
             this.NwListToolStripMenuItem.Name = "NwListToolStripMenuItem";
-            this.NwListToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.NwListToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.NwListToolStripMenuItem.Text = "Interface List(&L)";
             // 
             // NwSwithToolStripMenuItem
             // 
             this.NwSwithToolStripMenuItem.Name = "NwSwithToolStripMenuItem";
-            this.NwSwithToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.NwSwithToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.NwSwithToolStripMenuItem.Text = "Enable All(&E)";
             // 
             // simpleSocketXToolStripMenuItem
@@ -128,27 +152,27 @@ namespace Open.Yuanfeng.Windows
             this.simpleUdpClientToolStripMenuItem,
             this.simpleUdpServerToolStripMenuItem});
             this.simpleSocketXToolStripMenuItem.Name = "simpleSocketXToolStripMenuItem";
-            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.simpleSocketXToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.simpleSocketXToolStripMenuItem.Text = "SimpleSocketX";
             // 
             // simpleUdpClientToolStripMenuItem
             // 
             this.simpleUdpClientToolStripMenuItem.Name = "simpleUdpClientToolStripMenuItem";
-            this.simpleUdpClientToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.simpleUdpClientToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.simpleUdpClientToolStripMenuItem.Text = "SimpleUdpClient";
             this.simpleUdpClientToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpClientToolStripMenuItem_Click);
             // 
             // simpleUdpServerToolStripMenuItem
             // 
             this.simpleUdpServerToolStripMenuItem.Name = "simpleUdpServerToolStripMenuItem";
-            this.simpleUdpServerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.simpleUdpServerToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.simpleUdpServerToolStripMenuItem.Text = "SimpleUdpServer";
             this.simpleUdpServerToolStripMenuItem.Click += new System.EventHandler(this.simpleUdpServerToolStripMenuItem_Click);
             // 
             // redisClientDocToolStripMenuItem
             // 
             this.redisClientDocToolStripMenuItem.Name = "redisClientDocToolStripMenuItem";
-            this.redisClientDocToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.redisClientDocToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.redisClientDocToolStripMenuItem.Text = "RedisClientDoc(&R)";
             this.redisClientDocToolStripMenuItem.Click += new System.EventHandler(this.redisClientDocToolStripMenuItem_Click);
             // 
@@ -157,13 +181,13 @@ namespace Open.Yuanfeng.Windows
             this.WindowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ConsoleToolStripMenuItem});
             this.WindowsToolStripMenuItem.Name = "WindowsToolStripMenuItem";
-            this.WindowsToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.WindowsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.WindowsToolStripMenuItem.Text = "Window(&W)";
             // 
             // ConsoleToolStripMenuItem
             // 
             this.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem";
-            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.ConsoleToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.ConsoleToolStripMenuItem.Text = "Console(&C)";
             this.ConsoleToolStripMenuItem.Click += new System.EventHandler(this.ConsoleToolStripMenuItem_Click);
             // 
@@ -172,13 +196,13 @@ namespace Open.Yuanfeng.Windows
             this.HelperToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.HelperToolStripMenuItem.Name = "HelperToolStripMenuItem";
-            this.HelperToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.HelperToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.HelperToolStripMenuItem.Text = "Helper(&H)";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.aboutToolStripMenuItem.Text = "About(&X)";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -192,48 +216,48 @@ namespace Open.Yuanfeng.Windows
             this.SimpleFprCaptureToolStripMenuItem,
             this.aviRecorderToolStripMenuItem});
             this.SerialPortToolStripMenuItem.Name = "SerialPortToolStripMenuItem";
-            this.SerialPortToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
+            this.SerialPortToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.SerialPortToolStripMenuItem.Text = "SerialPort(&P)";
             // 
             // YuanjingdaToolStripMenuItem
             // 
             this.YuanjingdaToolStripMenuItem.Name = "YuanjingdaToolStripMenuItem";
-            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.YuanjingdaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.YuanjingdaToolStripMenuItem.Text = "Yuanjingda(&Y)";
             this.YuanjingdaToolStripMenuItem.Click += new System.EventHandler(this.YuanjingdaToolStripMenuItem_Click);
             // 
             // CameraToolStripMenuItem
             // 
             this.CameraToolStripMenuItem.Name = "CameraToolStripMenuItem";
-            this.CameraToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.CameraToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.CameraToolStripMenuItem.Text = "Camera(&C)";
             this.CameraToolStripMenuItem.Click += new System.EventHandler(this.CameraToolStripMenuItem_Click);
             // 
             // SimpleCameraToolStripMenuItem
             // 
             this.SimpleCameraToolStripMenuItem.Name = "SimpleCameraToolStripMenuItem";
-            this.SimpleCameraToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.SimpleCameraToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.SimpleCameraToolStripMenuItem.Text = "SimpleCamera(&D)";
             this.SimpleCameraToolStripMenuItem.Click += new System.EventHandler(this.SimpleCameraToolStripMenuItem_Click);
             // 
             // SimpleIDRToolStripMenuItem
             // 
             this.SimpleIDRToolStripMenuItem.Name = "SimpleIDRToolStripMenuItem";
-            this.SimpleIDRToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.SimpleIDRToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.SimpleIDRToolStripMenuItem.Text = "SimpleIDR(&E)";
             this.SimpleIDRToolStripMenuItem.Click += new System.EventHandler(this.SimpleIDRToolStripMenuItem_Click);
             // 
             // SimpleFprCaptureToolStripMenuItem
             // 
             this.SimpleFprCaptureToolStripMenuItem.Name = "SimpleFprCaptureToolStripMenuItem";
-            this.SimpleFprCaptureToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.SimpleFprCaptureToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.SimpleFprCaptureToolStripMenuItem.Text = "SimpleFprCapture(&F)";
             this.SimpleFprCaptureToolStripMenuItem.Click += new System.EventHandler(this.SimpleFprCaptureToolStripMenuItem_Click);
             // 
             // aviRecorderToolStripMenuItem
             // 
             this.aviRecorderToolStripMenuItem.Name = "aviRecorderToolStripMenuItem";
-            this.aviRecorderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.aviRecorderToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.aviRecorderToolStripMenuItem.Text = "AviRecorder(&R)";
             this.aviRecorderToolStripMenuItem.Click += new System.EventHandler(this.aviRecorderToolStripMenuItem_Click);
             // 
@@ -245,67 +269,91 @@ namespace Open.Yuanfeng.Windows
             this.SimpleOcrDocToolStripMenuItem,
             this.tesoFaceFeatureToolStripMenuItem,
             this.tesoLFCDocToolStripMenuItem,
-            this.videtekFeactureDToolStripMenuItem});
+            this.videtekFeactureDToolStripMenuItem,
+            this.imageColorToolStripMenuItem});
             this.ImageUtilToolStripMenuItem.Name = "ImageUtilToolStripMenuItem";
-            this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.ImageUtilToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.ImageUtilToolStripMenuItem.Text = "ImageUtil(&I)";
             // 
             // SimpleQrCodeToolStripMenuItem
             // 
             this.SimpleQrCodeToolStripMenuItem.Name = "SimpleQrCodeToolStripMenuItem";
-            this.SimpleQrCodeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.SimpleQrCodeToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.SimpleQrCodeToolStripMenuItem.Text = "SimpleQrCode(&Q)";
             this.SimpleQrCodeToolStripMenuItem.Click += new System.EventHandler(this.SimpleQrCodeToolStripMenuItem_Click);
             // 
             // FindGrayImageToolStripMenuItem
             // 
             this.FindGrayImageToolStripMenuItem.Name = "FindGrayImageToolStripMenuItem";
-            this.FindGrayImageToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.FindGrayImageToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.FindGrayImageToolStripMenuItem.Text = "FindGrayImage(&F)";
             this.FindGrayImageToolStripMenuItem.Click += new System.EventHandler(this.FindGrayImageToolStripMenuItem_Click);
             // 
             // SimpleOcrDocToolStripMenuItem
             // 
             this.SimpleOcrDocToolStripMenuItem.Name = "SimpleOcrDocToolStripMenuItem";
-            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.SimpleOcrDocToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.SimpleOcrDocToolStripMenuItem.Text = "SimpleOcrDoc(&O)";
             this.SimpleOcrDocToolStripMenuItem.Click += new System.EventHandler(this.SimpleOcrDocToolStripMenuItem_Click);
             // 
             // tesoFaceFeatureToolStripMenuItem
             // 
             this.tesoFaceFeatureToolStripMenuItem.Name = "tesoFaceFeatureToolStripMenuItem";
-            this.tesoFaceFeatureToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.tesoFaceFeatureToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.tesoFaceFeatureToolStripMenuItem.Text = "TesoFaceFeature(&T)";
             this.tesoFaceFeatureToolStripMenuItem.Click += new System.EventHandler(this.tesoFaceFeatureToolStripMenuItem_Click);
             // 
             // tesoLFCDocToolStripMenuItem
             // 
             this.tesoLFCDocToolStripMenuItem.Name = "tesoLFCDocToolStripMenuItem";
-            this.tesoLFCDocToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.tesoLFCDocToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.tesoLFCDocToolStripMenuItem.Text = "TesoLFCDoc(&L)";
             this.tesoLFCDocToolStripMenuItem.Click += new System.EventHandler(this.tesoLFCDocToolStripMenuItem_Click);
             // 
             // videtekFeactureDToolStripMenuItem
             // 
             this.videtekFeactureDToolStripMenuItem.Name = "videtekFeactureDToolStripMenuItem";
-            this.videtekFeactureDToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.videtekFeactureDToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.videtekFeactureDToolStripMenuItem.Text = "VidetekFeacture(&D)";
             this.videtekFeactureDToolStripMenuItem.Click += new System.EventHandler(this.videtekFeactureDToolStripMenuItem_Click);
+            // 
+            // imageColorToolStripMenuItem
+            // 
+            this.imageColorToolStripMenuItem.Name = "imageColorToolStripMenuItem";
+            this.imageColorToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.imageColorToolStripMenuItem.Text = "ImageColor";
+            this.imageColorToolStripMenuItem.Click += new System.EventHandler(this.imageColorToolStripMenuItem_Click);
             // 
             // httpXToolStripMenuItem
             // 
             this.httpXToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dynamicInvokeToolStripMenuItem});
+            this.dynamicInvokeToolStripMenuItem,
+            this.sendMailToolStripMenuItem});
             this.httpXToolStripMenuItem.Name = "httpXToolStripMenuItem";
-            this.httpXToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.httpXToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.httpXToolStripMenuItem.Text = "HttpX";
             // 
             // dynamicInvokeToolStripMenuItem
             // 
             this.dynamicInvokeToolStripMenuItem.Name = "dynamicInvokeToolStripMenuItem";
-            this.dynamicInvokeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.dynamicInvokeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.dynamicInvokeToolStripMenuItem.Text = "DynamicInvoke";
             this.dynamicInvokeToolStripMenuItem.Click += new System.EventHandler(this.dynamicInvokeToolStripMenuItem_Click);
+            // 
+            // printerPToolStripMenuItem
+            // 
+            this.printerPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.simpleTextDocToolStripMenuItem});
+            this.printerPToolStripMenuItem.Name = "printerPToolStripMenuItem";
+            this.printerPToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.printerPToolStripMenuItem.Text = "Printer(&P)";
+            // 
+            // simpleTextDocToolStripMenuItem
+            // 
+            this.simpleTextDocToolStripMenuItem.Name = "simpleTextDocToolStripMenuItem";
+            this.simpleTextDocToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.simpleTextDocToolStripMenuItem.Text = "SimpleTextDoc";
+            this.simpleTextDocToolStripMenuItem.Click += new System.EventHandler(this.simpleTextDocToolStripMenuItem_Click);
             // 
             // MainStatusStrip
             // 
@@ -324,12 +372,12 @@ namespace Open.Yuanfeng.Windows
             this.MainDockPanel.Size = new System.Drawing.Size(957, 455);
             this.MainDockPanel.TabIndex = 2;
             // 
-            // testDocToolStripMenuItem
+            // sendMailToolStripMenuItem
             // 
-            this.testDocToolStripMenuItem.Name = "testDocToolStripMenuItem";
-            this.testDocToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.testDocToolStripMenuItem.Text = "TestDoc";
-            this.testDocToolStripMenuItem.Click += new System.EventHandler(this.testDocToolStripMenuItem_Click);
+            this.sendMailToolStripMenuItem.Name = "sendMailToolStripMenuItem";
+            this.sendMailToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.sendMailToolStripMenuItem.Text = "SendMail";
+            this.sendMailToolStripMenuItem.Click += new System.EventHandler(this.sendMailToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -386,6 +434,11 @@ namespace Open.Yuanfeng.Windows
         private System.Windows.Forms.ToolStripMenuItem videtekFeactureDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aviRecorderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testDocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printerPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleTextDocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imageColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendMailToolStripMenuItem;
     }
 }
 

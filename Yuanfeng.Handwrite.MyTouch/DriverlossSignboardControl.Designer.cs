@@ -1,4 +1,6 @@
-﻿namespace Yuanfeng.Handwrite.MyTouch
+﻿using AxMyTouchHandwriteActiveX;
+
+namespace Yuanfeng.Handwrite.MyTouch
 {
     partial class DriverlossSignboardControl
     {
@@ -30,13 +32,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DriverlossSignboardControl));
             this.pbSignboard = new System.Windows.Forms.PictureBox();
-            this.axActiveHandWrite1 = new AxACTIVEHANDWRITELib.AxActiveHandWrite();
+            this.axActiveHandWrite1 = new AxMyTouchHandwriteActiveX.AxHandwrite();
             ((System.ComponentModel.ISupportInitialize)(this.pbSignboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axActiveHandWrite1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbSignboard
             // 
+            this.pbSignboard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbSignboard.BackColor = System.Drawing.Color.Transparent;
             this.pbSignboard.Location = new System.Drawing.Point(0, 0);
             this.pbSignboard.Name = "pbSignboard";
@@ -53,14 +58,16 @@
             this.axActiveHandWrite1.Size = new System.Drawing.Size(804, 313);
             this.axActiveHandWrite1.TabIndex = 2;
             // 
-            // SimpleSignboardControl2
+            // DriverlossSignboardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Yuanfeng.Handwrite.MyTouch.Properties.Resources.SimpleSignboard2;
-            this.Controls.Add(this.axActiveHandWrite1);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pbSignboard);
-            this.Name = "SimpleSignboardControl2";
+            this.Controls.Add(this.axActiveHandWrite1);
+            this.Name = "DriverlossSignboardControl";
             this.Size = new System.Drawing.Size(804, 313);
             ((System.ComponentModel.ISupportInitialize)(this.pbSignboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axActiveHandWrite1)).EndInit();
@@ -71,6 +78,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pbSignboard;
-        private AxACTIVEHANDWRITELib.AxActiveHandWrite axActiveHandWrite1;
+        private AxHandwrite axActiveHandWrite1;
     }
 }

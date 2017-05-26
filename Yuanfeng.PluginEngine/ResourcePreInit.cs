@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using Yuanfeng.Smarty;
 
 namespace Yuanfeng.PluginEngine
@@ -24,42 +25,59 @@ namespace Yuanfeng.PluginEngine
 
         public void Init(object handle, string key)
         {
-            if (handle == null) return;
-            int hashCode = handle.GetHashCode();
-            if (initedHandles.Contains(hashCode)) return;
-
-            var images = section.Images.Find(key);
-            foreach (DynImage item in images)
+            try
             {
-                string controlKey = string.Empty;
-                try { controlKey = item.Key.Split('.')[1]; } catch { controlKey = string.Empty; }
-                if (string.IsNullOrEmpty(controlKey)) continue;
-                try
+                List<Exception> catchs = new List<Exception>();
+                if (handle == null) return;
+                int hashCode = handle.GetHashCode();
+                if (initedHandles.Contains(hashCode)) return;
+
+                var images = section.Images.Find(key);
+                foreach (DynImage item in images)
                 {
-                    object o = handle.GetType().GetField(controlKey, bindingFlags).GetValue(handle);
-                    o.GetType().GetProperty("Image").SetValue(o, GetImage(item.Image), null);
+                    string controlKey = string.Empty;
+                    try { controlKey = item.Key.Split('.')[1]; } catch { controlKey = string.Empty; }
+                    if (string.IsNullOrEmpty(controlKey)) continue;
+                    try
+                    {
+                        object o = handle.GetType().GetField(controlKey, bindingFlags).GetValue(handle);
+                        o.GetType().GetProperty("Image").SetValue(o, GetImage(item.Image), null);
+                    }
+                    catch (Exception exception)
+                    {
+                        SimpleConsole.WriteLine(exception); catchs.Add(new Exception(string.Format("set image '{0}' exception", item.Image), exception));
+                        // throw new Exception(item.Image, exception);
+                    }
                 }
-                catch (Exception exception)
+
+                var backgrounds = section.Backgrounds.Find(key);
+                foreach (var item in backgrounds)
                 {
-                    throw new Exception(item.Image, exception);
+                    string controlKey = string.Empty;
+                    try { controlKey = item.Key.Split('.')[1]; } catch { controlKey = string.Empty; }
+                    if (string.IsNullOrEmpty(controlKey)) continue;
+                    try
+                    {
+                        object o = handle.GetType().GetField(controlKey, bindingFlags).GetValue(handle);
+                        o.GetType().GetProperty("BackgroundImage").SetValue(o, GetImage(item.Image), null);
+                    }
+                    catch (Exception exception)
+                    {
+                        SimpleConsole.WriteLine(exception); catchs.Add(new Exception(string.Format("set background image '{0}' exception", item.Image), exception));
+                        //throw new Exception(item.Image, exception);
+                    }
                 }
+
+                StringBuilder sbError = new StringBuilder();
+                foreach (var item in catchs)
+                {
+                    sbError.AppendLine("msg:" + item.Message + ",trace:" + item.StackTrace);
+                }
+                if (catchs.Count > 0) throw new Exception(sbError.ToString());
             }
-
-            var backgrounds = section.Backgrounds.Find(key);
-            foreach (var item in backgrounds)
+            catch (Exception exception)
             {
-                string controlKey = string.Empty;
-                try { controlKey = item.Key.Split('.')[1]; } catch { controlKey = string.Empty; }
-                if (string.IsNullOrEmpty(controlKey)) continue;
-                try
-                {
-                    object o = handle.GetType().GetField(controlKey, bindingFlags).GetValue(handle);
-                    o.GetType().GetProperty("BackgroundImage").SetValue(o, GetImage(item.Image), null);
-                }
-                catch (Exception exception)
-                {
-                    throw new Exception(item.Image, exception);
-                }
+                SimpleConsole.Write(exception); throw new Exception("pre init resource exception.", exception);
             }
         }
 

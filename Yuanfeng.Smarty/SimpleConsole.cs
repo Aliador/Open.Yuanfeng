@@ -18,6 +18,8 @@ namespace Yuanfeng.Smarty
             {
                 try
                 {
+                    Console.Write(value);
+
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                     if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
                     using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
@@ -38,6 +40,8 @@ namespace Yuanfeng.Smarty
             {
                 try
                 {
+                    Console.WriteLine(value);
+
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                     if (!File.Exists(consolefilename)) File.CreateText(consolefilename);
                     using (FileStream fs = new FileStream(consolefilename, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
