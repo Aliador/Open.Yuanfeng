@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Camera\CameraDirectShowClass.cs" />
     <Compile Include="Camera\ICamera.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="FPR\FprCaptureSimpleClass.cs" />
     <Compile Include="FPR\IDFprCapDll.cs" />
     <Compile Include="FPR\IDFprDll.cs" />

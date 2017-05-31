@@ -31,6 +31,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
             Init("COM1", serialPortReceivedDataDelegate);
         }
 
+   
         public void Init(string serialPort, SerialPortReceivedDataDelegate serialPortReceivedDataDelegate)
         {
             try

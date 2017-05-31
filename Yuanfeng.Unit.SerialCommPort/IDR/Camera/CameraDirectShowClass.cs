@@ -72,7 +72,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
             if (!this.DeviceNames.Contains(DeviceName)) throw new Exception("Not find this set name device.");
 
             if (control == null) throw new Exception("The target control parent is null.");
-
+            
             control.Controls.Add(this.CameraControl);
 
             this.CameraControl.Dock = DockStyle.Fill;
@@ -107,7 +107,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
             pictureBuffer = null;
             if (!IsOpen) throw new Exception("This camera is not open.");
 
-            var bmp = this.CameraControl.SnapshotSourceImage();
+           var bmp = this.CameraControl.SnapshotSourceImage();
 
             if (bmp == null) throw new Exception("This snapshot bmp is null.");
 
@@ -118,7 +118,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Camera
 
         public string[] Cameras
         {
-            get { return this.DeviceNames.ToArray<string>(); }
+           get { return this.DeviceNames.ToArray<string>(); }
         }
     }
 }

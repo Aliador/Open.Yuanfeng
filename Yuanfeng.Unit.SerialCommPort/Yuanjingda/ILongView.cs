@@ -39,5 +39,7 @@ namespace Yuanfeng.Unit.SerialCommPort.Yuanjingda
         /// 保持扫描状态，在扫描到数据后重新打开。
         /// </summary>
         void LiveScan();
+
+
     }
 }
